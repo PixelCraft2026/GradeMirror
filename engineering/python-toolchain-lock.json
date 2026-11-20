@@ -1,0 +1,13 @@
+{
+  "inputs": [
+    {
+      "name": "CPython Windows x64",
+      "license": "PSF-2.0 and bundled library notices",
+      "provenance": "Astral release 20260825 official SHA256SUMS",
+      "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20260825/cpython-3.12.14%2B20260825-x86_64-pc-windows-msvc-install_only_stripped.tar.gz",
+      "filename": "cpython-3.12.14+20260825-x86_64-pc-windows-msvc-install_only_stripped.tar.gz",
+      "bytes": 21980002,
+      "sha256": "8e6aad12ef6fc9685e67ce66253f8f72d6e8fa02cb7187e5850bd4db5ecd9e2a"
+    }
+  ]
+}

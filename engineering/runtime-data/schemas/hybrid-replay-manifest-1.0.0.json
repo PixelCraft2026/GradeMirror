@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:grademirror:hybrid-replay-manifest:1.0.0",
+  "title": "Experimental saved-pair hybrid replay manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "backend_id", "execution_contract_version", "execution_contract_sha256", "parent_recipe_sha256", "assets", "source_identity", "reference_identity", "ranges", "device", "runtime", "R0_runtime", "parent_bindings", "cpu_bindings", "color_policy", "core_rows", "results", "quantization", "scope", "manifest_sha256"],
+  "properties": {
+    "schema_version": {"const": "hybrid-replay-manifest-1.0.0"},
+    "backend_id": {"const": "cuda-r0-cpu-lld10-v1"},
+    "execution_contract_version": {"const": "gm021-hybrid-replay-v1"},
+    "execution_contract_sha256": {"$ref": "#/$defs/sha"},
+    "parent_recipe_sha256": {"$ref": "#/$defs/sha"},
+    "manifest_sha256": {"$ref": "#/$defs/sha"},
+    "assets": {
+      "type": "object", "additionalProperties": false,
+      "required": ["recipe.json", "parameters.npz", "p3.npz"],
+      "properties": {"recipe.json": {"$ref": "#/$defs/asset"}, "parameters.npz": {"$ref": "#/$defs/asset"}, "p3.npz": {"$ref": "#/$defs/asset"}}
+    },
+    "source_identity": {"$ref": "#/$defs/identity"},
+    "reference_identity": {"$ref": "#/$defs/identity"},
+    "ranges": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "object"}},
+    "device": {"type": "object"},
+    "runtime": {"const": {"numpy": "1.26.4", "torch": "2.5.1+cu124", "threads": 4, "interop": 1}},
+    "R0_runtime": {"type": "object"},
+    "parent_bindings": {"type": "object"},
+    "cpu_bindings": {"type": "object"},
+    "color_policy": {"type": "object"},
+    "core_rows": {"const": 512},
+    "results": {
+      "type": "object", "additionalProperties": false, "required": ["O", "OP", "LO", "LP", "Y"],
+      "properties": {"O": {"$ref": "#/$defs/sha"}, "OP": {"$ref": "#/$defs/sha"}, "LO": {"$ref": "#/$defs/sha"}, "LP": {"$ref": "#/$defs/sha"}, "Y": {"$ref": "#/$defs/sha"}}
+    },
+    "quantization": {
+      "type": "object", "additionalProperties": false,
+      "required": ["8:0.0", "8:0.5", "8:1.0", "16:0.0", "16:0.5", "16:1.0"],
+      "properties": {"8:0.0": {"$ref": "#/$defs/sha"}, "8:0.5": {"$ref": "#/$defs/sha"}, "8:1.0": {"$ref": "#/$defs/sha"}, "16:0.0": {"$ref": "#/$defs/sha"}, "16:0.5": {"$ref": "#/$defs/sha"}, "16:1.0": {"$ref": "#/$defs/sha"}}
+    },
+    "scope": {"const": {"experimental_manual": true, "CPU_QUALIFIED": false, "AUTO_SELECTION": false, "PRODUCTION_ACTIVATION": false, "native_FP64": "NOT_MEASURED_NATIVE", "visual": "PENDING"}}
+  },
+  "$defs": {
+    "sha": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "asset": {"type": "object", "additionalProperties": false, "required": ["path", "bytes", "sha256"], "properties": {"path": {"enum": ["recipe.json", "parameters.npz", "p3.npz"]}, "bytes": {"type": "integer", "minimum": 1, "maximum": 4194304}, "sha256": {"$ref": "#/$defs/sha"}}},
+    "identity": {"type": "object", "additionalProperties": false, "required": ["file_sha256", "file_size_bytes", "pixel_sha256", "shape", "dtype", "bit_depth"], "properties": {"file_sha256": {"$ref": "#/$defs/sha"}, "file_size_bytes": {"type": "integer", "minimum": 1}, "pixel_sha256": {"$ref": "#/$defs/sha"}, "shape": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "integer", "minimum": 1}}, "dtype": {"enum": ["uint8", "uint16"]}, "bit_depth": {"enum": [8, 16]}}}
+  },
+  "$comment": "The product reader additionally requires exact equality to the parent recipe, current implementation and CPU math bindings, bounded relative asset bytes, and the published.json marker. Schema alone is not acceptance."
+}

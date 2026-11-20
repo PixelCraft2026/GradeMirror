@@ -1,0 +1,454 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Private application execution v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "phase",
+    "mode",
+    "TEST_ONLY",
+    "metadata_only",
+    "workspace",
+    "manifest_path",
+    "request",
+    "source",
+    "reference",
+    "source_identity",
+    "reference_identity",
+    "executor_build",
+    "output_root",
+    "evidence_root",
+    "pool_root",
+    "qualification",
+    "flags",
+    "fault_point",
+    "fault_action",
+    "pause_at",
+    "prepared_clock_shift",
+    "lease_seconds",
+    "request_seconds",
+    "force_grace_seconds",
+    "bundle",
+    "paths",
+    "parent_operation",
+    "runtime",
+    "interpreters",
+    "settings",
+    "profile",
+    "color_policy"
+  ],
+  "properties": {
+    "schema": {
+      "const": "cpu-application-execution-v1"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "phase": {
+      "const": "frame"
+    },
+    "mode": {
+      "enum": [
+        "fast",
+        "fine"
+      ]
+    },
+    "TEST_ONLY": {
+      "const": true
+    },
+    "metadata_only": {
+      "const": true
+    },
+    "workspace": {
+      "type": "string"
+    },
+    "manifest_path": {
+      "type": "string"
+    },
+    "request": {
+      "$ref": "adaptive-intent-v1.json"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 3
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "reference": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "bytes",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 3
+            },
+            "bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shape",
+        "dtype",
+        "bit_depth",
+        "file_sha256",
+        "file_size_bytes",
+        "pixel_sha256"
+      ],
+      "properties": {
+        "shape": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 64
+            },
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 64
+            },
+            {
+              "const": 3
+            }
+          ],
+          "minItems": 3,
+          "maxItems": 3,
+          "items": false
+        },
+        "dtype": {
+          "enum": [
+            "uint8",
+            "uint16"
+          ]
+        },
+        "bit_depth": {
+          "enum": [
+            8,
+            16
+          ]
+        },
+        "file_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "file_size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pixel_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "reference_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "shape",
+        "dtype",
+        "bit_depth",
+        "file_sha256",
+        "file_size_bytes",
+        "pixel_sha256"
+      ],
+      "properties": {
+        "shape": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 64
+            },
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 64
+            },
+            {
+              "const": 3
+            }
+          ],
+          "minItems": 3,
+          "maxItems": 3,
+          "items": false
+        },
+        "dtype": {
+          "enum": [
+            "uint8",
+            "uint16"
+          ]
+        },
+        "bit_depth": {
+          "enum": [
+            8,
+            16
+          ]
+        },
+        "file_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "file_size_bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pixel_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "executor_build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "files",
+        "sha256"
+      ],
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          }
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "output_root": {
+      "type": "string"
+    },
+    "evidence_root": {
+      "type": "string"
+    },
+    "pool_root": {
+      "type": "string"
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 3
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "flags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "CPU_ENABLED",
+        "AUTO_ENABLED",
+        "PRODUCTION_ENABLED",
+        "D01_extended"
+      ],
+      "properties": {
+        "CPU_ENABLED": {
+          "const": false
+        },
+        "AUTO_ENABLED": {
+          "const": false
+        },
+        "PRODUCTION_ENABLED": {
+          "const": false
+        },
+        "D01_extended": {
+          "const": false
+        }
+      }
+    },
+    "fault_point": {
+      "type": "string"
+    },
+    "fault_action": {
+      "enum": [
+        "raise",
+        "exit"
+      ]
+    },
+    "pause_at": {
+      "enum": [
+        "",
+        "before_ready",
+        "before_compute",
+        "prepared"
+      ]
+    },
+    "prepared_clock_shift": {
+      "enum": [
+        0,
+        7000
+      ]
+    },
+    "lease_seconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 120
+    },
+    "request_seconds": {
+      "const": 120
+    },
+    "force_grace_seconds": {
+      "const": 30
+    },
+    "bundle": {
+      "type": "null"
+    },
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "store",
+        "operations",
+        "exports",
+        "pool",
+        "logs",
+        "temporary",
+        "recipes"
+      ],
+      "properties": {
+        "store": {
+          "type": "string"
+        },
+        "operations": {
+          "type": "string"
+        },
+        "exports": {
+          "type": "string"
+        },
+        "pool": {
+          "type": "string"
+        },
+        "logs": {
+          "type": "string"
+        },
+        "temporary": {
+          "type": "string"
+        },
+        "recipes": {
+          "type": "string"
+        }
+      }
+    },
+    "parent_operation": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "job_id",
+            "attempt_id"
+          ],
+          "properties": {
+            "job_id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "attempt_id": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "runtime": {
+      "type": "object",
+      "description": "Must equal the complete exact factory-bound value; JSON shape alone grants no authority."
+    },
+    "interpreters": {
+      "type": "object",
+      "description": "Must equal the complete exact factory-bound value; JSON shape alone grants no authority."
+    },
+    "settings": {
+      "type": "object",
+      "description": "Must equal the complete exact factory-bound value; JSON shape alone grants no authority."
+    },
+    "profile": {
+      "type": "object",
+      "description": "Must equal the complete exact factory-bound value; JSON shape alone grants no authority."
+    },
+    "color_policy": {
+      "type": "object",
+      "description": "Must equal the complete exact factory-bound value; JSON shape alone grants no authority."
+    }
+  }
+}

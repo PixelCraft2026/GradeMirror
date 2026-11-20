@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "adaptive-plan-v2",
+  "type": "object",
+  "required": [
+    "schema",
+    "request",
+    "intent_id",
+    "snapshot",
+    "candidates",
+    "capabilities",
+    "selected",
+    "resolved_execution",
+    "qualification",
+    "execution_authorized",
+    "resource_feasible",
+    "policy",
+    "no_reservation",
+    "status",
+    "native_status",
+    "CPU_ENABLED",
+    "AUTO_ENABLED",
+    "PRODUCTION_ENABLED",
+    "feedback",
+    "plan_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "adaptive-plan-v2"
+    },
+    "request": {},
+    "intent_id": {},
+    "snapshot": {},
+    "candidates": {},
+    "capabilities": {},
+    "selected": {},
+    "resolved_execution": {},
+    "qualification": {},
+    "execution_authorized": {},
+    "resource_feasible": {},
+    "policy": {},
+    "no_reservation": {},
+    "status": {},
+    "native_status": {},
+    "CPU_ENABLED": {},
+    "AUTO_ENABLED": {},
+    "PRODUCTION_ENABLED": {},
+    "feedback": {},
+    "plan_id": {}
+  }
+}

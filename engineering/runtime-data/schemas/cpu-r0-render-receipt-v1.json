@@ -1,0 +1,9 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","$id":"cpu-r0-render-receipt-v1",
+  "type":"object","additionalProperties":false,
+  "required":["schema_version","status","backend_id","backend_sha256","request_sha256","scope","original_recipe","original_fit_device","execution_device","settings","counts","source_identity","output_sha256","output_shape","output_dtype","borrowed_output","private_full_result_allocations","output_owner","seconds","production_qualified","execution_authorized"],
+  "properties":{
+    "schema_version":{"const":"cpu-r0-render-receipt-v1"},"status":{"const":"COMPLETE"},"backend_id":{"const":"r0-cpu-render-v1"},"backend_sha256":{"type":"string"},"request_sha256":{"type":"string"},"scope":{"type":"object"},"original_recipe":{"type":"object"},"original_fit_device":{"type":"object"},"execution_device":{"const":"cpu"},"settings":{"type":"object"},"counts":{"type":"object"},"source_identity":{"type":"object"},"output_sha256":{"type":"string"},"output_shape":{"type":"array"},"output_dtype":{"const":"float32"},"borrowed_output":{"const":true},"private_full_result_allocations":{"const":0},"output_owner":{"const":"caller"},"seconds":{"type":"number","minimum":0,"maximum":180},"production_qualified":{"const":false},"execution_authorized":{"const":false}
+  },
+  "$comment":"A completed receipt is emitted only after full finite/count/source/parameter/output verification. Partial or cancelled output has no success receipt. This small synthetic backend is not public dispatch authorization."
+}

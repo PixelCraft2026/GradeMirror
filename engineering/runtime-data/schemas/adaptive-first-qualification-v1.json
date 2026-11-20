@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "adaptive-first-qualification-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "manifest_path",
+    "task",
+    "phase",
+    "authorization",
+    "taskbook",
+    "executor_build",
+    "runtime",
+    "interpreters",
+    "source",
+    "reference",
+    "source_identity",
+    "reference_identity",
+    "settings",
+    "profile",
+    "color_policy",
+    "paths",
+    "resource_envelope",
+    "limits",
+    "lease_policy",
+    "allocations",
+    "parent_package",
+    "p0"
+  ],
+  "properties": {
+    "schema": {
+      "const": "adaptive-first-qualification-v1"
+    },
+    "manifest_path": {},
+    "task": {
+      "const": "GM-057"
+    },
+    "phase": {
+      "enum": [
+        "dry",
+        "native"
+      ]
+    },
+    "authorization": {},
+    "taskbook": {},
+    "executor_build": {},
+    "runtime": {},
+    "interpreters": {},
+    "source": {},
+    "reference": {},
+    "source_identity": {},
+    "reference_identity": {},
+    "settings": {},
+    "profile": {},
+    "color_policy": {},
+    "paths": {},
+    "resource_envelope": {},
+    "limits": {},
+    "lease_policy": {},
+    "allocations": {},
+    "parent_package": {},
+    "p0": {}
+  }
+}

@@ -1,0 +1,17 @@
+Matched Qt for Python Essentials and Shiboken 6.11.3, Qt 6.11.3 and its plugins.
+The lock identifies original upstream inputs. See the accompanying
+third-party/QT-SOURCE-INDEX.json and appliance materials, or see upstream:
+https://download.qt.io/official_releases/qt/6.11/6.11.3/submodules/
+https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-6.11.3-src/
+The GradeMirror fallback ICC is the exact existing generated Qt 6.10.1 profile
+described in source/assets/color/SRGB-PROVENANCE.txt.
+
+The runtime also contains frozen exact CPython, Qt vendor components, Torch,
+NVIDIA libraries in the GPU edition, NumPy, SciPy, OpenCV, Pillow, other wheels,
+and ExifTool with its Windows runtime. Attached notice/index materials specify
+terms and open conditions. Software files retain their own license terms.
+See BUILD.txt and each lock to acquire the exact inputs for a standalone build.
+
+The exact optional Qt desktop wheel exclusions are in qt-prune.json.
+Their ABI-dependent portions have been withheld together. This preview excludes the Qt PDF image plugin. The app uses the
+bound remaining Qt files. The lock still identifies the intact original wheel.

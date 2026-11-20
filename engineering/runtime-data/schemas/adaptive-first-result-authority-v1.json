@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "adaptive-first-result-authority-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "context",
+    "qualification",
+    "job_id",
+    "attempt_id",
+    "executor_build",
+    "recipe",
+    "files",
+    "binding",
+    "actions",
+    "compute_authorized",
+    "CPU",
+    "AUTO",
+    "PRODUCTION"
+  ],
+  "properties": {
+    "schema": {
+      "const": "adaptive-first-result-authority-v1"
+    },
+    "context": {},
+    "qualification": {},
+    "job_id": {},
+    "attempt_id": {},
+    "executor_build": {},
+    "recipe": {},
+    "files": {},
+    "binding": {},
+    "actions": {},
+    "compute_authorized": {
+      "const": false
+    },
+    "CPU": {
+      "const": false
+    },
+    "AUTO": {
+      "const": false
+    },
+    "PRODUCTION": {
+      "const": false
+    }
+  }
+}

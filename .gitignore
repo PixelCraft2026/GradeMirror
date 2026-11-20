@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+/engineering/output/
+/engineering/tmp/
+/engineering/launcher-04/
+/engineering/roles/
+/offline-cache/
+/toolchain/
+/dist/
+Thumbs.db
+.DS_Store

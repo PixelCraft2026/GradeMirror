@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gm022-plan-request-v1",
+  "title": "只读资源计划请求；仅元数据，不自动读取照片或工程",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "operation", "mode", "profile", "source"],
+  "properties": {
+    "schema_version": {"const": "gm022-plan-request-v1"},
+    "operation": {"enum": ["fit", "replay", "export"]},
+    "mode": {"enum": ["fast", "fine"]},
+    "profile": {"type": "object", "additionalProperties": false, "required": ["id", "contract_sha256"], "properties": {"id": {"type": "string"}, "contract_sha256": {"$ref": "#/$defs/hash"}}},
+    "source": {"$ref": "#/$defs/image"},
+    "reference": {"$ref": "#/$defs/image"},
+    "recipe": {"type": "object", "additionalProperties": false, "required": ["recipe_sha256", "profile_id", "profile_contract_sha256", "core_sha256", "runtime", "device"], "properties": {
+      "recipe_sha256": {"$ref": "#/$defs/hash"}, "profile_id": {"type": "string"}, "profile_contract_sha256": {"$ref": "#/$defs/hash"}, "core_sha256": {"$ref": "#/$defs/hash"}, "runtime": {"type": "object"},
+      "device": {"type": "object", "additionalProperties": false, "required": ["uuid", "driver", "cuda_runtime"], "properties": {"uuid": {"type": "string"}, "driver": {"type": "string"}, "cuda_runtime": {"type": "string"}}}, "execution_contract_sha256": {"$ref": "#/$defs/hash"}}},
+    "result": {"type": "object", "additionalProperties": false, "required": ["result_sha256", "lease_id", "lease_generation", "lease_expires_wall", "lease_state", "owner_alive", "backend"], "properties": {
+      "result_sha256": {"$ref": "#/$defs/hash"}, "lease_id": {"type": "string"}, "lease_generation": {"type": "integer", "minimum": 0}, "lease_expires_wall": {"type": "number", "minimum": 0},
+      "lease_state": {"enum": ["active", "released", "expired", "unknown"]}, "owner_alive": {"type": ["boolean", "null"]}, "backend": {"type": "string"}, "execution_contract_sha256": {"$ref": "#/$defs/hash"}}},
+    "export": {"type": "object", "additionalProperties": false, "required": ["format", "bits", "icc_sha256", "icc_policy", "alpha"], "properties": {
+      "format": {"enum": ["jpeg", "png", "tiff", "webp", "bmp"]}, "bits": {"enum": [8, 16]}, "icc_sha256": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]}, "icc_policy": {"enum": ["preserve_source", "none"]}, "alpha": {"type": "number", "minimum": 0, "maximum": 1}}},
+    "limits": {"type": "object", "additionalProperties": false, "properties": {"ram_bytes": {"$ref": "#/$defs/bytes"}, "commit_bytes": {"$ref": "#/$defs/bytes"}, "vram_bytes": {"$ref": "#/$defs/bytes"}}},
+    "allow_cpu": {"type": "boolean"}, "device_uuid": {"type": "string"},
+    "existing": {"type": "object", "additionalProperties": false, "required": ["state", "rss_bytes", "private_bytes", "coverage"], "properties": {"state": {"enum": ["none", "same_operation", "busy", "unproven_exit"]}, "rss_bytes": {"type": ["integer", "null"], "minimum": 0}, "private_bytes": {"type": ["integer", "null"], "minimum": 0}, "coverage": {"enum": ["full_tree", "unknown"]}}},
+    "request_key": {"type": "string"}, "job_id": {"type": "string"}, "attempt_id": {"type": "string"}
+  },
+  "allOf": [
+    {"if": {"properties": {"operation": {"const": "fit"}}}, "then": {"required": ["reference"], "not": {"anyOf": [{"required": ["recipe"]}, {"required": ["result"]}, {"required": ["export"]}]}}},
+    {"if": {"properties": {"operation": {"const": "replay"}}}, "then": {"required": ["reference", "recipe"], "not": {"anyOf": [{"required": ["result"]}, {"required": ["export"]}]}}},
+    {"if": {"properties": {"operation": {"const": "export"}}}, "then": {"required": ["result", "export"], "not": {"anyOf": [{"required": ["reference"]}, {"required": ["recipe"]}]}}}
+  ],
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "bytes": {"type": "integer", "minimum": 1, "maximum": 9223372036854775807},
+    "image": {"type": "object", "additionalProperties": false, "required": ["sha256", "bytes", "width", "height", "color", "bits", "format", "icc_sha256", "icc_policy", "orientation_normalized"], "properties": {
+      "sha256": {"$ref": "#/$defs/hash"}, "bytes": {"type": "integer", "minimum": 1, "maximum": 1610612736}, "width": {"type": "integer", "minimum": 1}, "height": {"type": "integer", "minimum": 1}, "color": {"const": "RGB"}, "bits": {"enum": [8,16]}, "format": {"enum": ["jpeg", "png", "tiff", "webp", "bmp"]}, "icc_sha256": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]}, "icc_policy": {"enum": ["embedded", "assume_sRGB"]}, "orientation_normalized": {"const": true}}}
+  },
+  "x-runtime-rules": "contract.py also enforces 1MiB UTF8, depth16, 128 items/container, strings4096, finite/int64/exact types, format-bits-ICC consistency, actual paired training grid and geometry/profile bounds."
+}

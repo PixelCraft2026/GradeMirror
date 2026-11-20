@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fixed-pair experimental portable CPU execution manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "backend", "mode", "qualification", "bundle_id", "math_id", "bundle_declared_build", "executor_build", "runtime", "source", "source_shape", "parameter_sha256", "b", "core_rows", "CPU_threads", "interop", "precision", "scientific_caps", "output_root", "evidence_root", "color_policy", "color_declaration", "resource_envelope", "flags"],
+  "properties": {
+    "schema": {"const": "cpu-replay-execution-v1"},
+    "backend": {"const": "r0-cpu-portable-v1"},
+    "mode": {"enum": ["fast", "fine"]},
+    "qualification": {"const": "QUALIFICATION_IN_PROGRESS"},
+    "bundle_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "math_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "bundle_declared_build": {"type": "string"},
+    "executor_build": {"type": "object"},
+    "runtime": {"type": "object"},
+    "source": {"type": "object"},
+    "source_shape": {"const": [7008, 4672, 3]},
+    "parameter_sha256": {"type": "string"},
+    "b": {"type": ["object", "null"]},
+    "core_rows": {"enum": [256, null]},
+    "CPU_threads": {"const": 4},
+    "interop": {"const": 1},
+    "precision": {"const": "FP32/channels_last"},
+    "scientific_caps": {"type": "object"},
+    "output_root": {"type": "string"},
+    "evidence_root": {"type": "string"},
+    "color_policy": {"type": "object"},
+    "color_declaration": {"type": "string"},
+    "resource_envelope": {"type": "object"},
+    "flags": {"type": "object"}
+  }
+}

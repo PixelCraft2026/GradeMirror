@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "schema",
+        "manifest_path",
+        "task",
+        "authorization",
+        "taskbook",
+        "phase",
+        "TEST_ONLY",
+        "native_authorized",
+        "executor_build",
+        "runtime",
+        "runtime_layout",
+        "interpreters",
+        "source",
+        "reference",
+        "source_identity",
+        "reference_identity",
+        "packages",
+        "paths",
+        "resource_envelope",
+        "limits",
+        "lease_policy",
+        "allocations",
+        "p0",
+        "migration"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "adaptive-independent-qualification-v3"
+        },
+        "manifest_path": {},
+        "task": {},
+        "authorization": {},
+        "taskbook": {},
+        "phase": {
+          "enum": [
+            "dry",
+            "native"
+          ]
+        },
+        "TEST_ONLY": {
+          "const": false
+        },
+        "native_authorized": {
+          "const": true
+        },
+        "executor_build": {},
+        "runtime": {},
+        "runtime_layout": {},
+        "interpreters": {},
+        "source": {},
+        "reference": {},
+        "source_identity": {},
+        "reference_identity": {},
+        "packages": {},
+        "paths": {},
+        "resource_envelope": {},
+        "limits": {},
+        "lease_policy": {},
+        "allocations": {},
+        "p0": {},
+        "migration": {}
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "schema",
+        "manifest_path",
+        "task",
+        "authorization",
+        "taskbook",
+        "phase",
+        "TEST_ONLY",
+        "native_authorized",
+        "executor_build",
+        "runtime",
+        "runtime_layout",
+        "interpreters",
+        "source",
+        "reference",
+        "source_identity",
+        "reference_identity",
+        "packages",
+        "paths",
+        "resource_envelope",
+        "limits",
+        "lease_policy",
+        "allocations",
+        "p0",
+        "migration",
+        "assets",
+        "parameter_file",
+        "b_file",
+        "frame_context",
+        "cases",
+        "fault_points"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {
+          "const": "adaptive-independent-qualification-v3"
+        },
+        "manifest_path": {},
+        "task": {},
+        "authorization": {},
+        "taskbook": {},
+        "phase": {
+          "const": "frame"
+        },
+        "TEST_ONLY": {
+          "const": true
+        },
+        "native_authorized": {
+          "const": false
+        },
+        "executor_build": {},
+        "runtime": {},
+        "runtime_layout": {},
+        "interpreters": {},
+        "source": {},
+        "reference": {},
+        "source_identity": {},
+        "reference_identity": {},
+        "packages": {},
+        "paths": {},
+        "resource_envelope": {},
+        "limits": {},
+        "lease_policy": {},
+        "allocations": {},
+        "p0": {},
+        "migration": {},
+        "assets": {},
+        "parameter_file": {},
+        "b_file": {},
+        "frame_context": {},
+        "cases": {},
+        "fault_points": {}
+      }
+    }
+  ]
+}

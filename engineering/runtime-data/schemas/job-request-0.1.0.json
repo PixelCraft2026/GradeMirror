@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:grademirror:job-request:0.1.0",
+  "title": "GradeMirror JobRequest 0.1.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "operation", "pair", "profile", "resource_policy", "output_path"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "operation": {"enum": ["solve", "replay", "export"]},
+    "project": {"type": ["string", "null"]},
+    "revision": {"type": ["string", "null"]},
+    "pair": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source", "reference"],
+      "properties": {
+        "source": {"$ref": "#/$defs/fileIdentity"},
+        "reference": {"$ref": "#/$defs/fileIdentity"}
+      }
+    },
+    "recipe": {"type": ["object", "null"]},
+    "profile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "contract_sha256"],
+      "properties": {
+        "id": {"const": "independent-r0-lab-m05-xy001-v1"},
+        "contract_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "resource_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["cpu_threads", "interop_threads", "ram_limit_bytes", "gpu_fraction",
+        "gpu_free_min_bytes", "wait_limit_s", "stage_timeout_s", "wall_limit_s",
+        "project_budget_bytes", "cache_budget_bytes", "log_budget_bytes",
+        "output_budget_bytes", "capability_table_id"],
+      "properties": {
+        "cpu_threads": {"type": "integer", "minimum": 1, "maximum": 4},
+        "interop_threads": {"type": "integer", "const": 1},
+        "ram_limit_bytes": {"type": "integer", "minimum": 1},
+        "gpu_fraction": {"type": "number", "minimum": 0, "maximum": 0.8},
+        "gpu_free_min_bytes": {"type": "integer", "minimum": 0},
+        "wait_limit_s": {"type": "number", "exclusiveMinimum": 0},
+        "stage_timeout_s": {"type": "number", "exclusiveMinimum": 0},
+        "wall_limit_s": {"type": "number", "exclusiveMinimum": 0},
+        "project_budget_bytes": {"type": "integer", "minimum": 0},
+        "cache_budget_bytes": {"type": "integer", "minimum": 0},
+        "log_budget_bytes": {"type": "integer", "minimum": 1},
+        "output_budget_bytes": {"type": "integer", "minimum": 1},
+        "capability_table_id": {"type": "string", "minLength": 1}
+      }
+    },
+    "output_path": {"type": "string", "minLength": 1},
+    "output_settings": {"type": "object"},
+    "request_key": {"type": ["string", "null"], "minLength": 1, "maxLength": 128},
+    "allow_development_profile": {"type": "boolean"},
+    "extensions": {"type": "object"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "fileIdentity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  },
+  "description": "Structural reference only. The standard-library validator also checks file bytes, canonical paths, finiteness and profile availability."
+}

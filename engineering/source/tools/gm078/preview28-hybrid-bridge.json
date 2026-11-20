@@ -1,0 +1,13 @@
+{
+  "schema": "gm078-hybrid-orchestration-bridge-v1",
+  "orchestration_only": {
+    "src/grademirror/gm004a_api.py": {
+      "before": "7fdbfaf1c0c9c8c828c7c6a5a749d1da8f8885001b5af0abb07bf0d47bf381dc",
+      "after": "1ae73239754e9abeae4b7c8897a4d3ad8a82ea20292cf56a5c13d8af319cbce4"
+    },
+    "tools/gm003_session_host.py": {
+      "before": "4eefd70a3542d598727747913621711382b99fe47dceda8aa098cf6849ecb021",
+      "after": "ec8f0dea13ec59bfbf322a6af5cd1f7331beb7b59aa623758f06658ea325ce79"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Explicit guarded-v1 resource intent",
+  "type":"object","additionalProperties":false,"required":["policy"],
+  "properties":{
+    "policy":{"const":"guarded-v1"},
+    "cpu_core_rows":{"type":"integer","enum":[256,512]},
+    "ram_limit_mib":{"type":["integer","null"],"minimum":1,"maximum":8796093022207},
+    "commit_limit_mib":{"type":["integer","null"],"minimum":1,"maximum":8796093022207},
+    "vram_limit_mib":{"type":["integer","null"],"minimum":1,"maximum":8796093022207}
+  }
+}

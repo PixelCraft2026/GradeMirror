@@ -1,0 +1,81 @@
+{
+  "properties": {
+    "format": {
+      "const": "grademirror.cpu_recipe_bundle"
+    },
+    "bundle_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "execution_build": {
+      "type": "object"
+    },
+    "mathematical": {
+      "type": "object"
+    },
+    "mode": {
+      "enum": [
+        "fast",
+        "fine"
+      ]
+    },
+    "assets": {
+      "items": {
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "minimum": 1,
+            "type": "integer",
+            "maximum": 8388608
+          },
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "bytes",
+          "sha256"
+        ],
+        "type": "object",
+        "additionalProperties": false
+      },
+      "type": "array"
+    },
+    "qualification": {
+      "type": "object"
+    },
+    "math_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "runtime_requirements": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "version": {
+      "const": 1
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "version",
+    "mode",
+    "mathematical",
+    "math_id",
+    "runtime_requirements",
+    "execution_build",
+    "qualification",
+    "assets",
+    "provenance",
+    "bundle_id"
+  ]
+}

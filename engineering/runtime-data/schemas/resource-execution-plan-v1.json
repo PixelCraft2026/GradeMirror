@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Server-bound immutable guarded resource execution plan",
+  "type":"object","additionalProperties":false,
+  "required":["schema_version","policy","plan_id","policy_sha256","resource_intent","resource_intent_sha256","job_id","attempt_id","intent_sha256","operation","inputs","input_locators","recipe_sha256","profile_id","profile_contract_sha256","execution_contract_sha256","runtimes","backend","device","stages","formulas","verified_envelope_bytes","tile_side","core_rows","threads","snapshot","deadline_at","output_root","worker_confirmation_required","rawCUDA_confirmation_required","fallback","automatic_eligible","CPU_QUALIFIED","PRODUCTION_ACTIVATION","plan_sha256"],
+  "properties":{
+    "schema_version":{"const":"gm026-resource-execution-plan-v1"},"policy":{"const":"guarded-v1"},
+    "plan_id":{"type":"string","format":"uuid"},"policy_sha256":{"$ref":"#/$defs/sha"},"plan_sha256":{"$ref":"#/$defs/sha"},
+    "resource_intent":{"$ref":"resource-execution-request-v1.json"},"resource_intent_sha256":{"$ref":"#/$defs/sha"},
+    "job_id":{"type":"string","format":"uuid"},"attempt_id":{"type":"string","format":"uuid"},"intent_sha256":{"$ref":"#/$defs/sha"},
+    "operation":{"enum":["fit","replay"]},"inputs":{"type":"object"},"input_locators":{"type":"object"},
+    "recipe_sha256":{"type":["string","null"]},"profile_id":{"type":"string"},"profile_contract_sha256":{"$ref":"#/$defs/sha"},
+    "execution_contract_sha256":{"$ref":"#/$defs/sha"},"runtimes":{"type":"object"},"backend":{"enum":["cuda-fast","cuda-fine","cuda-r0-cpu-lld10-v1"]},
+    "device":{"type":"object"},"stages":{"type":"array","minItems":1},"formulas":{"type":"object"},"verified_envelope_bytes":{"type":"object"},
+    "tile_side":{"const":512},"core_rows":{"type":"integer","enum":[256,512]},"threads":{"const":4},"snapshot":{"type":"object"},
+    "deadline_at":{"type":"number"},"output_root":{"type":"string"},"worker_confirmation_required":{"const":true},
+    "rawCUDA_confirmation_required":{"const":true},"fallback":{"const":false},"automatic_eligible":{"const":false},"CPU_QUALIFIED":{"const":false},"PRODUCTION_ACTIVATION":{"const":false}
+  },"$defs":{"sha":{"type":"string","pattern":"^[0-9a-f]{64}$"}}
+}

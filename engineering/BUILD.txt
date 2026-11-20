@@ -1,0 +1,16 @@
+GradeMirror 0.1.0-preview.50
+Unpack this entire source kit into a clean writable folder. Do not run out of a previous build directory.
+
+Use the bundled source-fetch.py separately with dependency-lock.json, exiftool-lock.json, and
+python-toolchain-lock.json to acquire content in a new cache. Run each command with --verify-only
+against an already acquired cache to check locked bytes without downloading.
+Extract the locked Astral Windows x64 CPython 3.12.14 archive into a new toolchain folder.
+Use the extracted python/python.exe to execute:
+  python.exe -I -S -B build-portable.py <offline-cache> <Windows-dir>
+Keep Windows and the declared toolchain on PATH. Clear PYTHONPATH and PYTHONHOME and give TEMP,
+TMP and PYINSTALLER_CONFIG_DIR dedicated writable paths outside an existing installation.
+The entry builds both onedir editions. It binds exact numeric and I/O inventories and fails on
+input drift. The source kit carries all product source, runtime data, locks and build controls.
+The product build does not depend on previous product trees, developer workspace paths,
+historical fixture material or saved user projects. Third-party source and notices are a
+separate attached material index.

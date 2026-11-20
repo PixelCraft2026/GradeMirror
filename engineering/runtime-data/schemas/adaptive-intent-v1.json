@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Adaptive intent v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "quality",
+    "operation",
+    "execution_preference",
+    "source",
+    "reference",
+    "recipe",
+    "limits",
+    "output"
+  ],
+  "properties": {
+    "schema": {
+      "const": "adaptive-intent-v1"
+    },
+    "quality": {
+      "enum": [
+        "fast",
+        "fine"
+      ]
+    },
+    "operation": {
+      "enum": [
+        "fit",
+        "refine",
+        "replay",
+        "resident_preview",
+        "export"
+      ]
+    },
+    "execution_preference": {
+      "enum": [
+        "current",
+        "auto",
+        "cpu"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "file",
+        "metadata"
+      ],
+      "properties": {
+        "file": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "bytes",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 3
+            },
+            "bytes": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "width",
+            "height",
+            "bits",
+            "format"
+          ],
+          "properties": {
+            "width": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200000
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 200000
+            },
+            "bits": {
+              "enum": [
+                8,
+                16
+              ]
+            },
+            "format": {
+              "enum": [
+                "JPEG",
+                "PNG",
+                "TIFF",
+                "TEST_FRAME"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "reference": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "file",
+            "metadata"
+          ],
+          "properties": {
+            "file": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "bytes",
+                "sha256"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 3
+                },
+                "bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            },
+            "metadata": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "width",
+                "height",
+                "bits",
+                "format"
+              ],
+              "properties": {
+                "width": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 200000
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 200000
+                },
+                "bits": {
+                  "enum": [
+                    8,
+                    16
+                  ]
+                },
+                "format": {
+                  "enum": [
+                    "JPEG",
+                    "PNG",
+                    "TIFF",
+                    "TEST_FRAME"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "recipe": {
+      "anyOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "directory",
+            "bundle_id",
+            "math_id",
+            "version"
+          ],
+          "properties": {
+            "directory": {
+              "type": "string",
+              "minLength": 3
+            },
+            "bundle_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "math_id": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "version": {
+              "enum": [
+                2,
+                3
+              ]
+            }
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ram_bytes",
+        "commit_bytes",
+        "vram_bytes"
+      ],
+      "properties": {
+        "ram_bytes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9223372036854776000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "commit_bytes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9223372036854776000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "vram_bytes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9223372036854776000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "icc_policy",
+        "bit_depth"
+      ],
+      "properties": {
+        "format": {
+          "const": "source"
+        },
+        "icc_policy": {
+          "const": "preserve_source"
+        },
+        "bit_depth": {
+          "const": "source"
+        }
+      }
+    }
+  }
+}

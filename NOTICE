@@ -1,0 +1,20 @@
+GradeMirror 0.1.0 — first preview release
+Copyright PixelCraft2026.
+
+Project-owned code and newly added repository documentation are licensed under
+AGPL-3.0-only. See LICENSE. Third-party components retain their own licenses.
+Brand assets are identified separately in engineering/SOURCE-LICENSE-SCOPE.json;
+do not imply that a modified distribution is an official PixelCraft2026 release.
+
+The official download is free. The AGPL permits commercial use and charging;
+this notice does not add a noncommercial restriction. Any separately granted
+commercial license covers only rights the project owner can grant, not third-
+party components.
+
+The engineering/ directory contains the matching 533-file source kit for
+internal build 0.1.0-preview.48. See README and docs/RELEASE-v0.1.0.md for
+the public release and download information.
+
+Third-party corresponding source, notices and modification/build materials are
+provided with the matching Source-and-ThirdParty release attachment. See
+docs/THIRD-PARTY.md and docs/BUILD.md. No vendor endorsement is implied.

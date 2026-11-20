@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema",
+    "request_key",
+    "original_request",
+    "intent_id",
+    "execution_request",
+    "execution_intent_id",
+    "resolved_execution",
+    "qualification",
+    "plan_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "adaptive-selection-v3"
+    },
+    "request_key": {},
+    "original_request": {},
+    "intent_id": {},
+    "execution_request": {},
+    "execution_intent_id": {},
+    "resolved_execution": {},
+    "qualification": {},
+    "plan_id": {}
+  }
+}

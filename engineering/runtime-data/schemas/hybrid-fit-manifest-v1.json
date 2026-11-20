@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema","$id":"hybrid-fit-manifest-1.0.0",
+  "type":"object","additionalProperties":false,
+  "required":["schema_version","fit_contract","backend_id","execution_contract_version","execution_contract_sha256","parent_recipe_sha256","assets","source_identity","reference_identity","ranges","device","runtime","R0_runtime","color_policy","cpu_bindings","core_rows","results","quantization","scope","execution_counts","data_binding_sha256","manifest_sha256"],
+  "properties":{
+    "schema_version":{"const":"hybrid-fit-manifest-1.0.0"},"fit_contract":{"const":"gm023-hybrid-fit-v1"},"backend_id":{"const":"cuda-r0-cpu-lld10-v1"},
+    "execution_contract_version":{"const":"gm021-hybrid-replay-v1"},"execution_contract_sha256":{"$ref":"#/$defs/hash"},"parent_recipe_sha256":{"$ref":"#/$defs/hash"},"manifest_sha256":{"$ref":"#/$defs/hash"},"data_binding_sha256":{"$ref":"#/$defs/hash"},
+    "assets":{"type":"object","additionalProperties":false,"required":["r0/recipe.json","r0/parameters.npz","p3.npz","recipe.json"],"properties":{"r0/recipe.json":{"$ref":"#/$defs/asset"},"r0/parameters.npz":{"$ref":"#/$defs/asset"},"p3.npz":{"$ref":"#/$defs/asset"},"recipe.json":{"$ref":"#/$defs/asset"}}},
+    "source_identity":{"type":"object"},"reference_identity":{"type":"object"},"ranges":{"type":"array","minItems":3,"maxItems":3},"device":{"type":"object"},"runtime":{"type":"object"},"R0_runtime":{"type":"object"},"color_policy":{"type":"object"},"cpu_bindings":{"type":"object"},"scope":{"type":"object"},"core_rows":{"const":512},
+    "results":{"type":"object","additionalProperties":false,"required":["O","OP","LO","LP","Y"],"properties":{"O":{"$ref":"#/$defs/hash"},"OP":{"$ref":"#/$defs/hash"},"LO":{"$ref":"#/$defs/hash"},"LP":{"$ref":"#/$defs/hash"},"Y":{"$ref":"#/$defs/hash"}}},
+    "quantization":{"type":"object","minProperties":6,"maxProperties":6,"additionalProperties":{"$ref":"#/$defs/hash"}},
+    "execution_counts":{"type":"object","additionalProperties":false,"required":["fit","render","scalar_CG","range_discovery"],"properties":{"fit":{"enum":[0,1]},"render":{"const":1},"scalar_CG":{"enum":[0,3]},"range_discovery":{"enum":[0,1]}}}
+  },
+  "$defs":{"hash":{"type":"string","pattern":"^[0-9a-f]{64}$"},"asset":{"type":"object","additionalProperties":false,"required":["path","bytes","sha256"],"properties":{"path":{"enum":["r0/recipe.json","r0/parameters.npz","p3.npz","recipe.json"]},"bytes":{"type":"integer","minimum":1,"maximum":4194304},"sha256":{"$ref":"#/$defs/hash"}}}}
+}

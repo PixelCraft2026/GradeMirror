@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1254" height="1254" viewBox="0 0 1254 1254" role="img" aria-labelledby="title desc">
+  <title id="title">GradeMirror — silver glass icon</title>
+  <desc id="desc">Two overlapping mirror planes with silver edges and a frosted central reflection, on a charcoal background. Hand-redrawn vector artwork.</desc>
+  <defs>
+    <radialGradient id="background" cx="50%" cy="43%" r="72%">
+      <stop offset="0" stop-color="#161717"/>
+      <stop offset=".62" stop-color="#0d0e0e"/>
+      <stop offset="1" stop-color="#050606"/>
+    </radialGradient>
+    <radialGradient id="topLight" cx="49%" cy="0%" r="72%">
+      <stop offset="0" stop-color="#323333" stop-opacity=".25"/>
+      <stop offset=".53" stop-color="#151616" stop-opacity="0"/>
+      <stop offset="1" stop-color="#151616" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leftGlass" x1="294" y1="246" x2="642" y2="794" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d9dadd" stop-opacity=".10"/>
+      <stop offset=".28" stop-color="#9b9da1" stop-opacity=".015"/>
+      <stop offset=".72" stop-color="#77797d" stop-opacity=".012"/>
+      <stop offset="1" stop-color="#d9dadd" stop-opacity=".08"/>
+    </linearGradient>
+    <radialGradient id="leftGlint" cx="306" cy="253" r="296" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -76) scale(1 1.3)">
+      <stop offset="0" stop-color="#f4f5f6" stop-opacity=".20"/>
+      <stop offset=".12" stop-color="#f4f5f6" stop-opacity=".192"/>
+      <stop offset=".27" stop-color="#f4f5f6" stop-opacity=".164"/>
+      <stop offset=".43" stop-color="#f4f5f6" stop-opacity=".119"/>
+      <stop offset=".60" stop-color="#f4f5f6" stop-opacity=".069"/>
+      <stop offset=".76" stop-color="#f4f5f6" stop-opacity=".029"/>
+      <stop offset=".90" stop-color="#f4f5f6" stop-opacity=".005"/>
+      <stop offset="1" stop-color="#f4f5f6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rightGlass" x1="914" y1="289" x2="520" y2="822" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ced0d3" stop-opacity=".15"/>
+      <stop offset=".45" stop-color="#a4a7ab" stop-opacity=".016"/>
+      <stop offset=".80" stop-color="#b2b5ba" stop-opacity=".025"/>
+      <stop offset="1" stop-color="#dde0e5" stop-opacity=".10"/>
+    </linearGradient>
+    <radialGradient id="rightGlint" cx="939" cy="300" r="364" gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -60) scale(1 1.2)">
+      <stop offset="0" stop-color="#f1f3f5" stop-opacity=".16"/>
+      <stop offset=".12" stop-color="#f1f3f5" stop-opacity=".154"/>
+      <stop offset=".27" stop-color="#f1f3f5" stop-opacity=".131"/>
+      <stop offset=".43" stop-color="#f1f3f5" stop-opacity=".095"/>
+      <stop offset=".60" stop-color="#f1f3f5" stop-opacity=".055"/>
+      <stop offset=".76" stop-color="#f1f3f5" stop-opacity=".023"/>
+      <stop offset=".90" stop-color="#f1f3f5" stop-opacity=".004"/>
+      <stop offset="1" stop-color="#f1f3f5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="footGlint" cx="925" cy="910" r="218" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f4f6f8" stop-opacity=".10"/>
+      <stop offset=".18" stop-color="#f4f6f8" stop-opacity=".092"/>
+      <stop offset=".38" stop-color="#f4f6f8" stop-opacity=".068"/>
+      <stop offset=".60" stop-color="#f4f6f8" stop-opacity=".035"/>
+      <stop offset=".80" stop-color="#f4f6f8" stop-opacity=".010"/>
+      <stop offset="1" stop-color="#f4f6f8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="leftEdge" x1="314" y1="234" x2="623" y2="819" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset=".26" stop-color="#e6e7e7"/>
+      <stop offset=".58" stop-color="#fafbfb"/>
+      <stop offset=".82" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#c7c9ca"/>
+    </linearGradient>
+    <linearGradient id="rightEdge" x1="497" y1="450" x2="953" y2="820" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e3e5e5"/>
+      <stop offset=".43" stop-color="#f8f9f9"/>
+      <stop offset=".76" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f5f6f7"/>
+    </linearGradient>
+    <linearGradient id="frostBase" x1="502" y1="402" x2="644" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e8ebed" stop-opacity=".96"/>
+      <stop offset=".14" stop-color="#e3e6e8" stop-opacity=".96"/>
+      <stop offset=".30" stop-color="#d6dadd" stop-opacity=".96"/>
+      <stop offset=".46" stop-color="#cbd0d3" stop-opacity=".96"/>
+      <stop offset=".60" stop-color="#c9ced1" stop-opacity=".96"/>
+      <stop offset=".74" stop-color="#d5dadd" stop-opacity=".96"/>
+      <stop offset=".89" stop-color="#e6e9eb" stop-opacity=".96"/>
+      <stop offset="1" stop-color="#eef0f2" stop-opacity=".96"/>
+    </linearGradient>
+    <!-- Broad, eased reflection: low slope at both center and perimeter. -->
+    <radialGradient id="frostShade" cx="580" cy="607" r="130" gradientUnits="userSpaceOnUse" gradientTransform="translate(580 607) rotate(8) scale(1 1.85) translate(-580 -607)">
+      <stop offset="0" stop-color="#43484d" stop-opacity=".49"/>
+      <stop offset=".08" stop-color="#43484d" stop-opacity=".485"/>
+      <stop offset=".18" stop-color="#43484d" stop-opacity=".464"/>
+      <stop offset=".28" stop-color="#43484d" stop-opacity=".426"/>
+      <stop offset=".38" stop-color="#43484d" stop-opacity=".368"/>
+      <stop offset=".48" stop-color="#43484d" stop-opacity=".296"/>
+      <stop offset=".58" stop-color="#43484d" stop-opacity=".217"/>
+      <stop offset=".68" stop-color="#43484d" stop-opacity=".143"/>
+      <stop offset=".78" stop-color="#43484d" stop-opacity=".079"/>
+      <stop offset=".88" stop-color="#43484d" stop-opacity=".032"/>
+      <stop offset=".96" stop-color="#43484d" stop-opacity=".007"/>
+      <stop offset="1" stop-color="#43484d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="frostSheen" x1="485" y1="600" x2="660" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".25"/>
+      <stop offset=".09" stop-color="#ffffff" stop-opacity=".22"/>
+      <stop offset=".21" stop-color="#ffffff" stop-opacity=".15"/>
+      <stop offset=".36" stop-color="#ffffff" stop-opacity=".065"/>
+      <stop offset=".51" stop-color="#ffffff" stop-opacity=".012"/>
+      <stop offset=".63" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset=".76" stop-color="#ffffff" stop-opacity=".022"/>
+      <stop offset=".90" stop-color="#ffffff" stop-opacity=".081"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".12"/>
+    </linearGradient>
+    <linearGradient id="frostEdge" x1="492" y1="443" x2="657" y2="750" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".95"/>
+      <stop offset=".5" stop-color="#ffffff" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".94"/>
+    </linearGradient>
+    <path id="leftPlane" d="M 293,268 C 293,241 312,222 336,236 L 638,375 C 655,383 659,393 659,412 L 659,701 C 659,725 650,744 631,752 L 337,859 C 312,869 292,856 293,828 Z"/>
+    <path id="rightPlane" d="M 515,426 L 907,272 C 937,259 960,275 960,308 L 959,899 C 959,928 941,946 913,936 L 513,821 C 494,816 486,806 486,787 L 486,477 C 486,454 496,435 515,426 Z"/>
+    <path id="frost" d="M 638,377 C 652,380 659,392 659,412 L 659,701 C 659,725 650,744 631,752 L 490,806 C 487,801 486,795 486,787 L 486,477 C 486,454 496,435 515,426 Z"/>
+  </defs>
+
+  <!-- Background is independent of the editable three-part mirror mark. -->
+  <g id="background-layer">
+    <rect width="1254" height="1254" fill="url(#background)"/>
+    <rect width="1254" height="1254" fill="url(#topLight)"/>
+  </g>
+
+  <g id="mirror-mark" stroke-linejoin="round" stroke-linecap="round">
+    <g id="left-mirror">
+      <use href="#leftPlane" fill="url(#leftGlass)"/>
+      <use href="#leftPlane" fill="url(#leftGlint)"/>
+      <use href="#leftPlane" fill="none" stroke="#ffffff" stroke-opacity=".035" stroke-width="20"/>
+      <path d="M 638,375 L 336,236 C 312,222 293,241 293,268 L 293,828 C 292,856 312,869 337,859 L 490,803" fill="none" stroke="url(#leftEdge)" stroke-width="14"/>
+      <path d="M 638,375 L 336,236 C 312,222 293,241 293,268 L 293,828 C 292,856 312,869 337,859 L 490,803" fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="8"/>
+    </g>
+
+    <g id="right-mirror">
+      <use href="#rightPlane" fill="url(#rightGlass)"/>
+      <use href="#rightPlane" fill="url(#rightGlint)"/>
+      <use href="#rightPlane" fill="url(#footGlint)"/>
+      <path d="M 640,376 L 907,272 C 937,259 960,275 960,308 L 959,899 C 959,928 941,946 913,936 L 513,821 C 501,818 494,813 490,806" fill="none" stroke="#ffffff" stroke-opacity=".035" stroke-width="21"/>
+      <path d="M 640,376 L 907,272 C 937,259 960,275 960,308 L 959,899 C 959,928 941,946 913,936 L 513,821 C 501,818 494,813 490,806" fill="none" stroke="url(#rightEdge)" stroke-width="14"/>
+      <path d="M 640,376 L 907,272 C 937,259 960,275 960,308 L 959,899 C 959,928 941,946 913,936 L 513,821 C 501,818 494,813 490,806" fill="none" stroke="#ffffff" stroke-opacity=".23" stroke-width="8"/>
+    </g>
+
+    <g id="frosted-overlap">
+      <use href="#frost" fill="url(#frostBase)"/>
+      <use href="#frost" fill="url(#frostShade)"/>
+      <use href="#frost" fill="url(#frostSheen)"/>
+      <use href="#frost" fill="none" stroke="url(#frostEdge)" stroke-width="4.6"/>
+      <path d="M 488,786 L 488,479 C 488,456 497,437 516,428 L 636,380" fill="none" stroke="#ffffff" stroke-opacity=".32" stroke-width="2.2"/>
+    </g>
+  </g>
+</svg>

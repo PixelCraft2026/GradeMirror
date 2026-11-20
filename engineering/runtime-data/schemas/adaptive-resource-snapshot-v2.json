@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "adaptive-resource-snapshot-v2",
+  "type": "object",
+  "required": [
+    "schema",
+    "captured_at",
+    "captured_monotonic",
+    "physical",
+    "commit",
+    "legacy_process_commit_available",
+    "product",
+    "sources",
+    "diagnostics",
+    "pool",
+    "gpu",
+    "complete"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "adaptive-resource-snapshot-v2"
+    },
+    "captured_at": {},
+    "captured_monotonic": {},
+    "physical": {},
+    "commit": {},
+    "legacy_process_commit_available": {},
+    "product": {},
+    "sources": {},
+    "diagnostics": {},
+    "pool": {},
+    "gpu": {},
+    "complete": {}
+  }
+}

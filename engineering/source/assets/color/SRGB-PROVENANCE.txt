@@ -1,0 +1,11 @@
+This 480-byte sRGB fallback profile is the unmodified Qt 6.10.1 named sRGB
+profile obtained with QColorSpace(QColorSpace.SRgb).iccProfile(). QtBase
+qicc.cpp emits the ICC creator version bytes. It is fixed solely for
+GradeMirror's previously untagged desktop import preview. It is not proof
+that a file carried an embedded profile.
+
+Upstream: https://code.qt.io/cgit/qt/qtbase.git/tree/src/gui/painting/qicc.cpp?h=v6.10.1
+QtBase LGPL-3.0 or GPL alternative terms apply to the underlying Qt
+implementation; its original notices remain applicable. The exact binary
+resource is rebuildable with the same Qt version and API above.
+SHA-256: cbdad829fe24e3c008b758aa8f68b849168296010c8b4947bdacfddadbc3c563

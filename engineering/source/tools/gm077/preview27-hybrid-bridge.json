@@ -1,0 +1,21 @@
+{
+  "schema": "gm077-hybrid-orchestration-bridge-v1",
+  "orchestration_only": {
+    "src/grademirror/gm004a_api.py": {
+      "before": "55da67be37241934091c45a7ee9917a35716de763aa83b8e65d601587a35e51a",
+      "after": "7fdbfaf1c0c9c8c828c7c6a5a749d1da8f8885001b5af0abb07bf0d47bf381dc"
+    },
+    "src/grademirror/gm004a_export.py": {
+      "before": "3100e58e4ad01eefcbbba47c316a7779822197c7af0f712d799fe32b90612cdd",
+      "after": "af9aa77794546963785911a91270f918a47773726920ce94cd53085fe9d1bc6b"
+    },
+    "src/grademirror/engine/independent_r0_p3_lld10/solver_process.py": {
+      "before": "330ab20fe7580bda8753507d1156a473e4b6f4bfe8d7f2e374709450af58510c",
+      "after": "4f337af93e2129c0cec56563ae9e13d9c6725346e5b983552b62dbb271afa01c"
+    },
+    "tools/gm003_session_host.py": {
+      "before": "d50ccc8c701a1177ec28405023180d2d1a8480b35d3d738b2e916356be892ef7",
+      "after": "4eefd70a3542d598727747913621711382b99fe47dceda8aa098cf6849ecb021"
+    }
+  }
+}

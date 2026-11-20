@@ -1,0 +1,2 @@
+# Preserve the exact bytes of frozen build inputs, including line endings.
+* -text -filter -ident -working-tree-encoding

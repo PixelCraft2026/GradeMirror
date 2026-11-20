@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gm022-resource-plan-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "policy", "policy_digest", "registry_digest", "implementation_digest", "intent_digest", "snapshot_digest", "plan_digest", "request_identity", "stages", "formula", "candidates", "recommended_candidate", "binding_checks", "resource_checks", "estimated_resource_feasible", "freshness", "summary", "input_validation", "runtime_validation", "advisory_only", "execution_authorized", "automatic_selection_enabled", "CPU_QUALIFIED", "PRODUCTION_ACTIVATION", "estimated_seconds", "reservation", "no_quality_changes", "output_contract", "snapshot_diagnostics"],
+  "properties": {
+    "schema_version": {"const": "gm022-resource-plan-v1"},
+    "policy": {"type": "object"}, "policy_digest": {"$ref": "#/$defs/hash"}, "registry_digest": {"$ref": "#/$defs/hash"}, "implementation_digest": {"$ref": "#/$defs/hash"},
+    "intent_digest": {"$ref": "#/$defs/hash"}, "snapshot_digest": {"$ref": "#/$defs/hash"}, "plan_digest": {"$ref": "#/$defs/hash"},
+    "request_identity": {"type": "object"}, "stages": {"type": "array"}, "formula": {"type": "object"}, "candidates": {"type": "array"}, "recommended_candidate": {"type": ["string", "null"]},
+    "binding_checks": {"type": "object"}, "resource_checks": {"type": "object"}, "estimated_resource_feasible": {"type": ["boolean", "null"]}, "freshness": {"type": "object"}, "summary": {"type": "string"},
+    "input_validation": {"const": "METADATA_ONLY_NOT_REDECODED"}, "runtime_validation": {"const": "WORKER_CONFIRMATION_REQUIRED"},
+    "advisory_only": {"const": true}, "execution_authorized": {"const": false}, "automatic_selection_enabled": {"const": false}, "CPU_QUALIFIED": {"const": false}, "PRODUCTION_ACTIVATION": {"const": false},
+    "estimated_seconds": {"type": "null"}, "reservation": {"const": false}, "no_quality_changes": {"const": true}, "output_contract": {"type": "object"}, "snapshot_diagnostics": {"type": "array"}
+  },
+  "$defs": {"hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+}

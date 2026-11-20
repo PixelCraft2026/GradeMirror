@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"cpu-r0-render-request-v1",
+  "type":"object","additionalProperties":false,
+  "required":["schema_version","backend_id","backend_sha256","scope","recipe","source_identity","origin_device","profile","runtime","settings","normalization","color_policy","color_declaration","output"],
+  "properties":{
+    "schema_version":{"const":"cpu-r0-render-request-v1"},
+    "backend_id":{"const":"r0-cpu-render-v1"},
+    "backend_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+    "scope":{"type":"object","additionalProperties":false,"required":["kind","id","case"],"properties":{"kind":{"const":"synthetic_validation"},"id":{"const":"gm043-small-synthetic-20261029-v1"},"case":{"enum":["A","B","C"]}}},
+    "recipe":{"type":"object","additionalProperties":false,"required":["recipe_sha256","parameter_sha256","metadata_sha256","archive_sha256"],"properties":{"recipe_sha256":{"$ref":"#/$defs/hash"},"parameter_sha256":{"$ref":"#/$defs/hash"},"metadata_sha256":{"$ref":"#/$defs/hash"},"archive_sha256":{"$ref":"#/$defs/hash"}}},
+    "source_identity":{"type":"object"},"origin_device":{"type":"object"},"profile":{"type":"object"},"runtime":{"type":"object"},"settings":{"type":"object"},"normalization":{"type":"object"},"color_policy":{"type":"object"},"color_declaration":{"type":"string"},
+    "output":{"type":"object","additionalProperties":false,"required":["shape","dtype","borrowed"],"properties":{"shape":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"integer","minimum":1}},"dtype":{"const":"float32"},"borrowed":{"const":true}}}
+  },
+  "$defs":{"hash":{"type":"string","pattern":"^[a-f0-9]{64}$"}},
+  "$comment":"Executable contract.py imposes exact nested field sets, strict Python number types, fixed settings/runtime/device/scope, all digests and quotas; it is normative alongside this structural schema. Duplicate JSON keys and nonfinite values are rejected by loads."
+}

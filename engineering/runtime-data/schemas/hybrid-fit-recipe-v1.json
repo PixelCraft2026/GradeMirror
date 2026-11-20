@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"hybrid-fit-recipe-1.0.0",
+  "type":"object","additionalProperties":false,
+  "required":["schema_version","fit_contract","profile_id","profile_contract_sha256","core_sha256","recipe_sha256","r0_recipe_sha256","r0_parameter_sha256","source_identity","reference_identity","device","runtime","R0_runtime","color_policy","postprocess","production_qualified"],
+  "properties":{
+    "schema_version":{"const":"hybrid-fit-recipe-1.0.0"},"fit_contract":{"const":"gm023-hybrid-fit-v1"},
+    "profile_id":{"const":"independent-r0-p3-lld10-v1"},"production_qualified":{"const":false},
+    "profile_contract_sha256":{"$ref":"#/$defs/hash"},"core_sha256":{"$ref":"#/$defs/hash"},
+    "recipe_sha256":{"$ref":"#/$defs/hash"},"r0_recipe_sha256":{"$ref":"#/$defs/hash"},"r0_parameter_sha256":{"$ref":"#/$defs/hash"},
+    "source_identity":{"$ref":"#/$defs/identity"},"reference_identity":{"$ref":"#/$defs/identity"},
+    "device":{"type":"object"},"runtime":{"type":"object"},"R0_runtime":{"type":"object"},"color_policy":{"type":"object"},
+    "postprocess":{"type":"object","additionalProperties":false,"required":["P3","LLF","solver_runtime","coefficient_shape","coefficient_sha256","p3_archive_sha256","ranges","reference_normalization","solver","H64_sha256","T64_sha256","O_sha256"],
+      "properties":{"P3":{"type":"object"},"LLF":{"type":"object"},"solver_runtime":{"type":"object"},"coefficient_shape":{"type":"array","minItems":2,"maxItems":2,"items":{"type":"integer","minimum":1}},
+        "coefficient_sha256":{"$ref":"#/$defs/hash"},"p3_archive_sha256":{"$ref":"#/$defs/hash"},"H64_sha256":{"$ref":"#/$defs/hash"},"T64_sha256":{"$ref":"#/$defs/hash"},"O_sha256":{"$ref":"#/$defs/hash"},
+        "ranges":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"object"}},"reference_normalization":{"type":"object"},"solver":{"type":"object"}}}
+  },
+  "$defs":{"hash":{"type":"string","pattern":"^[0-9a-f]{64}$"},"identity":{"type":"object","additionalProperties":false,
+    "required":["file_sha256","file_size_bytes","pixel_sha256","shape","dtype","bit_depth"],"properties":{
+      "file_sha256":{"$ref":"#/$defs/hash"},"pixel_sha256":{"$ref":"#/$defs/hash"},"file_size_bytes":{"type":"integer","minimum":1},
+      "shape":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"integer","minimum":1}},"dtype":{"enum":["uint8","uint16"]},"bit_depth":{"enum":[8,16]}}}}
+}

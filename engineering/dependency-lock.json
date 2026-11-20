@@ -1,0 +1,340 @@
+{
+  "schema": "gm093-independent-official-wheels-v1",
+  "python": "3.12.14 x64",
+  "inputs": [
+    {
+      "name": "altgraph",
+      "version": "0.17.4",
+      "roles": [
+        "builder"
+      ],
+      "filename": "altgraph-0.17.4-py2.py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/4d/3f/3bc3f1d83f6e4a7fcb834d3720544ca597590425be5ba9db032b2bf322a2/altgraph-0.17.4-py2.py3-none-any.whl",
+      "sha256": "642743b4750de17e655e6711601b077bc6598dbfa3ba5fa2b2a35ce12b508dff",
+      "bytes": 21212
+    },
+    {
+      "name": "filelock",
+      "version": "3.32.3",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "filelock-3.32.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a7/8e/50f46a9c0ce8d2861a394c1347caae037ea0431d2f67d7feb151cbc4649a/filelock-3.32.3-py3-none-any.whl",
+      "sha256": "7f0ca4bcc0e181c60dbbd8aa9ab5b120ebb99e4e064e83636340056f833a1f09",
+      "bytes": 98901
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.7.0",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "fsspec-2026.7.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/fd/3c/6a2bf344106328fd04963664a60b9bb6496fc25df8e962fcdc1367285fb9/fsspec-2026.7.0-py3-none-any.whl",
+      "sha256": "b57ddbafedfaef7018c1ecab32aa200a9d7ca26b77965f64e48b70061249d279",
+      "bytes": 206583
+    },
+    {
+      "name": "imagecodecs",
+      "version": "2026.8.16",
+      "roles": [
+        "io"
+      ],
+      "filename": "imagecodecs-2026.8.16-cp312-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/3e/da/d168a0e706103db3b82bde1b088d493e84a20da26f58be42bb2f1fca87e7/imagecodecs-2026.8.16-cp312-abi3-win_amd64.whl",
+      "sha256": "6444a421272665ebd0116b54ad96347b86b4a5e21b59ed184487145cd3937f4b",
+      "bytes": 21271669
+    },
+    {
+      "name": "jinja2",
+      "version": "3.1.6",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "jinja2-3.1.6-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/62/a1/3d680cbfd5f4b8f15abc1d571870c5fc3e594bb582bc3b64ea099db13e56/jinja2-3.1.6-py3-none-any.whl",
+      "sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67",
+      "bytes": 134899
+    },
+    {
+      "name": "markupsafe",
+      "version": "3.0.3",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "markupsafe-3.0.3-cp312-cp312-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/aa/5b/bec5aa9bbbb2c946ca2733ef9c4ca91c91b6a24580193e891b5f7dbe8e1e/markupsafe-3.0.3-cp312-cp312-win_amd64.whl",
+      "sha256": "26a5784ded40c9e318cfc2bdb30fe164bdb8665ded9cd64d500a34fb42067b1c",
+      "bytes": 15105
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "mpmath-1.3.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/43/e3/7d92a15f894aa0c9c4b49b8ee9ac9850d6e63b03c9c32c0367a13ae62209/mpmath-1.3.0-py3-none-any.whl",
+      "sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c",
+      "bytes": 536198
+    },
+    {
+      "name": "networkx",
+      "version": "3.6.1",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "networkx-3.6.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/9e/c9/b2622292ea83fbb4ec318f5b9ab867d0a28ab43c5717bb85b0a5f6b3b0a4/networkx-3.6.1-py3-none-any.whl",
+      "sha256": "d47fbf302e7d9cbbb9e2555a0d267983d2aa476bac30e90dfbe5669bd57f3762",
+      "bytes": 2068504
+    },
+    {
+      "name": "numpy",
+      "version": "1.26.4",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "numpy-1.26.4-cp312-cp312-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/16/2e/86f24451c2d530c88daf997cb8d6ac622c1d40d19f5a031ed68a4b73a374/numpy-1.26.4-cp312-cp312-win_amd64.whl",
+      "sha256": "08beddf13648eb95f8d867350f6a018a4be2e5ad54c8d8caed89ebca558b2818",
+      "bytes": 15517754
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.3",
+      "roles": [
+        "io",
+        "solver"
+      ],
+      "filename": "numpy-2.5.3-cp312-cp312-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/3c/a1/accf6d4f0c80c5d9ba9735d6b1550e444180599f34dec69ca01360f717ad/numpy-2.5.3-cp312-cp312-win_amd64.whl",
+      "sha256": "0a59a421a32580a009e8a1751345bf829631b990dc1794b80514ab722b435def",
+      "bytes": 12567828
+    },
+    {
+      "name": "opencv-python-headless",
+      "version": "4.10.0.84",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "opencv_python_headless-4.10.0.84-cp37-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/26/d0/22f68eb23eea053a31655960f133c0be9726c6a881547e6e9e7e2a946c4f/opencv_python_headless-4.10.0.84-cp37-abi3-win_amd64.whl",
+      "sha256": "afcf28bd1209dd58810d33defb622b325d3cbe49dcd7a43a902982c33e5fad05",
+      "bytes": 38754031
+    },
+    {
+      "name": "packaging",
+      "version": "25.0",
+      "roles": [
+        "builder"
+      ],
+      "filename": "packaging-25.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/20/12/38679034af332785aac8774540895e234f4d07f7545804097de4b666afd8/packaging-25.0-py3-none-any.whl",
+      "sha256": "29572ef2b1f17581046b3a2227d5c611fb25ec70ca1ba8554b24b0e69331a484",
+      "bytes": 66469
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "packaging-26.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+      "bytes": 129956
+    },
+    {
+      "name": "pefile",
+      "version": "2023.2.7",
+      "roles": [
+        "builder"
+      ],
+      "filename": "pefile-2023.2.7-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/55/26/d0ad8b448476d0a1e8d3ea5622dc77b916db84c6aa3cb1e1c0965af948fc/pefile-2023.2.7-py3-none-any.whl",
+      "sha256": "da185cd2af68c08a6cd4481f7325ed600a88f6a813bad9dea07ab3ef73d8d8d6",
+      "bytes": 71791
+    },
+    {
+      "name": "pillow",
+      "version": "10.4.0",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "pillow-10.4.0-cp312-cp312-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/74/0a/d4ce3c44bca8635bd29a2eab5aa181b654a734a29b263ca8efe013beea98/pillow-10.4.0-cp312-cp312-win_amd64.whl",
+      "sha256": "1d846aea995ad352d4bdcc847535bd56e0fd88d36829d2c90be880ef1ee4668a",
+      "bytes": 2554951
+    },
+    {
+      "name": "pillow",
+      "version": "12.3.0",
+      "roles": [
+        "io"
+      ],
+      "filename": "pillow-12.3.0-cp312-cp312-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/45/89/da2f7971a317f83d807fdd4065c0af40208e59e692cc43d315a71a0e96d1/pillow-12.3.0-cp312-cp312-win_amd64.whl",
+      "sha256": "a2b55dd6b2a4c4b7d87ffa56bdb33fdc5fdb9a462173861a7bc097f17d91cb09",
+      "bytes": 7227137
+    },
+    {
+      "name": "pyinstaller",
+      "version": "6.16.0",
+      "roles": [
+        "builder"
+      ],
+      "filename": "pyinstaller-6.16.0-py3-none-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/aa/99/2005efbc297e7813c1d6f18484aa94a1a81ce87b6a5b497c563681f4c4ea/pyinstaller-6.16.0-py3-none-win_amd64.whl",
+      "sha256": "bc10eb1a787f99fea613509f55b902fbd2d8b73ff5f51ff245ea29a481d97d41",
+      "bytes": 1374706
+    },
+    {
+      "name": "pyinstaller-hooks-contrib",
+      "version": "2025.9",
+      "roles": [
+        "builder"
+      ],
+      "filename": "pyinstaller_hooks_contrib-2025.9-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a2/26/23b4cfc77d7f808c69f59070e1e8293a579ec281a547c61562357160b346/pyinstaller_hooks_contrib-2025.9-py3-none-any.whl",
+      "sha256": "ccbfaa49399ef6b18486a165810155e5a8d4c59b41f20dc5da81af7482aaf038",
+      "bytes": 444283
+    },
+    {
+      "name": "pyside6-essentials",
+      "version": "6.11.3",
+      "roles": [
+        "desktop"
+      ],
+      "filename": "pyside6_essentials-6.11.3-cp310-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/10/02/24eeb84caf10de98e366a2e536abf8e66b23a90c72553ccb3d77acef2dfd/pyside6_essentials-6.11.3-cp310-abi3-win_amd64.whl",
+      "sha256": "ea61687d2c27f8cc7a851c259481be1001dbffa3bebacea4491d9905e7a5d0cf",
+      "bytes": 77104971
+    },
+    {
+      "name": "pywin32-ctypes",
+      "version": "0.2.3",
+      "roles": [
+        "builder"
+      ],
+      "filename": "pywin32_ctypes-0.2.3-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/de/3d/8161f7711c017e01ac9f008dfddd9410dff3674334c233bde66e7ba65bbf/pywin32_ctypes-0.2.3-py3-none-any.whl",
+      "sha256": "8a1513379d709975552d202d942d9837758905c8d01eb82b8bcc30918929e7b8",
+      "bytes": 30756
+    },
+    {
+      "name": "scipy",
+      "version": "1.18.1",
+      "roles": [
+        "solver"
+      ],
+      "filename": "scipy-1.18.1-cp312-cp312-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/39/e7/979fd14e75008623df31ba70d6bb144700f68feadcea042021c06a05bf82/scipy-1.18.1-cp312-cp312-win_amd64.whl",
+      "sha256": "5e4d44984abc0020154ea81b247adeddcc3ac5527b975ff798bd1ba0adc513c2",
+      "bytes": 36658278
+    },
+    {
+      "name": "setuptools",
+      "version": "75.8.2",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "setuptools-75.8.2-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a9/38/7d7362e031bd6dc121e5081d8cb6aa6f6fedf2b67bf889962134c6da4705/setuptools-75.8.2-py3-none-any.whl",
+      "sha256": "558e47c15f1811c1fa7adbd0096669bf76c1d3f433f58324df69f3f5ecac4e8f",
+      "bytes": 1229385
+    },
+    {
+      "name": "setuptools",
+      "version": "80.9.0",
+      "roles": [
+        "builder"
+      ],
+      "filename": "setuptools-80.9.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/a3/dc/17031897dae0efacfea57dfd3a82fdd2a2aeb58e0ff71b77b87e44edc772/setuptools-80.9.0-py3-none-any.whl",
+      "sha256": "062d34222ad13e0cc312a4c02d73f059e86a4acbfbdea8f8f76b28c99f306922",
+      "bytes": 1201486
+    },
+    {
+      "name": "shiboken6",
+      "version": "6.11.3",
+      "roles": [
+        "desktop"
+      ],
+      "filename": "shiboken6-6.11.3-cp310-abi3-win_amd64.whl",
+      "url": "https://files.pythonhosted.org/packages/ec/f7/db1cb2ce128d5b7d5397cafdf666520db4466cf41d9c04aa7cb299341051/shiboken6-6.11.3-cp310-abi3-win_amd64.whl",
+      "sha256": "1d38919492d08417b7579ad077bc81110d05183d21eb21d66316bc556140a8a3",
+      "bytes": 1226691
+    },
+    {
+      "name": "sympy",
+      "version": "1.13.1",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "sympy-1.13.1-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/b2/fe/81695a1aa331a842b582453b605175f419fe8540355886031328089d840a/sympy-1.13.1-py3-none-any.whl",
+      "sha256": "db36cdc64bf61b9b24578b6f7bab1ecdd2452cf008f34faa33776680c26d66f8",
+      "bytes": 6189177
+    },
+    {
+      "name": "tifffile",
+      "version": "2026.9.15",
+      "roles": [
+        "io"
+      ],
+      "filename": "tifffile-2026.9.15-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/38/68/5adfb759d1a7e3ffb7ff43512908bcfe8514882b290ef6bc6df8efa9b425/tifffile-2026.9.15-py3-none-any.whl",
+      "sha256": "9a4a74671c72645e0d48372ff2d20ec1625b1cd52067a72fbd021435dd044794",
+      "bytes": 273353
+    },
+    {
+      "name": "torch",
+      "version": "2.5.1+cpu",
+      "roles": [
+        "cpu"
+      ],
+      "filename": "torch-2.5.1+cpu-cp312-cp312-win_amd64.whl",
+      "url": "https://download-r2.pytorch.org/whl/cpu/torch-2.5.1%2Bcpu-cp312-cp312-win_amd64.whl",
+      "sha256": "a6b720410350765d3d77c01a5ce098a6c45af446284e45e87a98b8a16e7d564d",
+      "bytes": 205405035
+    },
+    {
+      "name": "torch",
+      "version": "2.5.1+cu124",
+      "roles": [
+        "cu124"
+      ],
+      "filename": "torch-2.5.1+cu124-cp312-cp312-win_amd64.whl",
+      "url": "https://download-r2.pytorch.org/whl/cu124/torch-2.5.1%2Bcu124-cp312-cp312-win_amd64.whl",
+      "sha256": "3c3f705fb125edbd77f9579fa11a138c56af8968a10fc95834cdd9fdf4f1f1a6",
+      "bytes": 2510680879
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.16.0",
+      "roles": [
+        "cpu",
+        "cu124"
+      ],
+      "filename": "typing_extensions-4.16.0-py3-none-any.whl",
+      "url": "https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "bytes": 45571
+    }
+  ],
+  "scope": "Wheel payloads and builder dependencies. Native/toolchain and corresponding license information separately inventoried."
+}
