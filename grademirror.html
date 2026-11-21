@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151d">
+  <meta name="description" content="GradeMirror 是 Windows 本地参考仿色工具。把同景参考的色彩与明暗应用到原片，按原尺寸成片。">
+  <title>GradeMirror｜把调色效果镜像回原片</title>
+  <link rel="icon" href="assets/grademirror-icon.png" type="image/png">
+  <link rel="stylesheet" href="grademirror.css">
+  <link rel="stylesheet" href="grademirror-showcase.css?rev=4">
+  <script src="grademirror.js?rev=3" defer></script>
+  <script src="grademirror-showcase.js?rev=2" defer></script>
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="gm-page showcase-page">
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="masthead">
+    <div class="nav shell">
+      <a class="brand" href="#main"><img src="assets/grademirror-icon.png" width="28" height="28" alt="">GradeMirror</a>
+      <nav aria-label="产品导航">
+        <a href="#method">方法</a>
+        <a href="#compare">实拍对照</a>
+        <a href="#engine">原理</a>
+        <a href="#workflow">工作台</a>
+        <a href="#devices">规格</a>
+        <a href="#cli">CLI</a>
+      </nav>
+      <a class="nav-download" href="#download">下载</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title" data-hero>
+      <div class="hero-stage">
+        <div class="hero-media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 650px), (max-aspect-ratio: 3/4)" srcset="assets/showcase/source-hero-portrait-compact.webp 960w, assets/showcase/source-hero-portrait.webp 1440w" sizes="max(100vw, 100svh), 100vw" width="1440" height="2160">
+            <img src="assets/showcase/source-hero.webp" srcset="assets/showcase/source-hero-compact.webp 1792w, assets/showcase/source-hero.webp 2560w" sizes="max(100vw, 228svh), 100vw" width="2560" height="1680" alt="" fetchpriority="high">
+          </picture>
+          <picture class="hero-grade">
+            <source media="(max-width: 650px), (max-aspect-ratio: 3/4)" srcset="assets/showcase/result-hero-portrait-compact.webp 960w, assets/showcase/result-hero-portrait.webp 1440w" sizes="max(100vw, 100svh), 100vw" width="1440" height="2160">
+            <img src="assets/showcase/result-hero.webp" srcset="assets/showcase/result-hero-compact.webp 1792w, assets/showcase/result-hero.webp 2560w" sizes="max(100vw, 228svh), 100vw" width="2560" height="1680" alt="" decoding="async">
+          </picture>
+          <span class="hero-divider"></span>
+        </div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="shell hero-body">
+          <p class="eyebrow hero-kicker">Windows 本地仿色 · 开源</p>
+          <h1 id="hero-title"><span>把生图模型的调色效果，</span><span>镜像回原片。</span></h1>
+          <p class="hero-lead">没有重绘<br>保持原片分辨率</p>
+          <div class="actions">
+            <a class="button button-light" href="#download">下载 Windows 版 <span aria-hidden="true">↓</span></a>
+            <a class="button button-ghost" href="#compare">看实拍对照 <span aria-hidden="true">↓</span></a>
+            <a class="button button-ghost hero-research" href="index.html">查看研究介绍 <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gm-section gm-method" id="method" aria-labelledby="method-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">从异景风格到原尺寸成片</p><h2 id="method-title">让一张风格图，<br>变成可以学习的<span class="gm-title-phrase">调色目标。</span></h2></div>
+          <p>喜欢的照片往往拍的是另一个地方。先让生图模型沿用原片的构图，生成一张色调和明暗接近风格图的同景参考。GradeMirror 再从两张图的对应位置学习如何调色。</p>
+        </div>
+        <figure class="gm-process">
+          <div class="gm-process-grid">
+            <div class="gm-process-inputs">
+              <a class="gm-process-cell style-source" href="https://maxrivephotography.com/pages/peru"><span class="style-reference-swatch" aria-hidden="true"></span><strong>异景风格图 ↗</strong><small>Siula Grande · 摄影师 Max Rive</small></a>
+              <div class="gm-process-cell"><img src="assets/source.webp" alt="待调色的雾中山峰原片" width="1024" height="1536" loading="lazy"><strong>原片构图</strong><small>4672 × 7008 · 提供场景与纹理</small></div>
+            </div>
+            <span class="gm-process-arrow" aria-hidden="true">→</span>
+            <div class="gm-process-cell gm-process-target"><img src="assets/target.webp" alt="生成模型为雾中山峰给出的暖色同景参考" width="1024" height="1536" loading="lazy"><strong>ChatGPT 同景稿</strong><small>1024 × 1536 · 调色目标</small></div>
+            <span class="gm-process-arrow" aria-hidden="true">→</span>
+            <div class="gm-process-cell gm-process-result"><img src="assets/result.webp" alt="从原片渲染的全分辨率仿色结果的网页预览" width="1024" height="1536" loading="lazy"><strong>原尺寸仿色成片</strong><small>4672 × 7008 · 从参考图学习变换</small></div>
+          </div>
+          <div class="gm-process-baseline"><span></span><b>原片贯穿全程，作为最终渲染底图</b><span aria-hidden="true">→</span></div>
+          <figcaption><p>本例由 ChatGPT 用原片与 Siula Grande 风格图生成同景稿。ChatGPT、豆包等生图工具都可用于这一步。挑稿时重点看主体位置、裁切范围和透视是否对应。已有的同景人工调色稿也可以直接用。</p><a href="assets/workflow.svg?rev=3" target="_blank" rel="noopener">查看完整流程图 ↗</a></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="gm-section gm-compare-section" id="compare" aria-labelledby="compare-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">三组照片对照</p><h2 id="compare-title">色调接近参考，<br>细节<span class="gm-title-phrase">来自原片。</span></h2></div>
+          <p>左侧可切换原图和调色参考，右侧固定显示仿色结果。拖动分界线，比较同一位置的色彩与细节。</p>
+        </div>
+        <div class="gm-gallery" data-photo-gallery data-compare-side="left">
+          <div class="gm-compare-bar">
+            <label class="gm-view-select">左侧画面
+              <select data-compare-view aria-label="选择左侧画面"><option value="original">原图</option><option value="reference">调色参考</option></select>
+            </label>
+            <div class="gm-segments" role="group" aria-label="选择照片">
+              <button type="button" data-scene="ridge" aria-pressed="true">雾中山峰</button>
+              <button type="button" data-scene="cloud" aria-pressed="false">云海与崖壁</button>
+              <button type="button" data-scene="night" aria-pressed="false">银河</button>
+            </div>
+          </div>
+          <figure class="gm-compare-figure">
+            <div class="gm-compare-frame" data-compare-frame>
+              <img data-original src="assets/grademirror/ridge-original.webp" alt="雾中山峰原图" width="1536" height="2304" loading="lazy">
+              <img data-adjusted src="assets/grademirror/ridge-result.webp" alt="雾中山峰仿色结果" width="1536" height="2304" loading="lazy">
+              <span class="gm-photo-tag gm-original-tag" data-photo-label>原图</span><span class="gm-photo-tag gm-adjusted-tag">仿色结果</span>
+              <span class="gm-divider" aria-hidden="true"><b>‹ ›</b></span>
+              <input data-photo-range type="range" min="0" max="100" value="52" aria-label="调整照片对比分界">
+            </div>
+            <figcaption><span id="gm-compare-caption" aria-live="polite">雾中山峰 · 高清研究样例</span><span>按住滑块拖动，或用方向键移动</span></figcaption>
+          </figure>
+        </div>
+        <article class="comparison" id="comparison" aria-labelledby="comparison-title">
+          <header class="section-intro">
+            <p class="eyebrow">雾中岩峰 · 与像素蛋糕对照</p>
+            <h3 id="comparison-title">仿色效果，经得起放大对照。</h3>
+            <p>选一种条件看全图，再放大中央山峰，观察岩面的受光色、蓝灰雾影和边缘纹理。</p>
+          </header>
+
+          <div class="compare" data-compare>
+            <div class="compare-controls" data-controls hidden>
+              <div class="segmented" role="group" aria-label="比较条件">
+                <button type="button" data-case="same" aria-pressed="false">同一张同景稿</button>
+                <button type="button" data-case="style" aria-pressed="true">从同一种风格图出发</button>
+              </div>
+              <div class="segmented" role="group" aria-label="观察范围">
+                <button type="button" data-view="full" aria-pressed="true">全图</button>
+                <button type="button" data-view="detail" aria-pressed="false">山峰局部</button>
+              </div>
+            </div>
+            <p class="compare-summary" data-summary>从同一张异景风格图出发。像素蛋糕直接仿色，另一条流程由 ChatGPT 先做同景稿，再由 GradeMirror 仿色。</p>
+            <p class="sr-only" data-status aria-live="polite"></p>
+            <div class="compare-grid" data-grid>
+              <figure class="compare-tile">
+                <a class="photo-link" href="assets/showcase/source-full.webp" target="_blank" rel="noopener">
+                  <img class="full-photo" src="assets/showcase/source-full.webp" width="840" height="1260" loading="lazy" alt="两条调色流程使用的共同雾中岩峰原片">
+                  <img class="detail-photo" src="assets/showcase/source-detail.webp" width="640" height="640" loading="lazy" alt="">
+                </a>
+                <figcaption><strong>共同原片</strong><span>雾中岩峰原片</span></figcaption>
+              </figure>
+              <figure class="compare-tile">
+                <a class="photo-link" href="assets/showcase/pixel-style-full.webp" target="_blank" rel="noopener">
+                  <img class="full-photo" src="assets/showcase/pixel-style-full.webp" width="840" height="1260" loading="lazy" alt="像素蛋糕使用异景风格图直接仿色的结果">
+                  <img class="detail-photo" src="assets/showcase/pixel-style-detail.webp" width="640" height="640" loading="lazy" alt="">
+                </a>
+                <figcaption><strong>像素蛋糕</strong><span>用异景风格图直接仿色</span></figcaption>
+              </figure>
+              <figure class="compare-tile is-grade">
+                <a class="photo-link" href="assets/showcase/result-full.webp" target="_blank" rel="noopener">
+                  <img class="full-photo" src="assets/showcase/result-full.webp" width="840" height="1260" loading="lazy" alt="ChatGPT 生成同景调色稿后由 GradeMirror 仿色的结果">
+                  <img class="detail-photo" src="assets/showcase/result-detail.webp" width="640" height="640" loading="lazy" alt="">
+                </a>
+                <figcaption><strong>ChatGPT ＋ GradeMirror</strong><span>先生成同景稿，再仿色</span></figcaption>
+              </figure>
+            </div>
+            <div class="compare-reading">
+              <p data-reading>在这组流程对照里，像素蛋糕的成片整体偏橙，GradeMirror 的暖橙亮部与蓝灰暗部保留了更清楚的冷暖层次。</p>
+              <details class="study-note">
+                <summary>看比较条件和图片来源</summary>
+                <p>同参考对照固定原片和同景稿。另一组固定调色的风格起点，像素蛋糕直接使用异景照片，GradeMirror 使用 ChatGPT 先生成的同景稿；这一组体现的是两条流程的差异。</p>
+                <p>异景风格灵感来自摄影师 <a href="https://maxrivephotography.com/pages/peru">Max Rive 的 Peru 作品集</a>。对照为同一实拍样例的目视比较。局部按原片构图范围截取，三列统一显示尺度。</p>
+              </details>
+            </div>
+            <p class="compare-error" data-error hidden>这组图片暂时未能载入。当前对照仍可查看，请重试切换。</p>
+            <noscript><p class="fine-print">开启 JavaScript 后可切换参考条件和山峰局部。</p></noscript>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="gm-section gm-engine" id="engine" aria-labelledby="engine-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">仿色引擎</p><h2 id="engine-title"><span class="gm-title-phrase">小图学色彩，</span><wbr><span class="gm-title-phrase">原片出细节。</span></h2></div>
+          <p>在长边 512 像素的图对上学会怎么调，再回到原片，用原尺寸像素、全图坐标和邻域逐点计算。参考图更小，成片仍按原片尺寸导出。</p>
+        </div>
+
+        <div class="gm-engine-grid">
+          <div class="gm-engine-board" data-engine-board data-mode="fast">
+            <div class="gm-board-top"><span>从配对图像到原尺寸输出</span><span class="gm-board-mode" data-mode-label>快速路线</span></div>
+            <div class="gm-engine-nodes" aria-label="仿色流程">
+              <div class="gm-node">
+                <svg viewBox="0 0 90 65" aria-hidden="true"><path class="gm-stroke faint" d="M9 47l32-26 18 10 22-19M9 54h72M15 8h46v45M23 15h46v44"/><path class="gm-stroke warm" d="M9 37l18-14 12 6 14-14 23 20"/><path class="gm-stroke" d="M50 46v9m-5-4h10"/></svg>
+                <b>原图 + 参考</b><small>将两张图缩小并配对</small>
+              </div>
+              <i class="gm-signal" aria-hidden="true"></i>
+              <div class="gm-node">
+                <svg viewBox="0 0 90 65" aria-hidden="true"><path class="gm-stroke faint" d="M15 15L44 27l28-12M15 15L44 47l28-10M15 47l29-20 28 10M15 47l29 0 28-32"/><g class="gm-fill"><circle cx="15" cy="15" r="5"/><circle cx="15" cy="47" r="5"/><circle cx="44" cy="27" r="5"/><circle cx="44" cy="47" r="5"/><circle cx="72" cy="15" r="5"/><circle cx="72" cy="37" r="5"/></g></svg>
+                <b>Lab 残差网络</b><small>颜色、位置与邻域</small>
+              </div>
+              <i class="gm-signal" aria-hidden="true"></i>
+              <div class="gm-node">
+                <svg viewBox="0 0 90 65" aria-hidden="true"><path class="gm-stroke faint" d="M17 9h56v46H17zM31 9v46m14-46v46m14-46v46M17 24h56m-56 16h56"/><path class="gm-stroke warm gm-tile-pulse" d="M45 24h14v16H45z"/><path class="gm-stroke" d="M17 40h14v15H17z"/></svg>
+                <b>原尺寸分块渲染</b><small>各分块共用全图坐标</small>
+              </div>
+              <i class="gm-signal" aria-hidden="true"></i>
+              <div class="gm-node gm-final-node">
+                <svg viewBox="0 0 90 65" aria-hidden="true"><path class="gm-stroke faint" d="M13 13h64v41H13z"/><circle class="gm-fill" cx="58" cy="26" r="5"/><path class="gm-stroke warm" d="M14 49l21-17 15 12 12-9 15 13"/><path class="gm-stroke" d="M22 43l13-11 15 12 12-9"/></svg>
+                <b>基础仿色结果 O</b><small>保留原片尺寸</small>
+              </div>
+            </div>
+            <div class="gm-mode-stack">
+              <div class="gm-fast-output" data-mode-copy="fast">
+                <b>按原尺寸导出</b>
+                <small>也可保存快速工程，之后继续精细处理。</small>
+              </div>
+              <div class="gm-fine-extension" data-fine-extension hidden>
+                <div><span>O → P</span><b>局部偏移场</b><small>在参考尺度拟合剩余的 RGB 色差</small></div>
+                <span class="gm-extra-arrow" aria-hidden="true">→</span>
+                <div><span>O + [L(P) − L(O)]</span><b>差值重建</b><small>加回滤波差值，导出原尺寸结果</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="gm-mode-info" id="modes">
+            <div class="gm-segments gm-dark-segments" role="group" aria-label="查看算法模式">
+              <button type="button" data-engine-mode="fast" aria-pressed="true">快速</button>
+              <button type="button" data-engine-mode="fine" aria-pressed="false">精细</button>
+            </div>
+            <div class="gm-mode-stack">
+              <div data-mode-copy="fast"><h3>同一种颜色，可以按场景分别处理。</h3><p>天空与岩壁哪怕有相近的颜色，也可能需要不同的调色幅度。模型把归一化 D65 Lab 颜色、全图位置和 3×3 邻域放在一起，预测每个位置的 Lab 变化量。训练时还会对输入颜色施加小幅扰动作为探针，约束调色曲线的曲率与增益。</p></div>
+              <div data-mode-copy="fine" hidden><h3>沿着原来的画面，细调局部颜色。</h3><p>在基础结果上拟合平滑的双线性 RGB 偏移场，再对校正前后的全图分别做局部拉普拉斯滤波，把滤波差值加回基础结果。</p></div>
+            </div>
+            <a href="paper-status.html">阅读技术论文 <span class="paper-pending">待上线</span></a>
+          </div>
+        </div>
+        <details class="gm-technical-detail">
+          <summary>展开算法来源、参数与重建公式</summary>
+          <p>研究前期比较了全局颜色映射、BGU、SA-LUT 和 SM-LUT 等方法。带 3 × 3 邻域的 INRetouch 在局部调色较强的开发案例中表现突出。GradeMirror 沿用颜色、位置和邻域一起建模的思路，在独立实现中加入 Lab 域残差、训练时的响应约束，以及精细阶段的局部校正和差值重建。</p>
+          <p>基础网络的颜色支路和位置支路各为两层 1×1 卷积、32 通道，融合后为 64 通道。训练在长边 512 的图对上进行，原尺寸推理读取邻域并保留全图坐标。精细阶段的局部项按参考尺度拟合，再展开至原尺寸。</p>
+          <p>记基础结果为 <var>O</var>，局部校正结果为 <var>P</var>。最终输出为 <var>O</var> + [<var>L</var>(<var>P</var>) − <var>L</var>(<var>O</var>)]，<var>L</var> 是局部拉普拉斯滤波。<a href="index.html#method">查看完整流程图 ↗</a></p>
+        </details>
+      </div>
+    </section>
+
+    <section class="gm-section gm-detail" id="detail" aria-labelledby="detail-title">
+      <div class="shell gm-detail-grid">
+        <div>
+          <p class="gm-kicker">细节保真</p><h2 id="detail-title">把局部色差加回去，<br>保留<span class="gm-title-phrase">原尺寸底图。</span></h2>
+          <p class="gm-detail-lead">精细模式用平滑的 RGB 偏移场补足基础结果的局部色差。它在同一尺度对校正前后的结果各做一次边缘感知滤波，最后只把两者的有符号差值加回基础结果。</p>
+          <p>成片沿用原片的像素网格与构图，色值会随调色改变。检查时可以对着原片放大看岩峰轮廓、星点和亮暗过渡。</p>
+          <div class="gm-detail-links"><a href="paper-status.html">局部校正的原理 <span class="paper-pending">待上线</span></a><a href="assets/figures/combination.webp" target="_blank" rel="noopener">更多局部对照 ↗</a></div>
+        </div>
+        <figure class="gm-difference" aria-label="分别滤波局部校正前后的结果，取有符号差值，加回原尺寸基础结果">
+          <div class="gm-difference-top"><span>精细模式</span><span>局部拉普拉斯差值重建</span></div>
+          <div class="gm-difference-tracks">
+            <div><span>基础结果</span><b>O</b><span aria-hidden="true">→</span><strong>L(O)</strong></div>
+            <div><span>局部校正后</span><b>P</b><span aria-hidden="true">→</span><strong>L(P)</strong></div>
+          </div>
+          <div class="gm-difference-merge"><span>取差值</span><b>L(P) − L(O)</b></div>
+          <div class="gm-difference-final"><span>加回基础结果</span><b>O + [L(P) − L(O)]</b></div>
+          <figcaption>两条支路分别滤波，<var>L</var> 表示局部拉普拉斯滤波。</figcaption>
+        </figure>
+        <article class="galaxy-case" aria-labelledby="galaxy-title">
+          <p class="eyebrow">银河 · 快速与精细</p>
+          <h3 id="galaxy-title">看同一片星云，精细多修了哪里？</h3>
+          <figure class="galaxy">
+            <div class="galaxy-grid">
+              <div><img src="assets/showcase/galaxy-ref.webp" width="330" height="330" loading="lazy" alt="银河同景调色参考的银心与尘带局部"><span>同景参考</span></div>
+              <div><img src="assets/showcase/galaxy-fast.webp" width="330" height="330" loading="lazy" alt="快速对应的银河基础仿色结果局部"><span>快速</span></div>
+              <div><img src="assets/showcase/galaxy-fine.webp" width="330" height="330" loading="lazy" alt="精细对应的银河局部校正与重建结果"><span>精细</span></div>
+            </div>
+            <figcaption>银河研究样例 · 同一片星云的放大对照。可留意粉紫亮斑、暖色星云和它们之间的尘带。</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="gm-section gm-workflow" id="workflow" aria-labelledby="workflow-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">Windows 桌面工作台</p><h2 id="workflow-title"><span class="gm-title-phrase">看全图，</span><wbr><span class="gm-title-phrase">也能看清一处纹理。</span></h2></div>
+          <p>在 GradeMirror 中导入原片和选好的参考图。缩小看整体的色调与明暗，放大到 1:1 对照原片和结果的同一处边缘、纹理或星点。</p>
+        </div>
+        <figure class="gm-workbench">
+          <a href="assets/showcase/workbench.webp" target="_blank" rel="noopener" aria-label="打开 GradeMirror 工作区大图"><img src="assets/showcase/workbench.webp" alt="GradeMirror v0.1.0 工作台示意，左侧为山景原片，右侧为同景调色参考" width="1440" height="880" loading="lazy"></a>
+          <figcaption><span>v0.1.0 工作台示意 · 雾中岩峰原片与同景稿</span><a href="assets/showcase/workbench.webp" target="_blank" rel="noopener">查看大图 ↗</a></figcaption>
+        </figure>
+        <div class="gm-feature-row">
+          <article><h3>两张图，检查好再开始</h3><p>拖入原片和调色参考。程序在计算前检查格式、构图比例和资源。需要更换素材时，可在材料栏换图。</p></article>
+          <article><h3>全图与 1:1 各有用处</h3><p>在原图、参考和结果之间切换布局。先看整体调色效果，再联动平移原图与结果的 1:1 局部，检查边缘与细节。</p></article>
+          <article><h3>调好强度，按原尺寸另存</h3><p>按需要调整仿色强度。结果仍保留在内存中时，可以继续调整强度和导出，无需重新拟合。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gm-section gm-project" id="project" aria-labelledby="project-title">
+      <div class="shell gm-project-grid">
+        <div>
+          <p class="gm-kicker">保存与恢复</p><h2 id="project-title"><span class="gm-title-phrase">存下配方，</span><wbr><span class="gm-title-phrase">随时接着修。</span></h2>
+          <p class="gm-project-lead">一次拟合完成后，工程会记录素材身份和算法参数。如果原片的位置发生变化，可以重新定位，程序会核对文件身份。</p>
+          <dl class="gm-project-points">
+            <div><dt>图在内存时，继续看图</dt><dd>全图预览、局部查看、强度调整和导出都可使用内存中保留的同一份结果。</dd></div>
+            <div><dt>收工后，用配方恢复</dt><dd>打开兼容工程时按保存的路线重渲染。精细工程还会保留已求出的局部系数。</dd></div>
+            <div><dt>有问题，导出诊断</dt><dd>从帮助菜单保存诊断记录，便于查看任务阶段、设备选择和资源拒绝原因。</dd></div>
+          </dl>
+        </div>
+        <figure class="gm-recipe-figure" aria-label="工程保存和结果恢复流程">
+          <div class="gm-recipe-cap"><span>本地工程</span><span>.grademirror</span></div>
+          <div class="gm-recipe-files">
+            <div><span class="gm-file-icon">↳</span><strong>素材身份</strong><small>原图、参考和文件校验</small></div>
+            <div><span class="gm-file-icon">≋</span><strong>色彩配方</strong><small>模型参数、局部系数与后端</small></div>
+          </div>
+          <div class="gm-recipe-bus" aria-hidden="true"></div>
+          <div class="gm-recipe-result"><strong>恢复原尺寸结果</strong><small>看图 · 调强度 · 导出</small></div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="gm-section gm-compute" id="devices" aria-labelledby="devices-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">计算设备</p><h2 id="devices-title"><span class="gm-title-phrase">让程序先看资源，</span><wbr><span class="gm-title-phrase">再接手照片。</span></h2></div>
+          <p>「设备与运行状态」会显示探测结果。选路涉及图像尺寸、模式、RAM、Windows 提交额度和显卡可用显存。</p>
+        </div>
+        <div class="gm-route-board" aria-label="快速与精细在不同设备上的分工">
+          <div class="gm-route-title"><span>处理阶段</span><span>拟合 / 原尺寸渲染</span><span>精细后处理</span></div>
+          <div><b>CPU</b><span class="gm-chip cpu">CPU</span><span class="gm-chip cpu">CPU</span></div>
+          <div><b>NVIDIA</b><span class="gm-chip gpu">GPU</span><span class="gm-chip gpu">GPU 滤波</span></div>
+          <div><b>Hybrid</b><span class="gm-chip gpu">GPU</span><span class="gm-chip cpu">CPU</span></div>
+          <p>精细路线还包括局部系数求解与编解码，这些环节也需要主机参与。图中展示的是主要计算阶段。</p>
+        </div>
+        <div class="gm-compute-notes">
+          <p><strong>CPU 版与 GPU 版</strong> 都可以本地运行。CPU 版适合没有兼容 NVIDIA 显卡的机器。常做大图或精细仿色，有兼容显卡可优先考虑 GPU 版。Auto 优先选择通过检查的 NVIDIA 路线，资源不足时按提示复查或选择可用的 CPU 路线。</p>
+          <p><strong>显式选路</strong> CPU 可独立完成快速与精细。NVIDIA 需与 CUDA 12.4 运行时兼容。Hybrid 是受支持精细任务的单独路线，需显式选择并通过资源与配方检查。</p>
+        </div>
+
+        <details class="timing-detail">
+          <summary>查看一次 CPU／GPU 同机计时</summary>
+          <p>同一张 2400 万像素照片的开发测试，i5‑12600K（4 线程）与 RTX 3070 Ti（8 GB）。</p>
+          <div class="timings">
+            <table>
+              <thead><tr><th scope="col">操作</th><th scope="col">CPU</th><th scope="col">GPU</th></tr></thead>
+              <tbody><tr><th scope="row">首次快速</th><td>9 分 36 秒</td><td>1 分 10 秒</td></tr><tr><th scope="row">快速＋精细</th><td>24 分 05 秒</td><td>2 分 43 秒</td></tr></tbody>
+            </table>
+          </div>
+          <p>包含预览、JPEG 导出和读回。第二行为两步合计，实际耗时随配置与照片变化。</p>
+        </details>
+
+        <div class="gm-compat" id="compatibility">
+          <div class="gm-heading">
+            <div><p class="gm-kicker">照片兼容性</p><h2>把原尺寸<span class="gm-title-phrase">留到最后。</span></h2></div>
+            <p>每张图最长边至少 512 像素，输入上限为 <strong>2.1 亿像素</strong>。大图能否处理取决于模式、图片和可用资源。</p>
+          </div>
+          <div class="gm-compat-grid">
+            <div class="gm-table-wrap" tabindex="0" role="region" aria-label="支持的图像格式">
+              <table><thead><tr><th scope="col">格式</th><th scope="col">位深与通道</th></tr></thead><tbody>
+                <tr><th scope="row">JPEG / JPG</th><td>8 位 RGB</td></tr>
+                <tr><th scope="row">PNG</th><td>8／16 位 RGB</td></tr>
+                <tr><th scope="row">TIFF / TIF</th><td>8／16 位 RGB</td></tr>
+                <tr><th scope="row">WebP / BMP</th><td>8 位 RGB，单帧</td></tr>
+              </tbody></table>
+            </div>
+            <div class="gm-format-notes">
+              <p><strong>导出。</strong>结果按原片格式、位深与像素尺寸另存。ICC 与摄影 EXIF 的实际保留范围随格式而异。</p>
+              <p><strong>色彩。</strong>以 sRGB 工作。RAW、HEIC／AVIF、非 sRGB 色彩配置的图片与透明图需先转换成兼容的 RGB 文件。</p>
+              <p><strong>验证范围。</strong>最新版本已在本机使用一张富士 102 MP（11,648 × 8,736 像素）16 位 TIFF 通过全流程测试，覆盖快速仿色、精细处理、原尺寸导出和工程重建。可用尺寸仍取决于处理路线与机器资源。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gm-section gm-cli" id="cli" aria-labelledby="cli-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">命令行接口</p><h2 id="cli-title"><span class="gm-title-phrase">让 LLM 串起</span><wbr><span class="gm-title-phrase">调色全流程。</span></h2></div>
+          <p>用自然语言交代想要的效果，支持工具调用的大语言模型（LLM）就可以协调选图、生图和本地仿色。便携版提供 <code>GradeMirror-CLI.exe</code>，供 LLM 调用 GradeMirror 的图像处理能力。</p>
+        </div>
+        <ol class="gm-cli-flow" aria-label="LLM 调色工作流">
+          <li><strong>选图</strong><p>按你的要求挑选要调色的原片，以及能体现目标风格的参考照片。</p></li>
+          <li><strong>生成同景参考</strong><p>调用生图模型，按原片的构图试出接近参考照片的色调与明暗。</p></li>
+          <li><strong>把色彩迁移回原片</strong><p>将原片和生成的同景参考交给 GradeMirror，由它在原片上应用调色效果并按原尺寸导出。</p></li>
+        </ol>
+        <p class="gm-skill-note">基于 GradeMirror 的调色 Skill 正在开发中，敬请期待。<a href="https://github.com/PixelCraft2026/GradeMirror/blob/main/README.zh-CN.md#工程与命令行">查看 CLI 用法 ↗</a></p>
+        <div class="gm-cli-grid">
+          <div class="gm-terminal">
+            <div class="gm-terminal-bar"><span>PowerShell</span><button type="button" data-copy-code>复制命令</button></div>
+            <pre tabindex="0"><code id="gm-cli-example"># 检查版本、运行时和设备
+.\GradeMirror-CLI.exe doctor --json
+
+# 检查一个保存工程的 CPU 重放路线
+.\GradeMirror-CLI.exe plan --project ".\example.grademirror" &#96;
+  --operation replay --backend cpu --json
+
+# 用生成的同景参考为原片仿色，并按原尺寸导出
+.\GradeMirror-CLI.exe fit --source ".\original.tif" &#96;
+  --reference ".\reference.png" --mode fast --backend auto &#96;
+  --out ".\new.grademirror" --export ".\matched.tif" &#96;
+  --alpha 0.75 --json</code></pre>
+            <span class="gm-copy-status" aria-live="polite" data-copy-status></span>
+          </div>
+          <dl class="gm-commands">
+            <div><dt><code>plan / fit / refine / replay</code></dt><dd>规划、首次仿色、继续精细处理、恢复保存工程。</dd></div>
+            <div><dt><code>submit / status / events / cancel</code></dt><dd>提交任务、查询状态与事件、取消执行。任务和执行尝试可分别标识。</dd></div>
+            <div><dt><code>result preview / export / release</code></dt><dd>读取预览、指定强度导出、释放内存中保留的结果。各命令可使用 <code>--help</code> 查看参数。</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+    <section class="gm-section downloads" id="download" aria-labelledby="download-title">
+      <div class="shell">
+        <header class="gm-heading">
+          <div><p class="gm-kicker">GradeMirror v0.1.0 · Windows x64 便携版</p><h2 id="download-title">下载 GradeMirror。</h2></div>
+          <p>CPU 版和 GPU 版任选一套。解压后双击程序目录里的 <code>GradeMirror.exe</code>，所需的运行库已随包提供。</p>
+        </header>
+        <div class="download-grid">
+          <article class="download-card">
+            <h3>CPU 版</h3>
+            <p>没有兼容的 NVIDIA 显卡，或想先跑一次快速仿色，可以选这个版本。一个 ZIP，完整解压后打开 <code>GradeMirror-CPU</code> 文件夹。</p>
+            <div class="download-actions">
+              <a class="button button-dark" href="https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Windows-CPU.zip">下载 CPU 版 <span>371 MB</span></a>
+            </div>
+          </article>
+          <article class="download-card">
+            <h3>NVIDIA GPU 版</h3>
+            <p>适合有兼容 NVIDIA 显卡和驱动、常处理大图或使用精细模式的用户。下载两个 ZIP，分别解压到同一目标目录，再进入共同的 <code>GradeMirror-GPU</code> 文件夹。</p>
+            <div class="download-actions">
+              <a class="button button-dark" href="https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Windows-GPU-1.zip">下载 GPU 第 1 包 <span>1.45 GB</span></a>
+              <a class="button button-dark" href="https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Windows-GPU-2.zip">下载 GPU 第 2 包 <span>1.45 GB</span></a>
+            </div>
+          </article>
+        </div>
+        <nav class="download-links" aria-label="下载相关说明">
+          <a href="https://github.com/PixelCraft2026/GradeMirror/blob/main/docs/DOWNLOAD.md">解压步骤与组件条款 ↗</a>
+          <a href="https://github.com/PixelCraft2026/GradeMirror/releases/tag/v0.1.0">发行说明与文件校验 ↗</a>
+          <a href="https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Source-and-ThirdParty.zip">下载源码与第三方材料 <span>156 MB</span></a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-brand">
+        <img class="footer-mark" src="assets/showcase/brand-mark.png" width="282" height="298" loading="lazy" alt="">
+        <p class="footer-wordmark">GradeMirror</p>
+        <div class="actions">
+          <a class="button button-light" href="https://github.com/PixelCraft2026/GradeMirror">GitHub 仓库 <span aria-hidden="true">↗</span></a>
+          <a class="button footer-support" href="https://buymeacoffee.com/pixelcraft2026">支持 GradeMirror <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <p>Windows x64 · GradeMirror 自有代码采用 AGPL‑3.0‑only</p>
+        <nav class="footer-links" aria-label="相关链接"><a href="index.html">参考仿色研究</a></nav>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+

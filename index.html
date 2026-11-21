@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="改进 INRetouch 的高分辨率参考仿色研究与 GradeMirror 桌面工具。了解软件工作流程，查看论文、算法图与实验对照。">
+  <meta name="theme-color" content="#132321">
+  <title>高分辨率参考仿色 · INRetouch 研究</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="research.css?rev=8">
+  <script defer src="site.js"></script>
+  <script defer src="research-comparison.js?rev=9"></script>
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="research-home">
+  <a href="#main" class="skip">跳到正文</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#main"><img src="assets/mark.svg" width="27" height="27" alt="">参考仿色研究</a>
+      <nav aria-label="主导航">
+        <a href="#background">背景</a><a href="#method">方法</a><a href="#method-comparison">方法对照</a><a href="#adaptability">跨风格</a><a href="#evidence">实验</a><a href="#resources">论文与图件</a>
+      </nav>
+      <a class="research-product" href="grademirror.html">GradeMirror <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">生成式参考 · INRetouch 改进研究</p>
+          <h1>高分辨率<br><em>参考仿色</em></h1>
+          <p class="hero-description">从同景参考图学习颜色与明暗的变化，再以原片像素为基础渲染成片。通过局部色彩校正与差值重建，研究参考拟合和细节保留之间的取舍。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="paper-status.html">阅读论文 <span class="paper-pending">待上线</span></a>
+            <a class="button secondary" href="#method-comparison">拖动对照 <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <figure class="hero-figure">
+          <div class="comparison" data-comparison>
+            <img class="compare-image" src="assets/source.webp" srcset="assets/source.webp 1024w, assets/grademirror/ridge-original.webp 1536w" sizes="(max-width: 720px) calc(100vw - 36px), (max-width: 800px) calc(100vw - 56px), (max-width: 1392px) 59vw, 760px" alt="雾中山峰的原图，冷色岩面与白色云雾" width="1024" height="1536" fetchpriority="high">
+            <img class="compare-image rendered" src="assets/result.webp" srcset="assets/result.webp 1024w, assets/grademirror/ridge-result.webp 1536w" sizes="(max-width: 720px) calc(100vw - 36px), (max-width: 800px) calc(100vw - 56px), (max-width: 1392px) 59vw, 760px" alt="同一山峰的仿色结果，暖色光照映在岩壁与云雾上" width="1024" height="1536" decoding="async">
+            <span class="image-label left">原图</span>
+            <span class="image-label right">仿色结果</span>
+            <div class="compare-handle" aria-hidden="true"><span>‹ ›</span></div>
+            <input aria-label="调整原图与仿色结果的分界位置" type="range" min="0" max="100" value="47">
+          </div>
+          <figcaption><span><b>雾中山峰</b> · 同位置裁切</span><span>拖动分界线 <span aria-hidden="true">↔</span></span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section research-background" id="background" aria-labelledby="background-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">研究背景</p><h2 id="background-title">把想要的调色效果带回原片</h2></div>
+          <p>同样是灰色，天空可以偏冷，迎光的岩壁可以偏暖，中间的雾气还要自然过渡。这个例子说明了参考仿色的难点：变换既要看像素颜色，也要看它在场景里是什么、位于哪里。</p>
+        </div>
+        <div class="research-background-grid">
+          <article>
+            <h3>为什么用扩散式编辑来调色</h3>
+            <p>试验用 Image 2.5 根据风格图或文字指令，为原片制作同景调色稿。传统全局颜色映射通常对相近的输入色值施加相近的变换。扩散模型可以结合主体、材质和光照，判断哪些区域要调、各调多少，并协调区域之间的过渡。</p>
+            <p>让大语言模型调用曲线、色轮和蒙版时，复杂的局部效果需要拆成多个相互配合的调整。扩散式编辑则能在一张稿里同时处理受光岩壁、背光山脊和穿过两者的薄雾，把整套色彩与明暗变化呈现出来，供后续仿色学习。</p>
+          </article>
+          <article><h3>用同景参考为原片调色</h3><p>生成参考比高像素原片分辨率低，构图虽接近，岩面、云层或细小边缘仍可能被重绘，位置也可能略有偏移。我们从参考和原片的对应位置学习调色变换，再用原片的像素、坐标与邻域按原尺寸渲染。</p></article>
+          <article><h3>从 INRetouch 出发</h3><p>我们比较了 INRetouch、SM-LUT、BGU、PETAL 等多种方法。在研究最关注的强局部调色场景中，INRetouch 的整体表现最佳，因此选它作为改进起点。它能从一组同景图对中结合颜色、位置和邻域学习变换，也给颜色表示、映射稳定性和局部细节保留留下了进一步优化的空间。</p></article>
+        </div>
+        <div class="research-background-links">
+          <a class="research-text-link" href="paper-status.html">阅读候选方法与选型依据 <span class="paper-pending">待上线</span></a>
+          <a class="research-text-link" href="https://arxiv.org/abs/2412.03848">INRetouch 原论文（arXiv） ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="method">
+      <div class="section-heading">
+        <div><p class="eyebrow">研究方法</p><h2>从异景风格到原尺寸输出</h2></div>
+        <p>外部生图模型沿用原片构图，生成一张色调和明暗接近风格图的同景参考。仿色网络从两张图的对应位置学习变换，再将变换应用到原尺寸照片。</p>
+      </div>
+      <div class="workflow-gallery">
+        <figure><img src="assets/source.webp" alt="带冷色岩壁的原图" width="1024" height="1536" loading="lazy"><figcaption><b>原图</b><span>提供场景和结构</span></figcaption></figure>
+        <figure><a class="style-reference-link" href="https://maxrivephotography.com/pages/peru"><span>查看作品集 ↗</span></a><figcaption><b>风格参考</b><span>Siula Grande · 摄影师 Max Rive</span></figcaption></figure>
+        <figure><img src="assets/target.webp" alt="原图山景的暖色生成参考" width="1024" height="1536" loading="lazy"><figcaption><b>生成参考</b><span>提供同景仿色目标</span></figcaption></figure>
+        <figure><img src="assets/result.webp" alt="完成原尺寸仿色的山景" width="1024" height="1536" loading="lazy"><figcaption><b>原尺寸结果</b><span>经局部校正与重建</span></figcaption></figure>
+      </div>
+      <div class="research-method-grid">
+        <figure class="diagram">
+          <a href="assets/workflow.svg?rev=3" target="_blank" rel="noopener" aria-label="在新标签页查看完整流程图"><img src="assets/workflow.webp?rev=3" alt="四面板算法图。a 从异景风格图和原片生成同景参考；b 分别编码 Lab 与坐标，再预测颜色残差；c 以三点扰动约束映射曲率和增益；d 在参考尺度拟合局部偏移，用两次局部拉普拉斯滤波的差值重建原尺寸结果。" width="2400" height="1849" loading="lazy"></a>
+          <figcaption><span>同景参考、Lab 残差拟合、响应正则化与原尺寸重建</span><span><a href="assets/workflow.svg?rev=3" target="_blank" rel="noopener">查看矢量图 ↗</a><a href="assets/workflow.pdf?rev=3">流程图 PDF</a></span></figcaption>
+        </figure>
+        <div class="methods-list">
+          <article><h3>Lab 域残差建模</h3><p>在长边 512 像素的同景图对上拟合。网络分别编码归一化 CIELAB 颜色与全图坐标，再用 3×3 逐通道卷积引入邻域信息。网络预测应加到原片上的 Lab 变化量，主损失分别约束明度和色度分量。原尺寸分块渲染时，各块沿用全图坐标和邻域边界。</p><a href="paper-status.html">颜色表示与损失 <span class="paper-pending">待上线</span></a></article>
+          <article><h3>映射响应正则化</h3><p>训练时在 RGB 接口构造两份输入，分别施加正、负小幅中性扰动。同一网络处理未扰动和扰动后的三份输入，再用差分约束局部曲率与增益，以减少过渡中的突变和明暗次序反转。</p><a href="paper-status.html">响应探针与约束 <span class="paper-pending">待上线</span></a></article>
+          <article><h3>局部校正与差值重建</h3><p>基于参考尺度上的残余色差，拟合一个随位置平滑变化的双线性 RGB 偏移场。将偏移应用到原尺寸结果后，对校正前后分别做局部拉普拉斯滤波，再把两路滤波结果的差值加回基础仿色。</p><p class="research-equation" aria-label="结果等于基础仿色加上校正后与校正前的滤波差值"><i>Y</i> = <i>O</i> + [<i>L</i>(<i>P</i>) − <i>L</i>(<i>O</i>)]</p><a href="paper-status.html">求解与重建公式 <span class="paper-pending">待上线</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research-method-comparison" id="method-comparison" aria-labelledby="method-comparison-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">历史方法对照</p><h2 id="method-comparison-title">拖动对比同一处调色</h2></div>
+          <p>在同一张照片上切换方法。看全图时留意色调和明暗分布，切到局部再看岩壁、建筑立面或猫的毛发。两侧可独立选择，也可以把原片放在一侧作纹理参照。</p>
+        </div>
+        <div class="method-explorer" data-method-explorer>
+          <div class="method-compare-controls" data-controls hidden>
+            <label>场景 <select data-scene></select></label>
+            <label>视图 <select data-view><option value="detail">同位置局部</option><option value="full">完整照片</option></select></label>
+            <label>左侧 <select data-side="left"></select></label>
+            <label>右侧 <select data-side="right"></select></label>
+          </div>
+          <div class="method-compare-layout">
+            <figure class="method-compare-main">
+              <div class="comparison method-compare-frame" data-frame>
+                <img class="compare-image" data-photo="left" src="assets/comparisons/ridge-inretouch-detail.webp" alt="雾中岩峰局部 · INRetouch作者原实现" width="720" height="720" loading="lazy">
+                <img class="compare-image rendered" data-photo="right" src="assets/comparisons/ridge-ours-detail.webp" alt="雾中岩峰局部 · 本文完整组合" width="720" height="720" loading="lazy">
+                <span class="image-label left" data-label="left">INRetouch作者原实现</span><span class="image-label right" data-label="right">本文完整组合</span>
+                <div class="compare-handle" aria-hidden="true"><span>‹ ›</span></div>
+                <input type="range" min="0" max="100" value="50" aria-label="调整两种方法的图像分界位置">
+              </div>
+              <figcaption data-scene-caption>三座岩峰与云雾交界。观察暖色岩壁的覆盖范围，以及由受光面过渡到暗岩时的变化。</figcaption>
+            </figure>
+            <aside class="method-compare-aside" aria-label="调色参考与测量结果">
+              <figure>
+                <div class="method-reference-preview"><img data-reference src="assets/comparisons/ridge-reference-full.webp" alt="雾中岩峰的同景调色参考" width="1024" height="1536" loading="lazy"><span data-region hidden aria-hidden="true"></span></div>
+                <figcaption><span>同景调色参考 <small data-region-note hidden>框内对应当前局部</small></span><span data-reference-size>1024 × 1536</span></figcaption>
+              </figure>
+              <div class="method-compare-metrics" data-metrics hidden>
+                <h3>与参考图的 RGB MAE</h3>
+                <dl><div><dt>INRetouch作者原实现</dt><dd data-error="author"></dd></div><div><dt>本文基础模型</dt><dd data-error="base"></dd></div><div><dt>本文完整组合</dt><dd data-error="ours"></dd></div></dl>
+                <p>沿用论文表 5 的平均绝对误差，在整张参考图的尺度上计算。数值越低，色彩拟合越接近参考。纹理观感可用原片作对照。</p>
+              </div>
+              <p class="method-compare-scope" data-base-only hidden>本场景展示本文基础模型的保存结果。</p>
+            </aside>
+          </div>
+          <p class="method-compare-error" data-load-error role="status" hidden>这组对照图片未能载入。请重新选择场景或方法。</p>
+          <noscript><p class="method-compare-scope">启用 JavaScript 可切换场景和方法。论文图 7 与图 8 另有静态对照。</p></noscript>
+          <details class="method-panel" data-method-panel hidden>
+            <summary>展开当前场景的全部方法</summary>
+            <div class="method-panel-grid" data-method-grid></div>
+          </details>
+          <p class="method-compare-scope">各方法沿用开发阶段的配置，SA-LUT 使用历史 V-Log 适配。POT 结果与表 5 的 MAE 仅在雾中岩峰场景展示。<a href="paper-status.html">查看实验条件与表 5 <span class="paper-pending">待上线</span></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research-showcase" id="adaptability" aria-labelledby="adaptability-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">跨风格仿色</p><h2 id="adaptability-title">同一套方法，<br>迁移不同调色风格</h2></div>
+          <p>同一套方法能随参考图改变调色目标，既可以迁移整体配色和黑白灰阶，也可以迁移画面各处不同的冷暖与明暗。下面六组对照选自 15 组开发案例，每组都用自己的原图与同景参考拟合。</p>
+        </div>
+        <div class="research-scenes">
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/waterfront-original.webp" width="960" height="640" loading="lazy" alt="建筑框景中冷蓝色的水面与电塔原图"><span>原图</span></div>
+              <div><img src="assets/scenes/waterfront-reference.webp" width="960" height="640" loading="lazy" alt="柔和暖灰色的水岸与电塔参考"><span>同景参考</span></div>
+              <div><img src="assets/scenes/waterfront-result.webp" width="960" height="640" loading="lazy" alt="转向暖灰调的水岸基础仿色结果"><span>基础仿色</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>低饱和暖灰</h3><span>水岸与电塔</span></div><p>降低天空和水面的蓝色饱和度，把整张照片调成柔和的暖灰色。</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/campus-original.webp" width="960" height="640" loading="lazy" alt="红白建筑与草地的原图"><span>原图</span></div>
+              <div><img src="assets/scenes/campus-reference.webp" width="960" height="640" loading="lazy" alt="颜色更鲜明的建筑和草地参考图"><span>同景参考</span></div>
+              <div><img src="assets/scenes/campus-result.webp" width="960" height="640" loading="lazy" alt="红色建筑和草地的基础仿色结果"><span>基础仿色</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>鲜明红绿配色</h3><span>建筑与草地</span></div><p>提亮红色建筑和绿色草地，同时保持浅色墙面的色调相对中性。</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/monochrome-original.webp" width="480" height="720" loading="lazy" alt="墙边猫与红蓝色墙面的原图"><span>原图</span></div>
+              <div><img src="assets/scenes/monochrome-reference.webp" width="480" height="720" loading="lazy" alt="墙边猫的黑白调色参考"><span>同景参考</span></div>
+              <div><img src="assets/scenes/monochrome-result.webp" width="480" height="720" loading="lazy" alt="墙边猫从彩色转换为黑白的基础仿色结果"><span>基础仿色</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>黑白灰阶</h3><span>猫与几何墙面</span></div><p>把墙面的红蓝色块和猫的毛色转成黑白灰阶，保留亮墙与暗墙的明暗层次。</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/pinnacles-original.webp" width="480" height="720" loading="lazy" alt="冷色云雾中的岩峰原图"><span>原图</span></div>
+              <div><img src="assets/scenes/pinnacles-reference.webp" width="480" height="720" loading="lazy" alt="光照偏暖的云雾岩峰参考"><span>同景参考</span></div>
+              <div><img src="assets/scenes/pinnacles-result.webp" width="480" height="720" loading="lazy" alt="保留原片构图的云雾岩峰完整组合结果"><span>完整组合</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>局部冷暖分离</h3><span>雾中岩峰</span></div><p>把暖色带到受光岩壁和局部雾气，背光处保留偏冷的蓝灰色。</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/cloud-sea-original.webp" width="480" height="720" loading="lazy" alt="日光下蓝灰色峰群与白色云海的原图"><span>原图</span></div>
+              <div><img src="assets/scenes/cloud-sea-reference.webp" width="480" height="720" loading="lazy" alt="暗色天空与暖色云海的同景参考"><span>同景参考</span></div>
+              <div><img src="assets/scenes/cloud-sea-result.webp" width="480" height="720" loading="lazy" alt="暗色峰群和受光云雾的完整组合结果"><span>完整组合</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>低调高反差</h3><span>云海峰群</span></div><p>压暗天空和峰群，用暖色高光突出穿过云海的光带。</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/milky-way-original.webp" width="480" height="720" loading="lazy" alt="林地上方的银河原图"><span>原图</span></div>
+              <div><img src="assets/scenes/milky-way-reference.webp" width="480" height="720" loading="lazy" alt="暗天空中暖色的银心参考图"><span>同景参考</span></div>
+              <div><img src="assets/scenes/milky-way-result.webp" width="480" height="720" loading="lazy" alt="银河亮带和暗天空的完整组合结果"><span>完整组合</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>深色星空与暖色银心</h3><span>银河与林地</span></div><p>压低天空底色，突出偏橙紫的银河亮带，保留地平线附近的暖光。</p></figcaption>
+          </figure>
+        </div>
+        <div class="research-scene-note"><p>水岸、建筑和猫的案例展示基础仿色。岩峰、云海和银河的案例还加入了局部色彩校正与差值重建。</p><a href="paper-status.html">查看论文实验条件与完整对照 <span class="paper-pending">待上线</span></a></div>
+      </div>
+    </section>
+
+    <section class="evidence section" id="evidence">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">实验对照</p><h2>局部外观与参考拟合</h2></div>
+          <p>论文分析了 15 组反复使用的开发案例，其中六例有完整后处理对照。下方的 RGB MAE 降幅衡量与参考图的拟合程度，局部外观结论限定在已观察区域。</p>
+        </div>
+        <div class="findings">
+          <article>
+            <p class="finding-label">六个开发案例 · 浮点输出</p>
+            <p class="number">3.30–9.75%</p>
+            <h3>完整组合相对基础仿色的 MAE 降幅</h3>
+            <p>以参考尺度 RGB MAE 衡量。单独局部校正下降 5.63–15.45%，差值重建后六例的误差均有所回升。</p>
+          </article>
+          <article>
+            <p class="finding-label">三个开发案例 · 保存的显示图</p>
+            <p class="number">9.94–21.77%</p>
+            <h3>完整组合相对历史作者版的 MAE 降幅</h3>
+            <p>在统一的参考图尺度上重新计算 RGB MAE。两条流程的训练尺寸、种子及 JPEG 编码有差异，结果反映整体流程差异。</p>
+          </article>
+        </div>
+        <div class="evidence-selector" data-gallery>
+          <div class="gallery-nav" aria-label="选择对照图">
+            <a href="#domain-panel" data-panel-link>颜色域</a>
+            <a href="#response-panel" data-panel-link>响应正则化</a>
+            <a href="#combination-panel" data-panel-link>局部校正与重建</a>
+            <a href="#historical-panel" data-panel-link>历史作者版</a>
+          </div>
+          <figure id="domain-panel" data-panel>
+            <a href="assets/figures/domain.webp" target="_blank" rel="noopener"><img src="assets/figures/domain.webp" width="2400" height="2533" loading="lazy" alt="原图、参考图、RGB 域与 Lab 域结果在衣着、山峰和星核上的对照"></a>
+            <figcaption><span>在响应正则化条件相同的情况下，对比将输入、残差和主损失统一设为 RGB 或 Lab 的结果。</span><a href="assets/figures/domain.webp" target="_blank" rel="noopener">查看大图 ↗</a></figcaption>
+          </figure>
+          <figure id="response-panel" data-panel>
+            <a href="assets/figures/response.webp" target="_blank" rel="noopener"><img src="assets/figures/response.webp" width="2400" height="2533" loading="lazy" alt="山体、天空和星野在有无映射响应正则化时的局部对照"></a>
+            <figcaption><span>固定 Lab 域，比较有无映射响应正则化时的过渡和纹理。</span><a href="assets/figures/response.webp" target="_blank" rel="noopener">查看大图 ↗</a></figcaption>
+          </figure>
+          <figure id="combination-panel" data-panel>
+            <a href="assets/figures/combination.webp" target="_blank" rel="noopener"><img src="assets/figures/combination.webp" width="2400" height="1767" loading="lazy" alt="雾中山峰和礁湖星云的局部校正与差值重建组合前后对照"></a>
+            <figcaption><span>原图、参考图、基础仿色与局部校正加差值重建的组合结果。</span><a href="assets/figures/combination.webp" target="_blank" rel="noopener">查看大图 ↗</a></figcaption>
+          </figure>
+          <figure id="historical-panel" data-panel>
+            <a href="assets/figures/author-local.webp" target="_blank" rel="noopener"><img src="assets/figures/author-local.webp" width="2400" height="2179" loading="lazy" alt="三个场景的原图、参考、历史作者实现、本文基础模型与完整组合局部对照"></a>
+            <figcaption><span>历史作者实现与本文两种输出的局部对照。</span><a href="assets/figures/author-full.webp" target="_blank" rel="noopener">查看五列全图对照 ↗</a></figcaption>
+          </figure>
+        </div>
+        <div class="evidence-note">
+          <a href="paper-status.html">查看实验表格与适用范围 <span class="paper-pending">待上线</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell resources" id="resources">
+      <div><h2>论文与图件</h2></div>
+      <div class="resource-links">
+        <a href="paper-status.html"><span><b>在线论文</b><small>中文全文 · 公式、图表和参考文献</small></span> <span class="paper-pending">待上线</span></a>
+        <a href="paper-status.html"><span><b>论文 PDF</b><small>含完整算法流程图</small></span> <span class="paper-pending">待上线</span></a>
+        <a href="assets/workflow.svg?rev=3"><span><b>算法流程图</b><small>矢量 SVG</small></span><span aria-hidden="true">↗</span></a>
+        <a href="assets/cover.webp"><span><b>宣传封面</b><small>项目照片与既有仿色结果</small></span><span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>参考仿色研究</span><a href="#main">返回顶部 ↑</a></div></footer>
+</body>
+</html>

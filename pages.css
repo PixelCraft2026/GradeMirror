@@ -1,0 +1,14 @@
++.paper-pending { display: inline-block; margin-inline-start: .35em; white-space: nowrap; font-size: .76em; font-weight: 650; }
+.resource-links a .paper-pending { align-self: start; }
+.style-reference-link, .style-reference-swatch {
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  background: linear-gradient(125deg, #bb8464 0%, #e0b795 34%, #767b86 66%, #324454 100%);
+}
+.style-reference-link { aspect-ratio: 1; text-align: center; }
+.style-reference-link span { padding: 6px 10px; border-radius: 999px; color: white; background: #18212b; }
+.style-reference-swatch { aspect-ratio: 3.5; }
+.paper-status { min-height: 60vh; }
+.paper-status p { margin-top: 16px; }
+@media (max-width: 480px) { .style-reference-swatch { aspect-ratio: 2; } }
