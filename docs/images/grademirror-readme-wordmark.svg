@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="272" height="48" viewBox="0 0 272 48">
+  <title>GradeMirror</title>
+  <style>
+    text { fill: #1f2328; }
+    @media (prefers-color-scheme: dark) {
+      text { fill: #f0f6fc; }
+    }
+  </style>
+  <text x="136" y="38" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" textLength="270" lengthAdjust="spacingAndGlyphs">GradeMirror</text>
+</svg>

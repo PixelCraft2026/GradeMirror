@@ -1,20 +1,32 @@
-# GradeMirror
+<p align="center">English · <a href="README.zh-CN.md" lang="zh-CN">简体中文</a></p>
 
-[简体中文](README.zh-CN.md) · English
+<h1 align="center"><img src="docs/images/grademirror-readme-wordmark.svg" width="272" height="48" alt="GradeMirror"></h1>
 
-**Mirror an AI-generated grade back onto your original photograph.**
+<p align="center"><strong>Mirror an AI-generated grade back onto your original photograph.</strong></p>
+
+<p align="center">
+  <strong>v0.1.0 first preview</strong> · Windows x64 · Free download · In-app version <code>0.1.0-preview.50</code>
+</p>
+
+<p align="center">
+  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">Website</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">Research</a></strong>
+</p>
+
+<p align="center">
+  <a href="#download-and-launch">Download and launch</a> ·
+  <a href="#make-your-first-match">Quick start</a> ·
+  <a href="#fast-and-fine">Fast and Fine</a> ·
+  <a href="#formats-and-devices">Formats and devices</a> ·
+  <a href="#research-and-algorithm">Research and algorithm</a> ·
+  <a href="#source-license-and-feedback">Source, license and feedback</a> ·
+  <a href="#support-grademirror">Support GradeMirror</a>
+</p>
 
 GradeMirror is a local Windows tool for matching a photograph to a graded reference of the same scene. It learns the change in color and local tone from the two images, then renders the grade from the original pixels at the original dimensions. Use a reference made in an external image generator or a hand-graded proof. With the image pair ready, matching and export run locally.
 
 Image generation models have shown **extraordinary potential for photographic color grading**. They offer a more powerful understanding of scene semantics than almost all traditional image-processing algorithms, enabling them to consider subjects, materials and lighting when creating color and tonal changes across different regions and coordinating the transitions between them. Compared with a large language model applying curves, color wheels and masks one adjustment at a time, they can present a complete set of local changes in one draft, without first breaking the image into regions and specifying each parameter. Generated images, however, can have limited resolution or redrawn texture and detail, which can hinder their use in professional photographic post-production.
 
 I developed GradeMirror to transfer an image generation model's grade to the original photograph, enabling photographers to apply its powerful color-grading capabilities while losing almost none of the original image's resolution or texture detail.
-
-**v0.1.0 first preview** · Windows x64 · Free download · In-app version `0.1.0-preview.50`
-
-[Website](https://pixelcraft2026.github.io/GradeMirror/grademirror.html) · [Research](https://pixelcraft2026.github.io/GradeMirror/)
-
-[Download and launch](#download-and-launch) · [Quick start](#make-your-first-match) · [Fast and Fine](#fast-and-fine) · [Formats and devices](#formats-and-devices) · [Research and algorithm](#research-and-algorithm) · [Source, license and feedback](#source-license-and-feedback) · [Support GradeMirror](#support-grademirror)
 
 ## See the grade
 
@@ -137,7 +149,7 @@ Of the 15 cases used in development and method selection, six have complete post
 
 ## Outlook
 
-In a small set of preliminary tests on tasks such as color matching and white balance correction from a single JPEG, image2.6 and GradeMirror produced better results than the state-of-the-art methods included in the comparisons. These early results show the potential of this workflow for a wider range of image processing tasks. Most of the credit goes to image2.6, which creates the reference for the color grade or white balance correction. GradeMirror adds one final step. It transfers the reference's color and tone back to the original and renders at the original resolution with the original texture, addressing a limitation of AI image generation. In the near future, this division of labor between generative models and specialized algorithms could change how we approach many image processing problems.
+In a small set of preliminary tests on tasks such as color matching and white balance correction from a single JPEG, image2.6 and GradeMirror produced better results than the state-of-the-art methods included in the comparisons. These early results show the potential of this workflow for a wider range of image processing tasks. The research is ongoing, and we'll share more details once we have results from the next stage. Most of the credit goes to image2.6, which creates the reference for the color grade or white balance correction. GradeMirror adds one final step. It transfers the reference's color and tone back to the original and renders at the original resolution with the original texture, addressing a limitation of AI image generation. In the near future, this division of labor between generative models and specialized algorithms could change how we approach many image processing problems.
 
 ## Source, license and feedback
 

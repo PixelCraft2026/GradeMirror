@@ -1,20 +1,32 @@
-# GradeMirror
+<p align="center">简体中文 · <a href="README.md" lang="en">English</a></p>
 
-简体中文 · [English](README.md)
+<h1 align="center"><img src="docs/images/grademirror-readme-wordmark.svg" width="272" height="48" alt="GradeMirror"></h1>
 
-**把生图模型的调色效果，镜像回原片。**
+<p align="center"><strong>把生图模型的调色效果，镜像回原片。</strong></p>
+
+<p align="center">
+  <strong>v0.1.0 首次预览版</strong> · Windows x64 · 免费下载 · 程序内版本 <code>0.1.0-preview.50</code>
+</p>
+
+<p align="center">
+  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">网站</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">研究</a></strong>
+</p>
+
+<p align="center">
+  <a href="#下载与启动">下载与启动</a> ·
+  <a href="#第一次仿色">快速上手</a> ·
+  <a href="#快速与精细">快速与精细</a> ·
+  <a href="#格式与设备">格式与设备</a> ·
+  <a href="#研究与算法">研究与算法</a> ·
+  <a href="#源码许可与反馈">源码、许可与反馈</a> ·
+  <a href="#支持-grademirror">支持 GradeMirror</a>
+</p>
 
 GradeMirror 是一款在 Windows 本地运行的参考仿色工具。导入原片和同一场景的调色参考，它会从这一对图学习色彩与局部明暗的变化，再以原片像素为基础，按原尺寸渲染成片。参考可以由外部生图模型制作，也可以是手工调好的小样。准备好图对后，仿色和导出都在本机完成。
 
 随着技术的发展，生图模型在照片调色中展现出了不可思议的潜力。它们具备比几乎所有传统图像处理算法更强大的场景语义理解能力，能够结合主体、材质和光照，为不同区域构思色彩与明暗变化，并协调区域之间的过渡。而相比大语言模型逐项调用曲线、色轮和蒙版，它又可以一次呈现整套局部效果，省去事先拆分区域和逐个指定参数。但目前生图模型的结果存在分辨率低，纹理细节重绘等局限，阻碍了其应用在专业摄影后期创作中。
 
 于是我开发出了GradeMirror， 实现了一套将生图模型的调色迁移至原片的算法，让摄影师们得以在几乎不损失原片分辨率与纹理细节的情况下，将生图模型的强大调色能力应用在他们的照片上。
-
-**v0.1.0 首次预览版** · Windows x64 · 免费下载 · 程序内版本 `0.1.0-preview.50`
-
-[网站](https://pixelcraft2026.github.io/GradeMirror/grademirror.html) · [研究](https://pixelcraft2026.github.io/GradeMirror/)
-
-[下载与启动](#下载与启动) · [快速上手](#第一次仿色) · [快速与精细](#快速与精细) · [格式与设备](#格式与设备) · [研究与算法](#研究与算法) · [源码、许可与反馈](#源码许可与反馈) · [支持 GradeMirror](#支持-grademirror)
 
 ## 调色效果
 
@@ -137,7 +149,7 @@ v0.1.0 目前处于发布准备阶段。下列地址为正式发布后使用的�
 
 ## 展望
 
-在有限的几组初步测试中，image2.6 与 GradeMirror 的组合在仿色、单张 JPG 照片的白平衡校正等任务上，表现优于纳入对照的当前先进方法（SOTA），展现出在更多图像处理任务上的潜力。这里主要是 image2.6 的功劳，它负责生成调色或白平衡校正的参考稿。GradeMirror 只在最后补上一步，把参考稿的色彩和明暗迁移回原片，用原片的分辨率和纹理出图，从而弥补 AI 生图的短板。或许在不久的将来，生成模型与专用算法的这种分工会改变许多图像处理问题的求解思路。
+在有限的几组初步测试中，image2.6 与 GradeMirror 的组合在仿色、单张 JPG 照片的白平衡校正等任务上，表现优于纳入对照的当前先进方法（SOTA），展现出在更多图像处理任务上的潜力。相关的研究正在进行，待取得阶段成果后再释出更多细节。这里主要是 image2.6 的功劳，它负责生成调色或白平衡校正的参考稿。GradeMirror 只在最后补上一步，把参考稿的色彩和明暗迁移回原片，用原片的分辨率和纹理出图，从而弥补 AI 生图的短板。或许在不久的将来，生成模型与专用算法的这种分工会改变许多图像处理问题的求解思路。
 
 ## 源码、许可与反馈
 
