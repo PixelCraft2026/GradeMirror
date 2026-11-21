@@ -12,6 +12,8 @@ I developed GradeMirror to transfer an image generation model's grade to the ori
 
 **v0.1.0 first preview** · Windows x64 · Free download · In-app version `0.1.0-preview.50`
 
+[Website](https://pixelcraft2026.github.io/GradeMirror/grademirror.html) · [Research](https://pixelcraft2026.github.io/GradeMirror/)
+
 [Download and launch](#download-and-launch) · [Quick start](#make-your-first-match) · [Fast and Fine](#fast-and-fine) · [Formats and devices](#formats-and-devices) · [Research and algorithm](#research-and-algorithm) · [Source, license and feedback](#source-license-and-feedback) · [Support GradeMirror](#support-grademirror)
 
 ## See the grade
@@ -132,6 +134,10 @@ The paper studies pairs with closely matching compositions. A lower-resolution d
 Of the 15 cases used in development and method selection, six have complete post-processing comparisons. Local correction alone lowered RGB mean absolute error at the reference scale by **5.63%–15.45%** relative to the base grade. Difference reconstruction raised the error in all six cases compared with local correction alone, with error still **3.30%–9.75%** below the base grade. The references were used for fitting, so these numbers measure color agreement with those drafts on the development cases. Texture, stars, and edges are best assessed by comparing the same areas in the original and the result.
 
 </details>
+
+## Outlook
+
+In a small set of preliminary tests on tasks such as color matching and white balance correction from a single JPEG, image2.6 and GradeMirror produced better results than the state-of-the-art methods included in the comparisons. These early results show the potential of this workflow for a wider range of image processing tasks. Most of the credit goes to image2.6, which creates the reference for the color grade or white balance correction. GradeMirror adds one final step. It transfers the reference's color and tone back to the original and renders at the original resolution with the original texture, addressing a limitation of AI image generation. In the near future, this division of labor between generative models and specialized algorithms could change how we approach many image processing problems.
 
 ## Source, license and feedback
 
