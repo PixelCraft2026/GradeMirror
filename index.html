@@ -79,14 +79,14 @@
       </div>
       <div class="workflow-gallery">
         <figure><img src="assets/source.webp" alt="带冷色岩壁的原图" width="1024" height="1536" loading="lazy"><figcaption><b>原图</b><span>提供场景和结构</span></figcaption></figure>
-        <figure><a class="style-reference-link" href="https://maxrivephotography.com/pages/peru"><span>查看作品集 ↗</span></a><figcaption><b>风格参考</b><span>Siula Grande · 摄影师 Max Rive</span></figcaption></figure>
+        <figure><a class="style-reference-link" href="https://maxrivephotography.com/pages/peru" aria-label="查看 Max Rive 原作作品集"><img src="assets/style-illustration.webp" alt="同类色调示意，浅金侧光映照雪峰，暗部呈冷灰色" width="1200" height="800" loading="lazy"></a><figcaption><b>异景风格参考</b><span>生成色调示意 · Max Rive 原作 ↗</span></figcaption></figure>
         <figure><img src="assets/target.webp" alt="原图山景的暖色生成参考" width="1024" height="1536" loading="lazy"><figcaption><b>生成参考</b><span>提供同景仿色目标</span></figcaption></figure>
         <figure><img src="assets/result.webp" alt="完成原尺寸仿色的山景" width="1024" height="1536" loading="lazy"><figcaption><b>原尺寸结果</b><span>经局部校正与重建</span></figcaption></figure>
       </div>
       <div class="research-method-grid">
         <figure class="diagram">
-          <a href="assets/workflow.svg?rev=3" target="_blank" rel="noopener" aria-label="在新标签页查看完整流程图"><img src="assets/workflow.webp?rev=3" alt="四面板算法图。a 从异景风格图和原片生成同景参考；b 分别编码 Lab 与坐标，再预测颜色残差；c 以三点扰动约束映射曲率和增益；d 在参考尺度拟合局部偏移，用两次局部拉普拉斯滤波的差值重建原尺寸结果。" width="2400" height="1849" loading="lazy"></a>
-          <figcaption><span>同景参考、Lab 残差拟合、响应正则化与原尺寸重建</span><span><a href="assets/workflow.svg?rev=3" target="_blank" rel="noopener">查看矢量图 ↗</a><a href="assets/workflow.pdf?rev=3">流程图 PDF</a></span></figcaption>
+          <a href="assets/workflow.svg?rev=4" target="_blank" rel="noopener" aria-label="在新标签页查看完整流程图"><img src="assets/workflow.webp?rev=4" alt="四面板算法图。a 从异景风格图和原片生成同景参考；b 分别编码 Lab 与坐标，再预测颜色残差；c 以三点扰动约束映射曲率和增益；d 在参考尺度拟合局部偏移，用两次局部拉普拉斯滤波的差值重建原尺寸结果。" width="2400" height="1849" loading="lazy"></a>
+          <figcaption><span>同景参考、Lab 残差拟合、响应正则化与原尺寸重建</span><span><a href="assets/workflow.svg?rev=4" target="_blank" rel="noopener">查看矢量图 ↗</a><a href="assets/workflow.pdf?rev=4">流程图 PDF</a></span></figcaption>
         </figure>
         <div class="methods-list">
           <article><h3>Lab 域残差建模</h3><p>在长边 512 像素的同景图对上拟合。网络分别编码归一化 CIELAB 颜色与全图坐标，再用 3×3 逐通道卷积引入邻域信息。网络预测应加到原片上的 Lab 变化量，主损失分别约束明度和色度分量。原尺寸分块渲染时，各块沿用全图坐标和邻域边界。</p><a href="paper-status.html">颜色表示与损失 <span class="paper-pending">待上线</span></a></article>
@@ -259,7 +259,7 @@
       <div class="resource-links">
         <a href="paper-status.html"><span><b>在线论文</b><small>中文全文 · 公式、图表和参考文献</small></span> <span class="paper-pending">待上线</span></a>
         <a href="paper-status.html"><span><b>论文 PDF</b><small>含完整算法流程图</small></span> <span class="paper-pending">待上线</span></a>
-        <a href="assets/workflow.svg?rev=3"><span><b>算法流程图</b><small>矢量 SVG</small></span><span aria-hidden="true">↗</span></a>
+        <a href="assets/workflow.svg?rev=4"><span><b>算法流程图</b><small>矢量 SVG</small></span><span aria-hidden="true">↗</span></a>
         <a href="assets/cover.webp"><span><b>宣传封面</b><small>项目照片与既有仿色结果</small></span><span aria-hidden="true">↗</span></a>
       </div>
     </section>
