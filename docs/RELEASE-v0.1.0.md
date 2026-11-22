@@ -1,5 +1,7 @@
 # GradeMirror 0.1.0 — 首次预览版
 
+简体中文 · [English](RELEASE-v0.1.0.en.md)
+
 GradeMirror 是 Windows x64 本地图像色彩匹配工具。本预览版支持 JPEG、PNG、TIFF、WebP 和 BMP，可预览、保存工程并导出。
 
 内部构建为 `0.1.0-preview.50`。「帮助」提供设备与运行状态（Ctrl+Alt+R）和重新定位原图。仿色底栏在收到进度后显示当前阶段与计数，并在数据足够时给出剩余时间区间。

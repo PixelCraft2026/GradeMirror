@@ -1,5 +1,7 @@
 # 下载与使用便携版
 
+简体中文 · [English](DOWNLOAD.en.md)
+
 [返回中文首页](../README.zh-CN.md) · [本版 Release](https://github.com/PixelCraft2026/GradeMirror/releases/tag/v0.1.0)
 
 本版面向 Windows x64。CPU 和 GPU 是二选一的完整版型，不要将两种版本覆盖到同一个目录。

@@ -1,5 +1,7 @@
 # 随附 Microsoft 对象代码的接收者约定
 
+简体中文 · [English](MSVC-RECIPIENT-TERMS.en.md)
+
 本文仅针对GradeMirror随附的[Microsoft运行组件](THIRD-PARTY.md)。分发和使用这些组件时，请同意并遵守本文及随附原许可中适用于这些组件的权利、限制与保护；该约定不提供Visual Studio开发工具本身的使用许可。
 
 - 可随GradeMirror使用所附Microsoft运行组件，保留其版权和其它权利通知。Microsoft及其许可方保留未明确授予的权利。

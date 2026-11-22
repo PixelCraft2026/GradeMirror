@@ -1,5 +1,7 @@
 # 0.1.0 预览版已知限制
 
+简体中文 · [English](KNOWN-ISSUES.en.md)
+
 本版内部构建编号为 `0.1.0-preview.50`。Windows 11 build 26200 已验证两版的 CPU 快速小图流程及 preview.37 驻留回收。Win11 的原生 GPU 计算和其他干净离线主机仍待验证。
 
 - **写入失败残留**：可能在目标旁留下 `.gm004a-…partial`。退出GradeMirror和导出进程后，可按目的地、请求键及 `intent.json` 核实归属；归属不明时保留，不要直接批量删除。

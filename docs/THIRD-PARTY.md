@@ -1,5 +1,7 @@
 # 许可、第三方源码与通知
 
+简体中文 · [English](THIRD-PARTY.en.md)
+
 GradeMirror自有代码及本仓库新增说明采用 [AGPL-3.0-only](../LICENSE)。第三方组件各按其许可，品牌素材的范围另见冻结工程的 [SOURCE-LICENSE-SCOPE.json](../engineering/SOURCE-LICENSE-SCOPE.json)。该清单绑定原工程文件，不是整个二进制便携包的统一许可声明。
 
 ## 随便携版提供

@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">网站</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">研究</a></strong>
+  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">网站</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">研究</a></strong> · <a href="docs/README.zh-CN.md">文档</a>
 </p>
 
 <p align="center">
@@ -164,7 +164,7 @@ GradeMirror v0.1.0 预览版现已发布，支持 Windows x64。
 > - **不得省略适用的源码和许可义务。** 分发 GradeMirror 或其修改版时，须按许可要求保留版权与许可通知，并以许可规定的方式提供相应源码；修改版还须按许可标明修改。
 > - **不得对远程网络交互用户隐瞒修改版的对应源码。** 如果用户通过网络与修改版程序远程交互，须依 AGPL 第 13 条向这些用户提供获取该版本对应源码的机会。
 >
-> 以上是重点说明，完整条件以 [AGPL 许可原文](LICENSE)为准。如需 AGPL 以外的许可条件，可通过 Issue 联系项目所有者，商议其有权另行授权的部分。第三方组件和品牌素材分别适用其许可或使用条件；详见 [NOTICE](NOTICE) 和[第三方材料](docs/THIRD-PARTY.md)。
+> 以上是重点说明，完整条件以 [AGPL 许可原文](LICENSE)为准。如需 AGPL 以外的许可条件，可通过 Issue 联系项目所有者，商议其有权另行授权的部分。第三方组件和品牌素材分别适用其许可或使用条件；详见 [项目通知](docs/NOTICE.zh-CN.md) 和[第三方材料](docs/THIRD-PARTY.md)。
 
 应用源码位于 [`engineering/source/src/grademirror/`](engineering/source/src/grademirror/)。[构建说明](docs/BUILD.md) 列出锁定的依赖和打包入口。[完整源码与第三方材料 ZIP](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Source-and-ThirdParty.zip) 包含对应工程、第三方源码归档、通知及 Qt 库构建指引。
 

@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">Website</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">Research</a></strong>
+  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">Website</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">Research</a></strong> · <a href="docs/README.md">Docs</a>
 </p>
 
 <p align="center">
@@ -59,7 +59,7 @@ The GradeMirror v0.1.0 preview is now available for Windows x64.
 | CPU | [CPU portable edition](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Windows-CPU.zip) | Extract the whole ZIP and open `GradeMirror.exe` inside `GradeMirror-CPU`. |
 | Compatible NVIDIA GPU | [GPU part 1](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Windows-GPU-1.zip) + [GPU part 2](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Windows-GPU-2.zip) | Use **Extract All** on both ZIPs, choose the same parent directory both times, then open `GradeMirror.exe` from the resulting `GradeMirror-GPU` folder. |
 
-Both editions include their runtimes. The GPU edition also requires a compatible NVIDIA driver. Review the applicable component terms before downloading. [Download guide (Chinese)](docs/DOWNLOAD.md) · [Release notes and SHA-256 (Chinese)](docs/RELEASE-v0.1.0.md) · [Microsoft component terms](docs/MSVC-RECIPIENT-TERMS.md) · [NVIDIA component terms](docs/NVIDIA-RECIPIENT-TERMS.md)
+Both editions include their runtimes. The GPU edition also requires a compatible NVIDIA driver. Review the applicable component terms before downloading. [Download guide](docs/DOWNLOAD.en.md) · [Release notes and SHA-256](docs/RELEASE-v0.1.0.en.md) · [Microsoft component terms](docs/MSVC-RECIPIENT-TERMS.en.md) · [NVIDIA component terms](docs/NVIDIA-RECIPIENT-TERMS.en.md)
 
 ### Choosing CPU or GPU
 
@@ -110,7 +110,7 @@ This preview.50 workspace illustration shows the two image roles after import.
 
 The **edition** determines which runtimes ship with the app. The **compute route** determines how each job runs. CPU can handle Fast and Fine. Auto prefers an eligible NVIDIA route. If the available resources fall short, GradeMirror can ask you to recheck them and offer the CPU route when it is eligible. For supported Fine jobs, you can select Hybrid explicitly to render with NVIDIA and run Fine post-processing on the CPU. Saved recipes also need a compatible route for replay.
 
-Open **Help → Device and runtime status** (Ctrl+Alt+R) for device information. The progress bar shows the current stage and displays an estimated time range once enough data is available. [Download guide (Chinese)](docs/DOWNLOAD.md) · [Known issues (Chinese)](docs/KNOWN-ISSUES.md)
+Open **Help → Device and runtime status** (Ctrl+Alt+R) for device information. The progress bar shows the current stage and displays an estimated time range once enough data is available. [Download guide](docs/DOWNLOAD.en.md) · [Known issues](docs/KNOWN-ISSUES.en.md)
 
 ## Projects and the CLI
 
@@ -164,9 +164,9 @@ In a small set of preliminary tests on tasks such as color matching and white ba
 > - **Do not omit applicable source and license obligations.** When distributing GradeMirror or a modified version, retain the required copyright and license notices and provide the corresponding source in a manner permitted by the license. Modified versions must also identify changes as required.
 > - **Do not withhold the corresponding source from remote network users of a modified version.** When users interact with a modified program remotely over a network, AGPL section 13 requires offering them an opportunity to obtain the corresponding source for that version.
 >
-> This is a summary; the complete conditions are in the [AGPL license](LICENSE). If you need different license terms, please open an issue to discuss separate licensing for rights the project owner can grant. Third-party components and brand assets have their own applicable terms; see [NOTICE](NOTICE) and [third-party materials](docs/THIRD-PARTY.md).
+> This is a summary; the complete conditions are in the [AGPL license](LICENSE). If you need different license terms, please open an issue to discuss separate licensing for rights the project owner can grant. Third-party components and brand assets have their own applicable terms; see [NOTICE](NOTICE) and [third-party materials](docs/THIRD-PARTY.en.md).
 
-The application code lives in [`engineering/source/src/grademirror/`](engineering/source/src/grademirror/). The [build guide](docs/BUILD.md) covers pinned dependencies and packaging. The [complete source and third-party materials ZIP](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Source-and-ThirdParty.zip) includes the matching engineering source, third-party source archives, notices and instructions for building the Qt libraries.
+The application code lives in [`engineering/source/src/grademirror/`](engineering/source/src/grademirror/). The [build guide](docs/BUILD.en.md) covers pinned dependencies and packaging. The [complete source and third-party materials ZIP](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Source-and-ThirdParty.zip) includes the matching engineering source, third-party source archives, notices and instructions for building the Qt libraries.
 
 
 When reporting a problem, include the app version, CPU or GPU edition, Windows version and steps to reproduce it. You can export a diagnostic log from **Help**. Remove private paths or photographs before sharing. [GitHub Issues](https://github.com/PixelCraft2026/GradeMirror/issues)

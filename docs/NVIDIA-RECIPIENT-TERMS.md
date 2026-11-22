@@ -1,5 +1,7 @@
 # 随附 NVIDIA 对象代码的接收者约定
 
+简体中文 · [English](NVIDIA-RECIPIENT-TERMS.en.md)
+
 适用本版 GradeMirror GPU 便携版中列于 [NVIDIA 交付说明](THIRD-PARTY.md) 的 NVIDIA CUDA、NVTX 和 cuDNN 二进制。阅读并同意其中所附适用协议及以下约定后，在协议允许的范围内随 GradeMirror 使用这些组件。
 
 - 只通过 GradeMirror 的 GPU 工作角色使用所附组件，并在适用的 NVIDIA GPU 系统上使用。保留厂商版权、许可和知识产权通知。遵守原协议对复制、修改、逆向工程、单独提供组件及出口的限制，包括适用法律明确保留的权利。
