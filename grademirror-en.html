@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151d">
+  <meta name="description" content="GradeMirror is a local color-matching tool for Windows. Transfer the color and tone of a same-scene reference onto your original photo at full resolution.">
+  <title>GradeMirror | Bring the AI grade back to the original</title>
+  <link rel="icon" href="assets/grademirror-icon.png" type="image/png">
+  <link rel="stylesheet" href="grademirror.css">
+  <link rel="stylesheet" href="grademirror-showcase.css?rev=4">
+  <script src="grademirror-en.js?rev=3" defer></script>
+  <script src="grademirror-showcase-en.js?rev=2" defer></script>
+  <link rel="stylesheet" href="pages.css">
+  <link rel="alternate" hreflang="zh-CN" href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">
+  <link rel="alternate" hreflang="en" href="https://pixelcraft2026.github.io/GradeMirror/grademirror-en.html">
+</head>
+<body class="gm-page showcase-page">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="nav shell">
+      <a class="brand" href="#main"><img src="assets/grademirror-icon.png" width="28" height="28" alt="">GradeMirror</a>
+      <nav aria-label="Product navigation">
+        <a href="#method">Workflow</a>
+        <a href="#compare">Photo comparisons</a>
+        <a href="#engine">Engine</a>
+        <a href="#workflow">Workspace</a>
+        <a href="#devices">Specs</a>
+        <a href="#cli">CLI</a>
+      </nav>
+      <div class="language-actions"><a class="language-switch" href="grademirror.html" hreflang="zh-CN" lang="zh-CN">简体中文</a><a class="nav-download" href="#download">Download</a></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title" data-hero>
+      <div class="hero-stage">
+        <div class="hero-media" aria-hidden="true">
+          <picture>
+            <source media="(max-width: 650px), (max-aspect-ratio: 3/4)" srcset="assets/showcase/source-hero-portrait-compact.webp 960w, assets/showcase/source-hero-portrait.webp 1440w" sizes="max(100vw, 100svh), 100vw" width="1440" height="2160">
+            <img src="assets/showcase/source-hero.webp" srcset="assets/showcase/source-hero-compact.webp 1792w, assets/showcase/source-hero.webp 2560w" sizes="max(100vw, 228svh), 100vw" width="2560" height="1680" alt="" fetchpriority="high">
+          </picture>
+          <picture class="hero-grade">
+            <source media="(max-width: 650px), (max-aspect-ratio: 3/4)" srcset="assets/showcase/result-hero-portrait-compact.webp 960w, assets/showcase/result-hero-portrait.webp 1440w" sizes="max(100vw, 100svh), 100vw" width="1440" height="2160">
+            <img src="assets/showcase/result-hero.webp" srcset="assets/showcase/result-hero-compact.webp 1792w, assets/showcase/result-hero.webp 2560w" sizes="max(100vw, 228svh), 100vw" width="2560" height="1680" alt="" decoding="async">
+          </picture>
+          <span class="hero-divider"></span>
+        </div>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="shell hero-body">
+          <p class="eyebrow hero-kicker">Open-source color matching for Windows</p>
+          <h1 id="hero-title"><span>Bring AI color grades</span><span>back to your originals.</span></h1>
+          <p class="hero-lead">No generative redraw<br>Original resolution preserved</p>
+          <div class="actions">
+            <a class="button button-light" href="#download">Download for Windows <span aria-hidden="true">↓</span></a>
+            <a class="button button-ghost" href="#compare">See photo comparisons <span aria-hidden="true">↓</span></a>
+            <a class="button button-ghost hero-research" href="index-en.html">Explore the research <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gm-section gm-method" id="method" aria-labelledby="method-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">From style inspiration to a full-resolution photo</p><h2 id="method-title">Turn a style image<br>into a grade you <span class="gm-title-phrase">can transfer.</span></h2></div>
+          <p>The photo with the look you want may show a completely different subject. Have an image model use your original composition to produce a same-scene reference with a similar palette and tonal range. GradeMirror then learns the grade from corresponding areas in the two images.</p>
+        </div>
+        <figure class="gm-process">
+          <div class="gm-process-grid">
+            <div class="gm-process-inputs">
+              <a class="gm-process-cell style-source" href="https://maxrivephotography.com/pages/peru"><img src="assets/style-illustration.webp" alt="Generated color illustration with pale gold side light on snow peaks and cool gray shadows" width="1200" height="800" loading="lazy"><strong>Style inspiration</strong><small>Generated color study · Max Rive’s original ↗</small></a>
+              <div class="gm-process-cell"><img src="assets/source.webp" alt="Original photograph of peaks in mist before grading" width="1024" height="1536" loading="lazy"><strong>Original composition</strong><small>4672 × 7008 · Scene and texture</small></div>
+            </div>
+            <span class="gm-process-arrow" aria-hidden="true">→</span>
+            <div class="gm-process-cell gm-process-target"><img src="assets/target.webp" alt="Warm same-scene reference generated for the misty peaks" width="1024" height="1536" loading="lazy"><strong>ChatGPT reference</strong><small>1024 × 1536 · Target grade</small></div>
+            <span class="gm-process-arrow" aria-hidden="true">→</span>
+            <div class="gm-process-cell gm-process-result"><img src="assets/result.webp" alt="Web preview of the full-resolution result rendered from the original photo" width="1024" height="1536" loading="lazy"><strong>Full-resolution result</strong><small>4672 × 7008 · Grade learned from the reference</small></div>
+          </div>
+          <div class="gm-process-baseline"><span></span><b>The original photo provides the pixels for the final render</b><span aria-hidden="true">→</span></div>
+          <figcaption><p>For this example, ChatGPT combined the original photo with a style image of Siula Grande. ChatGPT and Doubao can both make a same-scene draft. When choosing a draft, check that the subject position, crop, and perspective match. A manually graded version of the same photo works as a reference too.</p><a href="assets/workflow-en.svg?rev=3" target="_blank" rel="noopener">See the full workflow ↗</a></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="gm-section gm-compare-section" id="compare" aria-labelledby="compare-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">Three photo comparisons</p><h2 id="compare-title">Color from the reference.<br>Detail from<span class="gm-title-phrase"> the original.</span></h2></div>
+          <p>Choose the original photo or the grading reference on the left. The GradeMirror result stays on the right. Drag the divider to compare color and detail at the same location.</p>
+        </div>
+        <div class="gm-gallery" data-photo-gallery data-compare-side="left">
+          <div class="gm-compare-bar">
+            <label class="gm-view-select">Left image
+              <select data-compare-view aria-label="Choose the left image"><option value="original">Original</option><option value="reference">Grading reference</option></select>
+            </label>
+            <div class="gm-segments" role="group" aria-label="Choose a photo">
+              <button type="button" data-scene="ridge" aria-pressed="true">Peaks in mist</button>
+              <button type="button" data-scene="cloud" aria-pressed="false">Clouds and cliffs</button>
+              <button type="button" data-scene="night" aria-pressed="false">Milky Way</button>
+            </div>
+          </div>
+          <figure class="gm-compare-figure">
+            <div class="gm-compare-frame" data-compare-frame>
+              <img data-original src="assets/grademirror/ridge-original.webp" alt="Original photo of peaks in mist" width="1536" height="2304" loading="lazy">
+              <img data-adjusted src="assets/grademirror/ridge-result.webp" alt="Color-matched photo of peaks in mist" width="1536" height="2304" loading="lazy">
+              <span class="gm-photo-tag gm-original-tag" data-photo-label>Original</span><span class="gm-photo-tag gm-adjusted-tag">Color-matched result</span>
+              <span class="gm-divider" aria-hidden="true"><b>‹ ›</b></span>
+              <input data-photo-range type="range" min="0" max="100" value="52" aria-label="Adjust the photo comparison divider">
+            </div>
+            <figcaption><span id="gm-compare-caption" aria-live="polite">Peaks in mist · High-resolution research example</span><span>Drag the divider or use the arrow keys</span></figcaption>
+          </figure>
+        </div>
+        <article class="comparison" id="comparison" aria-labelledby="comparison-title">
+          <header class="section-intro">
+            <p class="eyebrow">Peaks in mist · Comparison with PixelCake</p>
+            <h3 id="comparison-title">Look closer at the grade.</h3>
+            <p>Pick a comparison, then zoom in on the central peak to examine the lit rock, blue-gray mist, and texture along the edges.</p>
+          </header>
+
+          <div class="compare" data-compare>
+            <div class="compare-controls" data-controls hidden>
+              <div class="segmented" role="group" aria-label="Comparison setup">
+                <button type="button" data-case="same" aria-pressed="false">Same-scene draft</button>
+                <button type="button" data-case="style" aria-pressed="true">Same starting style image</button>
+              </div>
+              <div class="segmented" role="group" aria-label="View">
+                <button type="button" data-view="full" aria-pressed="true">Full image</button>
+                <button type="button" data-view="detail" aria-pressed="false">Peak detail</button>
+              </div>
+            </div>
+            <p class="compare-summary" data-summary>Both workflows start with the same style image. PixelCake matches it directly. In the GradeMirror workflow, ChatGPT first makes a same-scene draft.</p>
+            <p class="sr-only" data-status aria-live="polite"></p>
+            <div class="compare-grid" data-grid>
+              <figure class="compare-tile">
+                <a class="photo-link" href="assets/showcase/source-full.webp" target="_blank" rel="noopener">
+                  <img class="full-photo" src="assets/showcase/source-full.webp" width="840" height="1260" loading="lazy" alt="Original photo of peaks in mist used in both workflows">
+                  <img class="detail-photo" src="assets/showcase/source-detail.webp" width="640" height="640" loading="lazy" alt="">
+                </a>
+                <figcaption><strong>Shared original</strong><span>Original photo of the misty peaks</span></figcaption>
+              </figure>
+              <figure class="compare-tile">
+                <a class="photo-link" href="assets/showcase/pixel-style-full.webp" target="_blank" rel="noopener">
+                  <img class="full-photo" src="assets/showcase/pixel-style-full.webp" width="840" height="1260" loading="lazy" alt="PixelCake result matched directly to a style image of a different scene">
+                  <img class="detail-photo" src="assets/showcase/pixel-style-detail.webp" width="640" height="640" loading="lazy" alt="">
+                </a>
+                <figcaption><strong>PixelCake</strong><span>Matched directly to the style image</span></figcaption>
+              </figure>
+              <figure class="compare-tile is-grade">
+                <a class="photo-link" href="assets/showcase/result-full.webp" target="_blank" rel="noopener">
+                  <img class="full-photo" src="assets/showcase/result-full.webp" width="840" height="1260" loading="lazy" alt="GradeMirror result using the same-scene draft from ChatGPT">
+                  <img class="detail-photo" src="assets/showcase/result-detail.webp" width="640" height="640" loading="lazy" alt="">
+                </a>
+                <figcaption><strong>ChatGPT ＋ GradeMirror</strong><span>Matched to a generated same-scene draft</span></figcaption>
+              </figure>
+            </div>
+            <div class="compare-reading">
+              <p data-reading>In this example, the PixelCake result has an overall orange cast. Warm orange highlights and blue-gray shadows remain more distinct in the GradeMirror result.</p>
+              <details class="study-note">
+                <summary>Comparison setup and image credits</summary>
+                <p>The same-reference comparison uses the same original photo and same-scene draft for both tools. The second comparison starts with the same style image. PixelCake uses that photo directly, and GradeMirror uses a same-scene draft generated by ChatGPT. It compares the two complete workflows.</p>
+                <p>The style inspiration comes from <a href="https://maxrivephotography.com/pages/peru">Max Rive’s Peru portfolio</a>. The comparison uses the original work as its style reference. The snowy peaks shown on this site are a generated color illustration. The comparison is a visual assessment of one photograph. All three details show the same area at the same scale.</p>
+              </details>
+            </div>
+            <p class="compare-error" data-error hidden>The selected images could not load. Try changing the selection again.</p>
+            <noscript><p class="fine-print">Enable JavaScript to switch comparison setups or view the peak detail.</p></noscript>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="gm-section gm-engine" id="engine" aria-labelledby="engine-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">Color-matching engine</p><h2 id="engine-title"><span class="gm-title-phrase">Learn color at a smaller scale. </span><wbr><span class="gm-title-phrase">Render from the original.</span></h2></div>
+          <p>GradeMirror fits the grade to a pair of images resized to 512 pixels on the long edge. It then uses full-resolution source pixels, image-wide coordinates, and neighboring pixels to render at the original dimensions.</p>
+        </div>
+
+        <div class="gm-engine-grid">
+          <div class="gm-engine-board" data-engine-board data-mode="fast">
+            <div class="gm-board-top"><span>From the image pair to full-resolution output</span><span class="gm-board-mode" data-mode-label>Fast workflow</span></div>
+            <div class="gm-engine-nodes" aria-label="Color-matching workflow">
+              <div class="gm-node">
+                <svg viewBox="0 0 90 65" aria-hidden="true"><path class="gm-stroke faint" d="M9 47l32-26 18 10 22-19M9 54h72M15 8h46v45M23 15h46v44"/><path class="gm-stroke warm" d="M9 37l18-14 12 6 14-14 23 20"/><path class="gm-stroke" d="M50 46v9m-5-4h10"/></svg>
+                <b>Original + reference</b><small>Resize the image pair</small>
+              </div>
+              <i class="gm-signal" aria-hidden="true"></i>
+              <div class="gm-node">
+                <svg viewBox="0 0 90 65" aria-hidden="true"><path class="gm-stroke faint" d="M15 15L44 27l28-12M15 15L44 47l28-10M15 47l29-20 28 10M15 47l29 0 28-32"/><g class="gm-fill"><circle cx="15" cy="15" r="5"/><circle cx="15" cy="47" r="5"/><circle cx="44" cy="27" r="5"/><circle cx="44" cy="47" r="5"/><circle cx="72" cy="15" r="5"/><circle cx="72" cy="37" r="5"/></g></svg>
+                <b>Lab residual network</b><small>Color, position, and neighbors</small>
+              </div>
+              <i class="gm-signal" aria-hidden="true"></i>
+              <div class="gm-node">
+                <svg viewBox="0 0 90 65" aria-hidden="true"><path class="gm-stroke faint" d="M17 9h56v46H17zM31 9v46m14-46v46m14-46v46M17 24h56m-56 16h56"/><path class="gm-stroke warm gm-tile-pulse" d="M45 24h14v16H45z"/><path class="gm-stroke" d="M17 40h14v15H17z"/></svg>
+                <b>Full-resolution tiled render</b><small>Shared image-wide coordinates</small>
+              </div>
+              <i class="gm-signal" aria-hidden="true"></i>
+              <div class="gm-node gm-final-node">
+                <svg viewBox="0 0 90 65" aria-hidden="true"><path class="gm-stroke faint" d="M13 13h64v41H13z"/><circle class="gm-fill" cx="58" cy="26" r="5"/><path class="gm-stroke warm" d="M14 49l21-17 15 12 12-9 15 13"/><path class="gm-stroke" d="M22 43l13-11 15 12 12-9"/></svg>
+                <b>Base color match O</b><small>Original dimensions</small>
+              </div>
+            </div>
+            <div class="gm-mode-stack">
+              <div class="gm-fast-output" data-mode-copy="fast">
+                <b>Export at full resolution</b>
+                <small>You can also save your Fast project and refine it later.</small>
+              </div>
+              <div class="gm-fine-extension" data-fine-extension hidden>
+                <div><span>O → P</span><b>Local offset field</b><small>Fit remaining RGB differences at reference scale</small></div>
+                <span class="gm-extra-arrow" aria-hidden="true">→</span>
+                <div><span>O + [L(P) − L(O)]</span><b>Difference reconstruction</b><small>Add the filtered difference and export at full resolution</small></div>
+              </div>
+            </div>
+          </div>
+          <div class="gm-mode-info" id="modes">
+            <div class="gm-segments gm-dark-segments" role="group" aria-label="Choose processing mode">
+              <button type="button" data-engine-mode="fast" aria-pressed="true">Fast</button>
+              <button type="button" data-engine-mode="fine" aria-pressed="false">Fine</button>
+            </div>
+            <div class="gm-mode-stack">
+              <div data-mode-copy="fast"><h3>Let the scene guide local color.</h3><p>The sky and the rock face may begin with similar colors and still call for different adjustments. The network uses normalized D65 Lab color, position in the full image, and a 3 × 3 neighborhood to predict a Lab change for each pixel. Small color perturbations during training constrain the curvature and gain of the mapping response.</p></div>
+              <div data-mode-copy="fine" hidden><h3>Refine local color across the original scene.</h3><p>Fit a smooth bilinear RGB offset field on the base result. Apply local Laplacian filtering to the full image before and after correction, then add the difference between the two filtered results back to the base.</p></div>
+            </div>
+            <a href="paper-status-en.html">Read the technical paper <span class="paper-pending">Coming soon</span></a>
+          </div>
+        </div>
+        <details class="gm-technical-detail">
+          <summary>Algorithm background, parameters, and reconstruction formula</summary>
+          <p>We compared global color mapping, BGU, SA-LUT, and SM-LUT during development. INRetouch with a 3 × 3 neighborhood performed well on examples with strong local grading. GradeMirror builds on the idea of modeling color, position, and neighborhood together. Its independent implementation adds Lab residuals, training-time response constraints, and local correction with difference reconstruction in Fine mode.</p>
+          <p>The color and coordinate branches each have two 1 × 1 convolutions with 32 channels. The fused representation has 64 channels. Training uses pairs resized to 512 pixels on the long edge. Full-resolution inference uses neighboring pixels and image-wide coordinates. Fine mode fits the local term at reference scale and evaluates it at full resolution.</p>
+          <p>Let the base result be <var>O</var>, and the locally corrected result be <var>P</var>. The final output is <var>O</var> + [<var>L</var>(<var>P</var>) − <var>L</var>(<var>O</var>)], where <var>L</var> denotes local Laplacian filtering. <a href="index-en.html#method">See the full workflow ↗</a></p>
+        </details>
+      </div>
+    </section>
+
+    <section class="gm-section gm-detail" id="detail" aria-labelledby="detail-title">
+      <div class="shell gm-detail-grid">
+        <div>
+          <p class="gm-kicker">Detail preservation</p><h2 id="detail-title">Bring local color into<br> the full-resolution<span class="gm-title-phrase"> source image.</span></h2>
+          <p class="gm-detail-lead">Fine mode uses a smooth RGB offset field to close local color gaps in the base result. It applies the same edge-aware filter to the images before and after correction at the same scale, then adds their signed difference to the base result.</p>
+          <p>The grade changes pixel values on the original grid and preserves the composition. Zoom in against the original to inspect peak contours, individual stars, and transitions from light to shadow.</p>
+          <div class="gm-detail-links"><a href="paper-status-en.html">How local correction works <span class="paper-pending">Coming soon</span></a><a href="assets/figures/combination.webp" target="_blank" rel="noopener">More detail comparisons ↗</a></div>
+        </div>
+        <figure class="gm-difference" aria-label="Filter before and after local correction, take the signed difference, and add it to the full-resolution base result">
+          <div class="gm-difference-top"><span>Fine mode</span><span>Local Laplacian difference reconstruction</span></div>
+          <div class="gm-difference-tracks">
+            <div><span>Base result</span><b>O</b><span aria-hidden="true">→</span><strong>L(O)</strong></div>
+            <div><span>After local correction</span><b>P</b><span aria-hidden="true">→</span><strong>L(P)</strong></div>
+          </div>
+          <div class="gm-difference-merge"><span>Take the difference</span><b>L(P) − L(O)</b></div>
+          <div class="gm-difference-final"><span>Add to the base result</span><b>O + [L(P) − L(O)]</b></div>
+          <figcaption>Filter each branch separately. <var>L</var> denotes local Laplacian filtering.</figcaption>
+        </figure>
+        <article class="galaxy-case" aria-labelledby="galaxy-title">
+          <p class="eyebrow">Milky Way · Fast and Fine</p>
+          <h3 id="galaxy-title">What changes in the same patch of nebula?</h3>
+          <figure class="galaxy">
+            <div class="galaxy-grid">
+              <div><img src="assets/showcase/galaxy-ref.webp" width="330" height="330" loading="lazy" alt="Galactic center and dust lanes in the same-scene reference"><span>Same-scene reference</span></div>
+              <div><img src="assets/showcase/galaxy-fast.webp" width="330" height="330" loading="lazy" alt="Milky Way detail after the base color match in Fast mode"><span>Fast</span></div>
+              <div><img src="assets/showcase/galaxy-fine.webp" width="330" height="330" loading="lazy" alt="Milky Way detail after local correction and reconstruction in Fine mode"><span>Fine</span></div>
+            </div>
+            <figcaption>A closer look at the same patch of nebula. Compare the pink-violet highlights, warm emission regions, and dust lanes between them.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="gm-section gm-workflow" id="workflow" aria-labelledby="workflow-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">Windows desktop workspace</p><h2 id="workflow-title"><span class="gm-title-phrase">See the whole photo. </span><wbr><span class="gm-title-phrase">Inspect the finest detail.</span></h2></div>
+          <p>Import the original and your chosen reference. Zoom out to judge color and tone across the frame, then zoom to 1:1 to compare the same edge, texture, or star in the original and the result.</p>
+        </div>
+        <figure class="gm-workbench">
+          <a href="assets/showcase/workbench.webp" target="_blank" rel="noopener" aria-label="Open the full workspace screenshot"><img src="assets/showcase/workbench.webp" alt="GradeMirror v0.1.0 workspace showing the original mountain photo on the left and its reference on the right" width="1440" height="880" loading="lazy"></a>
+          <figcaption><span>v0.1.0 workspace · Misty peaks and their same-scene reference (Chinese interface)</span><a href="assets/showcase/workbench.webp" target="_blank" rel="noopener">View larger ↗</a></figcaption>
+        </figure>
+        <div class="gm-feature-row">
+          <article><h3>Check the pair before matching</h3><p>Drop in the original and the grading reference. GradeMirror checks formats, aspect ratios, and resources before computing. Swap either image from the source panel.</p></article>
+          <article><h3>Go from the full image to 1:1</h3><p>Switch layouts to see the original, reference, or result. Check the overall grade, then pan linked 1:1 views of the original and result to inspect edges and texture.</p></article>
+          <article><h3>Set the intensity and export at full resolution</h3><p>Adjust the strength of the grade as needed. While the result is in memory, change the intensity and export again without refitting.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gm-section gm-project" id="project" aria-labelledby="project-title">
+      <div class="shell gm-project-grid">
+        <div>
+          <p class="gm-kicker">Save and resume</p><h2 id="project-title"><span class="gm-title-phrase">Save a recipe. </span><wbr><span class="gm-title-phrase">Pick up later.</span></h2>
+          <p class="gm-project-lead">After fitting, the project records the input identities and algorithm settings. If you move the original, locate it again and GradeMirror verifies the file identity.</p>
+          <dl class="gm-project-points">
+            <div><dt>Keep working from memory</dt><dd>The overview, detail view, strength adjustment, and export all reuse the same in-memory result.</dd></div>
+            <div><dt>Reopen a saved recipe</dt><dd>Open a compatible project to render again with its saved processing route. Fine projects also store the fitted local coefficients.</dd></div>
+            <div><dt>Export diagnostics when needed</dt><dd>Save a diagnostic log from the Help menu to inspect processing stages, device selection, and reasons for resource checks failing.</dd></div>
+          </dl>
+        </div>
+        <figure class="gm-recipe-figure" aria-label="Saving a project and reconstructing its result">
+          <div class="gm-recipe-cap"><span>Local project</span><span>.grademirror</span></div>
+          <div class="gm-recipe-files">
+            <div><span class="gm-file-icon">↳</span><strong>Input identities</strong><small>Original, reference, and file verification</small></div>
+            <div><span class="gm-file-icon">≋</span><strong>Color recipe</strong><small>Model parameters, local coefficients, and backend</small></div>
+          </div>
+          <div class="gm-recipe-bus" aria-hidden="true"></div>
+          <div class="gm-recipe-result"><strong>Reconstruct the full-resolution result</strong><small>Preview · Adjust intensity · Export</small></div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="gm-section gm-compute" id="devices" aria-labelledby="devices-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">Compute devices</p><h2 id="devices-title"><span class="gm-title-phrase">Check available resources. </span><wbr><span class="gm-title-phrase">Then process the photo.</span></h2></div>
+          <p>Device and runtime status shows the detected resources. Backend selection considers image dimensions, mode, RAM, the Windows commit limit, and available GPU memory.</p>
+        </div>
+        <div class="gm-route-board" aria-label="Fast and Fine processing by device">
+          <div class="gm-route-title"><span>Processing stage</span><span>Fitting / full-resolution render</span><span>Fine post-processing</span></div>
+          <div><b>CPU</b><span class="gm-chip cpu">CPU</span><span class="gm-chip cpu">CPU</span></div>
+          <div><b>NVIDIA</b><span class="gm-chip gpu">GPU</span><span class="gm-chip gpu">GPU filtering</span></div>
+          <div><b>Hybrid</b><span class="gm-chip gpu">GPU</span><span class="gm-chip cpu">CPU</span></div>
+          <p>Fine mode also solves for local coefficients and decodes or encodes images. These stages involve the host CPU. The chart shows the main compute stages.</p>
+        </div>
+        <div class="gm-compute-notes">
+          <p><strong>CPU and GPU builds</strong> Both run locally. Choose CPU if you lack a compatible NVIDIA GPU. If you regularly work on large photos or use Fine mode, consider the GPU build. Auto prioritizes a compatible NVIDIA route that passes the checks. If resources are tight, follow the prompts to recheck or choose an available CPU route.</p>
+          <p><strong>Manual backend selection</strong> CPU can run Fast and Fine on its own. NVIDIA requires compatibility with the CUDA 12.4 runtime. Hybrid is a separate option for supported Fine tasks. Select it explicitly and check that resources and the recipe are compatible.</p>
+        </div>
+
+        <details class="timing-detail">
+          <summary>See a CPU/GPU timing comparison</summary>
+          <p>Development test on the same 24-megapixel photograph using an i5-12600K (4 threads) and an RTX 3070 Ti (8 GB).</p>
+          <div class="timings">
+            <table>
+              <thead><tr><th scope="col">Operation</th><th scope="col">CPU</th><th scope="col">GPU</th></tr></thead>
+              <tbody><tr><th scope="row">First Fast match</th><td>9 min 36 sec</td><td>1 min 10 sec</td></tr><tr><th scope="row">Fast + Fine</th><td>24 min 05 sec</td><td>2 min 43 sec</td></tr></tbody>
+            </table>
+          </div>
+          <p>Timings include preview, JPEG export, and reading back the exported image. The second row totals both stages. Actual times depend on the photo and hardware.</p>
+        </details>
+
+        <div class="gm-compat" id="compatibility">
+          <div class="gm-heading">
+            <div><p class="gm-kicker">Photo compatibility</p><h2>Keep full resolution<span class="gm-title-phrase"> through export.</span></h2></div>
+            <p>The long edge of each image must be at least 512 pixels. The input limit is <strong>210 megapixels</strong>. Handling large images depends on the mode, the images, and available resources.</p>
+          </div>
+          <div class="gm-compat-grid">
+            <div class="gm-table-wrap" tabindex="0" role="region" aria-label="Supported image formats">
+              <table><thead><tr><th scope="col">Format</th><th scope="col">Bit depth and channels</th></tr></thead><tbody>
+                <tr><th scope="row">JPEG / JPG</th><td>8-bit RGB</td></tr>
+                <tr><th scope="row">PNG</th><td>8- or 16-bit RGB</td></tr>
+                <tr><th scope="row">TIFF / TIF</th><td>8- or 16-bit RGB</td></tr>
+                <tr><th scope="row">WebP / BMP</th><td>8-bit RGB, single frame</td></tr>
+              </tbody></table>
+            </div>
+            <div class="gm-format-notes">
+              <p><strong>Export.</strong>Results are saved separately at the original photo’s format, bit depth, and dimensions. ICC and camera EXIF retention varies by format.</p>
+              <p><strong>Color space.</strong>GradeMirror works in sRGB. Convert RAW, HEIC/AVIF, non-sRGB, or transparent images to a compatible RGB file first.</p>
+              <p><strong>Tested workflow.</strong>The current build passed an end-to-end local test with a Fujifilm 102 MP (11,648 × 8,736 pixels), 16-bit TIFF, covering Fast match, Fine processing, full-resolution export, and project reconstruction. Usable image sizes depend on the processing route and system resources.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gm-section gm-cli" id="cli" aria-labelledby="cli-title">
+      <div class="shell">
+        <div class="gm-heading">
+          <div><p class="gm-kicker">Command-line interface</p><h2 id="cli-title"><span class="gm-title-phrase">Let an LLM run</span><wbr><span class="gm-title-phrase"> the whole grading workflow.</span></h2></div>
+          <p>Describe the look you want in natural language. An LLM with tool access can coordinate image selection, image generation, and local color matching. The portable build includes <code>GradeMirror-CLI.exe</code>, which lets the LLM call GradeMirror’s image-processing tools.</p>
+        </div>
+        <ol class="gm-cli-flow" aria-label="LLM color-grading workflow">
+          <li><strong>Choose the photos</strong><p>Pick the original to grade and a photo that captures the look you want.</p></li>
+          <li><strong>Generate a same-scene reference</strong><p>Ask an image model to try the style image’s palette and tone on the original composition.</p></li>
+          <li><strong>Transfer the grade to the original</strong><p>Give GradeMirror the original and the generated reference. It applies the grade to the original photo and exports at full resolution.</p></li>
+        </ol>
+        <p class="gm-skill-note">A GradeMirror color-grading skill is in development. <a href="https://github.com/PixelCraft2026/GradeMirror#projects-and-the-cli">See CLI usage ↗</a></p>
+        <div class="gm-cli-grid">
+          <div class="gm-terminal">
+            <div class="gm-terminal-bar"><span>PowerShell</span><button type="button" data-copy-code>Copy commands</button></div>
+            <pre tabindex="0"><code id="gm-cli-example"># Check the version, runtime, and devices
+.\GradeMirror-CLI.exe doctor --json
+
+# Check the CPU replay route for a saved project
+.\GradeMirror-CLI.exe plan --project ".\example.grademirror" &#96;
+  --operation replay --backend cpu --json
+
+# Match a generated reference and export the original at full resolution
+.\GradeMirror-CLI.exe fit --source ".\original.tif" &#96;
+  --reference ".\reference.png" --mode fast --backend auto &#96;
+  --out ".\new.grademirror" --export ".\matched.tif" &#96;
+  --alpha 0.75 --json</code></pre>
+            <span class="gm-copy-status" aria-live="polite" data-copy-status></span>
+          </div>
+          <dl class="gm-commands">
+            <div><dt><code>plan / fit / refine / replay</code></dt><dd>Plan a run, fit an initial grade, continue in Fine mode, or replay a saved project.</dd></div>
+            <div><dt><code>submit / status / events / cancel</code></dt><dd>Submit jobs, inspect status and events, and cancel runs. Jobs and individual attempts have separate identifiers.</dd></div>
+            <div><dt><code>result preview / export / release</code></dt><dd>Read previews, export at a chosen strength, and release in-memory results. Use <code>--help</code>  to see options for each command.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+    <section class="gm-section downloads" id="download" aria-labelledby="download-title">
+      <div class="shell">
+        <header class="gm-heading">
+          <div><p class="gm-kicker">GradeMirror v0.1.0 · Windows x64 portable build</p><h2 id="download-title">Download GradeMirror.</h2></div>
+          <p>Choose either the CPU or GPU build. Extract it, then double-click <code>GradeMirror.exe</code> in the program folder. The required runtimes are included.</p>
+        </header>
+        <div class="download-grid">
+          <article class="download-card">
+            <h3>CPU build</h3>
+            <p>For computers without a compatible NVIDIA GPU, or for trying a first Fast match. Extract the ZIP completely, then open the <code>GradeMirror-CPU</code>  folder.</p>
+            <div class="download-actions">
+              <a class="button button-dark" href="https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Windows-CPU.zip">Download CPU build <span>354 MB</span></a>
+            </div>
+          </article>
+          <article class="download-card">
+            <h3>NVIDIA GPU build</h3>
+            <p>For compatible NVIDIA hardware and drivers, especially if you work with large images or use Fine mode. Extract both ZIPs to the same destination, then open the shared <code>GradeMirror-GPU</code>  folder.</p>
+            <div class="download-actions">
+              <a class="button button-dark" href="https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Windows-GPU-1.zip">Download GPU part 1 <span>1.35 GB</span></a>
+              <a class="button button-dark" href="https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Windows-GPU-2.zip">Download GPU part 2 <span>1.35 GB</span></a>
+            </div>
+          </article>
+        </div>
+        <nav class="download-links" aria-label="Download documentation">
+          <a href="https://github.com/PixelCraft2026/GradeMirror/blob/main/docs/DOWNLOAD.md">Extraction guide and component terms (Chinese) ↗</a>
+          <a href="https://github.com/PixelCraft2026/GradeMirror/releases/tag/v0.1.0">Release notes and file checksums ↗</a>
+          <a href="https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Source-and-ThirdParty.zip">Download source and third-party materials <span>149 MB</span></a>
+        </nav>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-brand">
+        <img class="footer-mark" src="assets/showcase/brand-mark.png" width="282" height="298" loading="lazy" alt="">
+        <p class="footer-wordmark">GradeMirror</p>
+        <div class="actions">
+          <a class="button button-light" href="https://github.com/PixelCraft2026/GradeMirror">GitHub repository <span aria-hidden="true">↗</span></a>
+          <a class="button footer-support" href="https://buymeacoffee.com/pixelcraft2026">Support GradeMirror <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <p>Windows x64 · GradeMirror code is licensed under AGPL-3.0-only</p>
+        <nav class="footer-links" aria-label="Related links"><a href="index-en.html">Color-matching research</a></nav>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

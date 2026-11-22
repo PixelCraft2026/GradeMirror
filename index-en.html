@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research on high-resolution reference color matching with an improved INRetouch pipeline and the GradeMirror desktop app. Explore the workflow, algorithm, and experimental comparisons.">
+  <meta name="theme-color" content="#132321">
+  <title>High-resolution reference color matching | INRetouch research</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="research.css?rev=8">
+  <script defer src="site-en.js"></script>
+  <script defer src="research-comparison-en.js?rev=9"></script>
+  <link rel="stylesheet" href="pages.css">
+  <link rel="alternate" hreflang="zh-CN" href="https://pixelcraft2026.github.io/GradeMirror/">
+  <link rel="alternate" hreflang="en" href="https://pixelcraft2026.github.io/GradeMirror/index-en.html">
+</head>
+<body class="research-home">
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#main"><img src="assets/mark.svg" width="27" height="27" alt="">Color-matching research</a>
+      <nav aria-label="Research navigation">
+        <a href="#background">Background</a><a href="#method">Method</a><a href="#method-comparison">Compare methods</a><a href="#adaptability">Styles</a><a href="#evidence">Results</a><a href="#resources">Paper &amp; figures</a>
+      </nav>
+      <div class="language-actions"><a class="language-switch" href="index.html" hreflang="zh-CN" lang="zh-CN">简体中文</a><a class="research-product" href="grademirror-en.html">GradeMirror <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">Generative references · Building on INRetouch</p>
+          <h1>High-resolution<br><em>color matching</em></h1>
+          <p class="hero-description">Learn color and tonal changes from a same-scene reference, then render from the pixels of the original photo. We use local color correction and difference reconstruction to study the trade-off between matching the reference and preserving detail.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="paper-status-en.html">Read the paper <span class="paper-pending">Coming soon</span></a>
+            <a class="button secondary" href="#method-comparison">Try the comparisons <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <figure class="hero-figure">
+          <div class="comparison" data-comparison>
+            <img class="compare-image" src="assets/source.webp" srcset="assets/source.webp 1024w, assets/grademirror/ridge-original.webp 1536w" sizes="(max-width: 720px) calc(100vw - 36px), (max-width: 800px) calc(100vw - 56px), (max-width: 1392px) 59vw, 760px" alt="Original peaks in mist, with cool rock faces and white clouds" width="1024" height="1536" fetchpriority="high">
+            <img class="compare-image rendered" src="assets/result.webp" srcset="assets/result.webp 1024w, assets/grademirror/ridge-result.webp 1536w" sizes="(max-width: 720px) calc(100vw - 36px), (max-width: 800px) calc(100vw - 56px), (max-width: 1392px) 59vw, 760px" alt="Color-matched peaks with warm light on the rock and mist" width="1024" height="1536" decoding="async">
+            <span class="image-label left">Original</span>
+            <span class="image-label right">Color-matched result</span>
+            <div class="compare-handle" aria-hidden="true"><span>‹ ›</span></div>
+            <input aria-label="Adjust the divider between the original and color-matched result" type="range" min="0" max="100" value="47">
+          </div>
+          <figcaption><span><b>Peaks in mist</b>  · Matched crop</span><span>Drag the divider <span aria-hidden="true">↔</span></span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section research-background" id="background" aria-labelledby="background-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">Research background</p><h2 id="background-title">Bring the intended grade back to the original</h2></div>
+          <p>Two gray regions can call for different treatments. The sky may need a cooler tint, the sunlit rock a warmer one, and the mist between them a gradual transition. A useful color mapping depends on pixel color, what is in the scene, and where it appears.</p>
+        </div>
+        <div class="research-background-grid">
+          <article>
+            <h3>Why use diffusion-based editing for color grading?</h3>
+            <p>In our tests, Image 2.5 used a style image or written instructions to create a grading draft for the original scene. Conventional global color mappings tend to treat similar input colors alike. A diffusion model can use the subject, materials, and lighting to decide what to adjust, by how much, and how the changes should blend across regions.</p>
+            <p>An LLM operating curves, color wheels, and masks must break a complex local grade into separate adjustments and coordinate them. A diffusion editor can handle the lit rock, shaded ridgeline, and mist passing between them in one draft. The draft captures how color and tone should change together across the scene.</p>
+          </article>
+          <article><h3>Grade the original from a same-scene reference</h3><p>Generated references have lower resolution than high-megapixel originals. Even when the compositions are close, the model can redraw rock texture, clouds, or small edges and shift them slightly. We learn the grade from corresponding locations in the reference and original, then render at full resolution using the original pixels, coordinates, and neighborhoods.</p></article>
+          <article><h3>Why we started with INRetouch</h3><p>We compared INRetouch, SM-LUT, BGU, PETAL, and other methods. INRetouch gave the best overall results on the strong local grades that were the focus of this study, so we chose it as our starting point. It learns from one same-scene pair using color, position, and neighborhood information. We focused our changes on color representation, mapping stability, and the retention of fine texture.</p></article>
+        </div>
+        <div class="research-background-links">
+          <a class="research-text-link" href="paper-status-en.html">See the candidate methods and selection criteria <span class="paper-pending">Coming soon</span></a>
+          <a class="research-text-link" href="https://arxiv.org/abs/2412.03848">Original INRetouch paper (arXiv) ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="method">
+      <div class="section-heading">
+        <div><p class="eyebrow">Research method</p><h2>From style inspiration to a full-resolution result</h2></div>
+        <p>An external image model follows the original composition to produce a same-scene reference that approximates the style image’s color and tone. The transfer network learns a mapping from corresponding locations and applies it at the original photo’s resolution.</p>
+      </div>
+      <div class="workflow-gallery">
+        <figure><img src="assets/source.webp" alt="Original photo with cool-toned rock faces" width="1024" height="1536" loading="lazy"><figcaption><b>Original</b><span>Provides the scene and structure</span></figcaption></figure>
+        <figure><a class="style-reference-link" href="https://maxrivephotography.com/pages/peru" aria-label="See Max Rive’s original work"><img src="assets/style-illustration.webp" alt="Generated color illustration with pale gold side light on snow peaks and cool gray shadows" width="1200" height="800" loading="lazy"></a><figcaption><b>Style inspiration</b><span>Generated color study · Max Rive’s original ↗</span></figcaption></figure>
+        <figure><img src="assets/target.webp" alt="Warm generated reference for the same mountain scene" width="1024" height="1536" loading="lazy"><figcaption><b>Generated reference</b><span>Provides a same-scene grading target</span></figcaption></figure>
+        <figure><img src="assets/result.webp" alt="Full-resolution result for the mountain scene" width="1024" height="1536" loading="lazy"><figcaption><b>Full-resolution result</b><span>With local correction and reconstruction</span></figcaption></figure>
+      </div>
+      <div class="research-method-grid">
+        <figure class="diagram">
+          <a href="assets/workflow-en.svg?rev=4" target="_blank" rel="noopener" aria-label="Open the full workflow in a new tab"><img src="assets/workflow-en.webp?rev=4" alt="Four-panel workflow. (a) Generate a same-scene reference from the original and a style image. (b) Encode Lab and coordinates separately and predict a color residual. (c) Constrain mapping curvature and gain with three-point probes. (d) Fit local offsets at reference scale and reconstruct at full resolution using the difference between two local Laplacian filter outputs." width="2400" height="1849" loading="lazy"></a>
+          <figcaption><span>Same-scene reference, Lab residual fitting, response regularization, and full-resolution reconstruction</span><span><a href="assets/workflow-en.svg?rev=4" target="_blank" rel="noopener">View vector figure ↗</a><a href="assets/workflow-en.pdf?rev=4">Workflow PDF</a></span></figcaption>
+        </figure>
+        <div class="methods-list">
+          <article><h3>Lab residual modeling</h3><p>Fit on a same-scene pair resized to 512 pixels on the long edge. The network encodes normalized CIELAB color and image-wide coordinates separately. A 3 × 3 depthwise convolution adds neighborhood context. The network predicts the Lab residual to add to the original, with separate loss terms for lightness and chroma. Each full-resolution tile uses image-wide coordinates and neighboring pixels across tile boundaries.</p><a href="paper-status-en.html">Color representation and loss <span class="paper-pending">Coming soon</span></a></article>
+          <article><h3>Mapping response regularization</h3><p>Make two additional training inputs with small positive and negative neutral perturbations in RGB. Run the original and both probes through the same network. Use finite differences to constrain local curvature and gain, reducing abrupt transitions and reversals in tonal order.</p><a href="paper-status-en.html">Response probes and constraints <span class="paper-pending">Coming soon</span></a></article>
+          <article><h3>Local correction and difference reconstruction</h3><p>Fit a spatially smooth bilinear RGB offset field to remaining color differences at reference scale. Apply the offset at full resolution and run local Laplacian filtering before and after correction. Add the difference between the two filter outputs back to the base color match.</p><p class="research-equation" aria-label="The output equals the base result plus the difference between filtered corrected and filtered base results"><i>Y</i> = <i>O</i> + [<i>L</i>(<i>P</i>) − <i>L</i>(<i>O</i>)]</p><a href="paper-status-en.html">Fit and reconstruction equations <span class="paper-pending">Coming soon</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research-method-comparison" id="method-comparison" aria-labelledby="method-comparison-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">Comparison with earlier methods</p><h2 id="method-comparison-title">Drag to compare the same area</h2></div>
+          <p>Switch methods on the same photo. Look at color and tone in the full image, then switch to a detail to inspect rock faces, building facades, or fur. Each side can show a different method, and the original is available as a texture reference.</p>
+        </div>
+        <div class="method-explorer" data-method-explorer>
+          <div class="method-compare-controls" data-controls hidden>
+            <label>Scene <select data-scene></select></label>
+            <label>View <select data-view><option value="detail">Matched detail</option><option value="full">Full image</option></select></label>
+            <label>Left <select data-side="left"></select></label>
+            <label>Right <select data-side="right"></select></label>
+          </div>
+          <div class="method-compare-layout">
+            <figure class="method-compare-main">
+              <div class="comparison method-compare-frame" data-frame>
+                <img class="compare-image" data-photo="left" src="assets/comparisons/ridge-inretouch-detail.webp" alt="Misty peaks detail · Original INRetouch implementation" width="720" height="720" loading="lazy">
+                <img class="compare-image rendered" data-photo="right" src="assets/comparisons/ridge-ours-detail.webp" alt="Misty peaks detail · Full method" width="720" height="720" loading="lazy">
+                <span class="image-label left" data-label="left">Original INRetouch implementation</span><span class="image-label right" data-label="right">Full method</span>
+                <div class="compare-handle" aria-hidden="true"><span>‹ ›</span></div>
+                <input type="range" min="0" max="100" value="50" aria-label="Adjust the divider between the two methods">
+              </div>
+              <figcaption data-scene-caption>Where three peaks meet the mist. Look at how far the warm color reaches and how it transitions from lit rock into shadow.</figcaption>
+            </figure>
+            <aside class="method-compare-aside" aria-label="Grading reference and measurements">
+              <figure>
+                <div class="method-reference-preview"><img data-reference src="assets/comparisons/ridge-reference-full.webp" alt="Same-scene grading reference for the misty peaks" width="1024" height="1536" loading="lazy"><span data-region hidden aria-hidden="true"></span></div>
+                <figcaption><span>Same-scene grading reference <small data-region-note hidden>Box marks the current detail</small></span><span data-reference-size>1024 × 1536</span></figcaption>
+              </figure>
+              <div class="method-compare-metrics" data-metrics hidden>
+                <h3>RGB MAE against the reference</h3>
+                <dl><div><dt>Original INRetouch implementation</dt><dd data-error="author"></dd></div><div><dt>Base model</dt><dd data-error="base"></dd></div><div><dt>Full method</dt><dd data-error="ours"></dd></div></dl>
+                <p>Mean absolute error follows Table 5 and is computed across the image at reference resolution. Lower values indicate a closer color fit. Compare with the original to judge texture.</p>
+              </div>
+              <p class="method-compare-scope" data-base-only hidden>This scene shows the saved result from our base model.</p>
+            </aside>
+          </div>
+          <p class="method-compare-error" data-load-error role="status" hidden>The comparison images could not load. Try selecting the scene or method again.</p>
+          <noscript><p class="method-compare-scope">Enable JavaScript to switch scenes and methods. Figures 7 and 8 of the paper provide static comparisons.</p></noscript>
+          <details class="method-panel" data-method-panel hidden>
+            <summary>Show all methods for this scene</summary>
+            <div class="method-panel-grid" data-method-grid></div>
+          </details>
+          <p class="method-compare-scope">The comparisons use the development configurations, including the earlier V-Log adaptation for SA-LUT. POT results and Table 5 MAE are shown for the misty peaks scene only.<a href="paper-status-en.html">See the test conditions and Table 5 <span class="paper-pending">Coming soon</span></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section research-showcase" id="adaptability" aria-labelledby="adaptability-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">Transfer across styles</p><h2 id="adaptability-title">One method,<br>many different grades</h2></div>
+          <p>The same method follows the target set by the reference. It can transfer a global palette, a black-and-white rendering, or local changes in warmth, light, and shadow. These six examples come from 15 development cases. Each fit uses the original photo and its own same-scene reference.</p>
+        </div>
+        <div class="research-scenes">
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/waterfront-original.webp" width="960" height="640" loading="lazy" alt="Original cool blue waterfront and pylon framed by a building"><span>Original</span></div>
+              <div><img src="assets/scenes/waterfront-reference.webp" width="960" height="640" loading="lazy" alt="Warm gray reference for the waterfront and pylon"><span>Same-scene reference</span></div>
+              <div><img src="assets/scenes/waterfront-result.webp" width="960" height="640" loading="lazy" alt="Base color match shifting the waterfront to warm gray"><span>Base color match</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>Soft warm grays</h3><span>Waterfront and pylon</span></div><p>Reduce the blue saturation in the sky and water for a soft, warm-gray palette.</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/campus-original.webp" width="960" height="640" loading="lazy" alt="Original red and white building beside a lawn"><span>Original</span></div>
+              <div><img src="assets/scenes/campus-reference.webp" width="960" height="640" loading="lazy" alt="Reference with more vivid color in the building and lawn"><span>Same-scene reference</span></div>
+              <div><img src="assets/scenes/campus-result.webp" width="960" height="640" loading="lazy" alt="Base color match for the red building and lawn"><span>Base color match</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>Vivid reds and greens</h3><span>Building and lawn</span></div><p>Make the red facade and green grass more vivid while keeping the light walls relatively neutral.</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/monochrome-original.webp" width="480" height="720" loading="lazy" alt="Original cat by a red and blue wall"><span>Original</span></div>
+              <div><img src="assets/scenes/monochrome-reference.webp" width="480" height="720" loading="lazy" alt="Black-and-white grading reference for the cat"><span>Same-scene reference</span></div>
+              <div><img src="assets/scenes/monochrome-result.webp" width="480" height="720" loading="lazy" alt="Base color match converting the cat scene to black and white"><span>Base color match</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>Black and white</h3><span>Cat and geometric wall</span></div><p>Convert the wall’s red and blue panels and the cat’s fur to grayscale while preserving the tonal difference between light and dark surfaces.</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/pinnacles-original.webp" width="480" height="720" loading="lazy" alt="Original rocky peaks in cool mist"><span>Original</span></div>
+              <div><img src="assets/scenes/pinnacles-reference.webp" width="480" height="720" loading="lazy" alt="Reference with warmer light on the peaks and mist"><span>Same-scene reference</span></div>
+              <div><img src="assets/scenes/pinnacles-result.webp" width="480" height="720" loading="lazy" alt="Full-method result preserving the composition of the peaks and mist"><span>Full method</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>Local warm–cool separation</h3><span>Peaks in mist</span></div><p>Bring warmth into lit rock faces and parts of the mist while keeping the shaded rock a cooler blue-gray.</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/cloud-sea-original.webp" width="480" height="720" loading="lazy" alt="Original blue-gray peaks and white clouds in daylight"><span>Original</span></div>
+              <div><img src="assets/scenes/cloud-sea-reference.webp" width="480" height="720" loading="lazy" alt="Same-scene reference with a dark sky and warm clouds"><span>Same-scene reference</span></div>
+              <div><img src="assets/scenes/cloud-sea-result.webp" width="480" height="720" loading="lazy" alt="Full-method result with dark peaks and illuminated mist"><span>Full method</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>Low-key, high-contrast</h3><span>Peaks above a sea of clouds</span></div><p>Darken the sky and peaks, then use warm highlights to pick out the band of light across the clouds.</p></figcaption>
+          </figure>
+          <figure class="research-scene">
+            <div class="research-scene-photos">
+              <div><img src="assets/scenes/milky-way-original.webp" width="480" height="720" loading="lazy" alt="Original Milky Way above a forest"><span>Original</span></div>
+              <div><img src="assets/scenes/milky-way-reference.webp" width="480" height="720" loading="lazy" alt="Reference with a warm galactic core against a dark sky"><span>Same-scene reference</span></div>
+              <div><img src="assets/scenes/milky-way-result.webp" width="480" height="720" loading="lazy" alt="Full-method result with a bright Milky Way and dark sky"><span>Full method</span></div>
+            </div>
+            <figcaption><div class="research-scene-title"><h3>Dark skies, warm galactic core</h3><span>Milky Way above a forest</span></div><p>Darken the sky and emphasize the orange-violet Milky Way while preserving the glow near the horizon.</p></figcaption>
+          </figure>
+        </div>
+        <div class="research-scene-note"><p>The waterfront, building, and cat examples show the base color match. The misty peaks, sea of clouds, and Milky Way also use local color correction and difference reconstruction.</p><a href="paper-status-en.html">See test conditions and all comparisons in the paper <span class="paper-pending">Coming soon</span></a></div>
+      </div>
+    </section>
+
+    <section class="evidence section" id="evidence">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">Experimental comparisons</p><h2>Local appearance and reference fit</h2></div>
+          <p>The study analyzes 15 development cases used throughout the work. Six have full post-processing comparisons. The RGB MAE reductions below measure agreement with the reference. Observations about local appearance apply to the regions inspected. The comparison plates below retain their original Chinese labels.</p>
+        </div>
+        <div class="findings">
+          <article>
+            <p class="finding-label">Six development cases · Floating-point outputs</p>
+            <p class="number">3.30–9.75%</p>
+            <h3>MAE reduction from the base match to the full method</h3>
+            <p>RGB MAE is measured at reference scale. Local correction alone reduced it by 5.63–15.45%. Difference reconstruction increased the error again in all six cases.</p>
+          </article>
+          <article>
+            <p class="finding-label">Three development cases · Saved display images</p>
+            <p class="number">9.94–21.77%</p>
+            <h3>MAE reduction of the full method over the original implementation</h3>
+            <p>RGB MAE was recomputed at a shared reference resolution. Training sizes, seeds, and JPEG encoding differ between the two workflows, so the values reflect their overall differences.</p>
+          </article>
+        </div>
+        <div class="evidence-selector" data-gallery>
+          <div class="gallery-nav" aria-label="Choose a comparison figure (original labels in Chinese)">
+            <a href="#domain-panel" data-panel-link>Color domain</a>
+            <a href="#response-panel" data-panel-link>Response regularization</a>
+            <a href="#combination-panel" data-panel-link>Local correction and reconstruction</a>
+            <a href="#historical-panel" data-panel-link>Original implementation</a>
+          </div>
+          <figure id="domain-panel" data-panel>
+            <a href="assets/figures/domain.webp" target="_blank" rel="noopener"><img src="assets/figures/domain.webp" width="2400" height="2533" loading="lazy" alt="Original, reference, RGB-domain and Lab-domain results for clothing, peaks, and stars"></a>
+            <figcaption><span>With response regularization held constant, compare RGB and Lab as the shared domain for input, residual, and main loss.</span><a href="assets/figures/domain.webp" target="_blank" rel="noopener">View larger ↗</a></figcaption>
+          </figure>
+          <figure id="response-panel" data-panel>
+            <a href="assets/figures/response.webp" target="_blank" rel="noopener"><img src="assets/figures/response.webp" width="2400" height="2533" loading="lazy" alt="Detail comparisons of mountains, sky, and stars with and without mapping response regularization"></a>
+            <figcaption><span>Hold the Lab domain fixed and compare transitions and texture with and without mapping response regularization.</span><a href="assets/figures/response.webp" target="_blank" rel="noopener">View larger ↗</a></figcaption>
+          </figure>
+          <figure id="combination-panel" data-panel>
+            <a href="assets/figures/combination.webp" target="_blank" rel="noopener"><img src="assets/figures/combination.webp" width="2400" height="1767" loading="lazy" alt="Peaks in mist and the Lagoon Nebula before and after local correction with difference reconstruction"></a>
+            <figcaption><span>Original, reference, base color match, and the result with local correction and difference reconstruction.</span><a href="assets/figures/combination.webp" target="_blank" rel="noopener">View larger ↗</a></figcaption>
+          </figure>
+          <figure id="historical-panel" data-panel>
+            <a href="assets/figures/author-local.webp" target="_blank" rel="noopener"><img src="assets/figures/author-local.webp" width="2400" height="2179" loading="lazy" alt="Matched details from three scenes showing the original, reference, original INRetouch implementation, base model, and full method"></a>
+            <figcaption><span>Matched details from the original INRetouch implementation and both variants of our method.</span><a href="assets/figures/author-full.webp" target="_blank" rel="noopener">View the five-column comparison (Chinese labels) ↗</a></figcaption>
+          </figure>
+        </div>
+        <div class="evidence-note">
+          <a href="paper-status-en.html">See the tables and evaluation scope <span class="paper-pending">Coming soon</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell resources" id="resources">
+      <div><h2>Paper &amp; figures</h2></div>
+      <div class="resource-links">
+        <a href="paper-status-en.html"><span><b>Online paper</b><small>Chinese manuscript · Equations, figures, and references</small></span> <span class="paper-pending">Coming soon</span></a>
+        <a href="paper-status-en.html"><span><b>Paper PDF</b><small>Includes the full algorithm diagram</small></span> <span class="paper-pending">Coming soon</span></a>
+        <a href="assets/workflow-en.svg?rev=4"><span><b>Algorithm workflow</b><small>Vector SVG</small></span><span aria-hidden="true">↗</span></a>
+        <a href="assets/cover.webp"><span><b>Project cover (Chinese)</b><small>Project photography and existing color matches</small></span><span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="shell footer-inner"><span>Color-matching research</span><a href="#main">Back to top ↑</a></div></footer>
+</body>
+</html>

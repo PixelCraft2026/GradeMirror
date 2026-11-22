@@ -4,3 +4,26 @@
 .style-reference-link:focus-visible { outline-offset: -3px; }
 .paper-status { min-height: 60vh; }
 .paper-status p { margin-top: 16px; }
+.language-actions { display: flex; align-items: center; gap: clamp(8px, 1.2vw, 18px); }
+.language-switch { display: inline-flex; align-items: center; min-height: 30px; padding-inline: 7px; white-space: nowrap; color: inherit; font-size: .82rem; font-weight: 650; text-decoration: none; }
+.language-switch:hover { text-decoration: underline; text-underline-offset: .24em; }
+html[lang="en"] .gm-title-phrase { white-space: normal; }
+html[lang="en"] .research-home .hero h1 { font-size: clamp(40px, 5.5vw, 83px); }
+html[lang="en"] .research-home .header-inner nav, html[lang="en"] .showcase-page .nav nav { gap: 5px clamp(9px, 1.4vw, 22px); }
+@media (max-width: 1000px) {
+  html[lang="en"] .research-home .header-inner { flex-wrap: wrap; gap: 4px 10px; }
+  html[lang="en"] .research-home .header-inner nav { order: 1; flex-basis: 100%; justify-content: flex-start; flex-wrap: wrap; padding-bottom: 5px; }
+}
+@media (max-width: 850px) {
+  html[lang="en"] .showcase-page .nav { flex-wrap: wrap; gap: 4px 10px; padding-top: 7px; }
+  html[lang="en"] .showcase-page .nav nav { order: 3; flex-basis: 100%; justify-content: space-between; overflow-x: auto; padding-bottom: 6px; }
+  html[lang="en"] .showcase-page [id] { scroll-margin-top: 96px; }
+}
+@media (max-width: 480px) {
+  html[lang="en"] .showcase-page .hero-body .actions { flex-wrap: wrap; }
+}
+@media (max-width: 390px) {
+  .language-actions { gap: 4px; }
+  .language-switch { padding-inline: 5px; }
+  html[lang="en"] .research-home .hero h1 { font-size: clamp(36px, 11vw, 40px); }
+}
