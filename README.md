@@ -52,7 +52,7 @@ Switch between the original and the draft to check that the ridgeline, prominent
 
 ## Download and launch
 
-The v0.1.0 release is being prepared. These download links are intended for the public release.
+The GradeMirror v0.1.0 preview is now available for Windows x64.
 
 | Device | Download | Launch |
 |---|---|---|
@@ -166,7 +166,7 @@ In a small set of preliminary tests on tasks such as color matching and white ba
 >
 > This is a summary; the complete conditions are in the [AGPL license](LICENSE). If you need different license terms, please open an issue to discuss separate licensing for rights the project owner can grant. Third-party components and brand assets have their own applicable terms; see [NOTICE](NOTICE) and [third-party materials](docs/THIRD-PARTY.md).
 
-The application code lives in [`engineering/source/src/grademirror/`](engineering/source/src/grademirror/). The [build guide](docs/BUILD.md) covers pinned dependencies and packaging. The planned [complete source and third-party materials ZIP](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Source-and-ThirdParty.zip) includes the matching engineering source, third-party source archives, notices and instructions for building the Qt libraries.
+The application code lives in [`engineering/source/src/grademirror/`](engineering/source/src/grademirror/). The [build guide](docs/BUILD.md) covers pinned dependencies and packaging. The [complete source and third-party materials ZIP](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Source-and-ThirdParty.zip) includes the matching engineering source, third-party source archives, notices and instructions for building the Qt libraries.
 
 
 When reporting a problem, include the app version, CPU or GPU edition, Windows version and steps to reproduce it. You can export a diagnostic log from **Help**. Remove private paths or photographs before sharing. [GitHub Issues](https://github.com/PixelCraft2026/GradeMirror/issues)

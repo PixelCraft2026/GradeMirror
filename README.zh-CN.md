@@ -52,7 +52,7 @@ GradeMirror 是一款在 Windows 本地运行的参考仿色工具。导入原�
 
 ## 下载与启动
 
-v0.1.0 目前处于发布准备阶段。下列地址为正式发布后使用的下载入口。
+GradeMirror v0.1.0 预览版现已发布，支持 Windows x64。
 
 | 设备 | 下载 | 启动 |
 |---|---|---|
@@ -166,7 +166,7 @@ v0.1.0 目前处于发布准备阶段。下列地址为正式发布后使用的�
 >
 > 以上是重点说明，完整条件以 [AGPL 许可原文](LICENSE)为准。如需 AGPL 以外的许可条件，可通过 Issue 联系项目所有者，商议其有权另行授权的部分。第三方组件和品牌素材分别适用其许可或使用条件；详见 [NOTICE](NOTICE) 和[第三方材料](docs/THIRD-PARTY.md)。
 
-应用源码位于 [`engineering/source/src/grademirror/`](engineering/source/src/grademirror/)。[构建说明](docs/BUILD.md) 列出锁定的依赖和打包入口。计划提供的 [完整源码与第三方材料 ZIP](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Source-and-ThirdParty.zip) 包含对应工程、第三方源码归档、通知及 Qt 库构建指引。
+应用源码位于 [`engineering/source/src/grademirror/`](engineering/source/src/grademirror/)。[构建说明](docs/BUILD.md) 列出锁定的依赖和打包入口。[完整源码与第三方材料 ZIP](https://github.com/PixelCraft2026/GradeMirror/releases/download/v0.1.0/GradeMirror-0.1.0-Source-and-ThirdParty.zip) 包含对应工程、第三方源码归档、通知及 Qt 库构建指引。
 
 
 反馈问题时，请附程序版本、CPU/GPU 版型、Windows 版本及复现步骤。可从「帮助」导出诊断日志，分享前请移除私人路径或照片。[GitHub Issues](https://github.com/PixelCraft2026/GradeMirror/issues)
