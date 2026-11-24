@@ -5,11 +5,11 @@
 <p align="center"><strong>把生图模型的调色效果，镜像回原片。</strong></p>
 
 <p align="center">
-  <strong>v0.1.0 首次预览版</strong> · Windows x64 · 免费下载 · 程序内版本 <code>0.1.0-preview.50</code>
+  <strong>v0.1.0 首次预览版</strong> · Windows x64 · 免费下载
 </p>
 
 <p align="center">
-  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">网站</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">研究</a></strong> · <a href="docs/README.zh-CN.md">文档</a>
+  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">网站</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">研究</a></strong>
 </p>
 
 <p align="center">

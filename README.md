@@ -5,11 +5,11 @@
 <p align="center"><strong>Mirror an AI-generated grade back onto your original photograph.</strong></p>
 
 <p align="center">
-  <strong>v0.1.0 first preview</strong> · Windows x64 · Free download · In-app version <code>0.1.0-preview.50</code>
+  <strong>v0.1.0 first preview</strong> · Windows x64 · Free download
 </p>
 
 <p align="center">
-  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">Website</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">Research</a></strong> · <a href="docs/README.md">Docs</a>
+  <strong><a href="https://pixelcraft2026.github.io/GradeMirror/grademirror.html">Website</a> · <a href="https://pixelcraft2026.github.io/GradeMirror/">Research</a></strong>
 </p>
 
 <p align="center">
